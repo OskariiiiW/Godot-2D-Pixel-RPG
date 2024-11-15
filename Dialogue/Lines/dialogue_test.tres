@@ -1,0 +1,321 @@
+[gd_resource type="Resource" script_class="Dialogue" load_steps=32 format=3 uid="uid://bmvf3r3j7x2fs"]
+
+[ext_resource type="Script" path="res://Dialogue/DialogueLine.gd" id="1_rcbkc"]
+[ext_resource type="Script" path="res://Dialogue/Dialogue.gd" id="2_ws1d2"]
+
+[sub_resource type="Resource" id="Resource_dimam"]
+script = ExtResource("1_rcbkc")
+id = "ask_name"
+text = "Who are you?"
+already_said = false
+is_locked = false
+can_exit = true
+opens_shop = false
+starts_combat = false
+relation_change = 0
+relation_requirement = 0
+
+[sub_resource type="Resource" id="Resource_gt5q8"]
+script = ExtResource("1_rcbkc")
+id = ""
+text = "It's chewsday innit?"
+already_said = false
+is_locked = false
+can_exit = true
+opens_shop = false
+starts_combat = false
+relation_change = 0
+relation_requirement = 0
+
+[sub_resource type="Resource" id="Resource_b24cj"]
+script = ExtResource("1_rcbkc")
+id = ""
+text = "I'mma be real wit'cha brother. It is time to pack your things, because you are out. Thats right, you are getting kicked tf out of here. I ain't gonna take anymore of your shit."
+already_said = false
+is_locked = false
+can_exit = false
+opens_shop = false
+starts_combat = false
+relation_change = 0
+relation_requirement = 0
+
+[sub_resource type="Resource" id="Resource_o5ryy"]
+script = ExtResource("1_rcbkc")
+id = "halt"
+text = "Halt! You have violated the law! Pay the court a fine, or serve your sentence!"
+already_said = false
+is_locked = false
+can_exit = false
+opens_shop = false
+starts_combat = false
+relation_change = 0
+relation_requirement = 0
+
+[sub_resource type="Resource" id="Resource_yqreo"]
+script = ExtResource("1_rcbkc")
+id = "-50"
+text = "You are such a meanie! I won't invite you to my birthday parties anomore!"
+already_said = false
+is_locked = true
+can_exit = true
+opens_shop = false
+starts_combat = false
+relation_change = 0
+relation_requirement = -50
+
+[sub_resource type="Resource" id="Resource_kgqgi"]
+script = ExtResource("1_rcbkc")
+id = "test_event_unlock"
+text = "Hurray you big mf"
+already_said = false
+is_locked = true
+can_exit = true
+opens_shop = false
+starts_combat = false
+relation_change = 0
+relation_requirement = 0
+
+[sub_resource type="Resource" id="Resource_77vqf"]
+script = ExtResource("1_rcbkc")
+id = ""
+text = "Oh, that's a stupid name"
+already_said = false
+is_locked = false
+can_exit = true
+opens_shop = false
+starts_combat = false
+relation_change = 0
+relation_requirement = 0
+
+[sub_resource type="Resource" id="Resource_ux3np"]
+script = ExtResource("1_rcbkc")
+id = ""
+text = "I actually regret asking your name now..."
+already_said = false
+is_locked = false
+can_exit = true
+opens_shop = false
+starts_combat = false
+relation_change = 0
+relation_requirement = 0
+
+[sub_resource type="Resource" id="Resource_6jji6"]
+script = ExtResource("2_ws1d2")
+npc_lines = Array[ExtResource("1_rcbkc")]([SubResource("Resource_ux3np")])
+player_lines = Array[ExtResource("1_rcbkc")]([])
+
+[sub_resource type="Resource" id="Resource_nlaol"]
+script = ExtResource("1_rcbkc")
+id = ""
+text = "How dare you!"
+already_said = false
+is_locked = false
+can_exit = true
+next_dialogue = SubResource("Resource_6jji6")
+opens_shop = false
+starts_combat = false
+relation_change = 0
+relation_requirement = 0
+
+[sub_resource type="Resource" id="Resource_30w2s"]
+script = ExtResource("2_ws1d2")
+npc_lines = Array[ExtResource("1_rcbkc")]([SubResource("Resource_77vqf")])
+player_lines = Array[ExtResource("1_rcbkc")]([SubResource("Resource_nlaol")])
+
+[sub_resource type="Resource" id="Resource_y7m46"]
+script = ExtResource("1_rcbkc")
+id = "ask_name"
+text = "My name is {player}"
+already_said = false
+is_locked = true
+can_exit = true
+next_dialogue = SubResource("Resource_30w2s")
+opens_shop = false
+starts_combat = false
+relation_change = 0
+relation_requirement = 0
+
+[sub_resource type="Resource" id="Resource_vgnco"]
+script = ExtResource("1_rcbkc")
+id = "-50"
+text = "You stink!"
+already_said = false
+is_locked = false
+can_exit = true
+opens_shop = false
+starts_combat = false
+relation_change = -50
+relation_requirement = 0
+
+[sub_resource type="Resource" id="Resource_k3vqw"]
+script = ExtResource("1_rcbkc")
+id = ""
+text = "khajiit vill follow"
+already_said = false
+is_locked = false
+can_exit = true
+opens_shop = false
+starts_combat = false
+relation_change = 0
+relation_requirement = 0
+
+[sub_resource type="Resource" id="Resource_tpjo3"]
+script = ExtResource("2_ws1d2")
+npc_lines = Array[ExtResource("1_rcbkc")]([SubResource("Resource_k3vqw")])
+player_lines = Array[ExtResource("1_rcbkc")]([])
+
+[sub_resource type="Resource" id="Resource_ycat3"]
+script = ExtResource("1_rcbkc")
+id = ""
+text = "folo me"
+already_said = false
+is_locked = false
+can_exit = true
+next_dialogue = SubResource("Resource_tpjo3")
+opens_shop = false
+starts_combat = false
+relation_change = 100
+relation_requirement = 0
+
+[sub_resource type="Resource" id="Resource_0jd6b"]
+script = ExtResource("1_rcbkc")
+id = ""
+text = "It's off to the jail with you!"
+already_said = false
+is_locked = false
+can_exit = false
+opens_shop = false
+starts_combat = false
+relation_change = 0
+relation_requirement = 0
+
+[sub_resource type="Resource" id="Resource_kaymf"]
+script = ExtResource("1_rcbkc")
+id = ""
+text = "Nooooooo!"
+already_said = false
+is_locked = false
+can_exit = true
+opens_shop = false
+starts_combat = false
+relation_change = 0
+relation_requirement = 0
+
+[sub_resource type="Resource" id="Resource_7boti"]
+script = ExtResource("2_ws1d2")
+npc_lines = Array[ExtResource("1_rcbkc")]([SubResource("Resource_0jd6b")])
+player_lines = Array[ExtResource("1_rcbkc")]([SubResource("Resource_kaymf")])
+
+[sub_resource type="Resource" id="Resource_4up7u"]
+script = ExtResource("1_rcbkc")
+id = "halt"
+text = "Wdym?! Khajiit is innocent of this crime!"
+already_said = false
+is_locked = true
+can_exit = true
+next_dialogue = SubResource("Resource_7boti")
+opens_shop = false
+starts_combat = false
+relation_change = 0
+relation_requirement = 0
+
+[sub_resource type="Resource" id="Resource_lnvjd"]
+script = ExtResource("1_rcbkc")
+id = ""
+text = "I'mma kill you!"
+already_said = false
+is_locked = false
+can_exit = true
+opens_shop = false
+starts_combat = true
+relation_change = 0
+relation_requirement = 0
+
+[sub_resource type="Resource" id="Resource_yveke"]
+script = ExtResource("1_rcbkc")
+id = "-50"
+text = "Good! Because I wouldn't go to the anyway!"
+already_said = false
+is_locked = true
+can_exit = true
+opens_shop = false
+starts_combat = false
+relation_change = -20
+relation_requirement = 0
+
+[sub_resource type="Resource" id="Resource_g6ynj"]
+script = ExtResource("1_rcbkc")
+id = ""
+text = "I wanna buy stuff"
+already_said = false
+is_locked = false
+can_exit = true
+opens_shop = true
+starts_combat = false
+relation_change = 0
+relation_requirement = 0
+
+[sub_resource type="Resource" id="Resource_m2qov"]
+script = ExtResource("1_rcbkc")
+id = ""
+text = "No, but I saw a mudcrab the other day. Horrible creatures"
+already_said = false
+is_locked = false
+can_exit = true
+opens_shop = false
+starts_combat = false
+relation_change = 0
+relation_requirement = 0
+
+[sub_resource type="Resource" id="Resource_3lsnh"]
+script = ExtResource("2_ws1d2")
+npc_lines = Array[ExtResource("1_rcbkc")]([SubResource("Resource_m2qov")])
+player_lines = Array[ExtResource("1_rcbkc")]([])
+
+[sub_resource type="Resource" id="Resource_f6uco"]
+script = ExtResource("1_rcbkc")
+id = "heard_of_elves"
+text = "Have you heard of elves?"
+already_said = false
+is_locked = true
+can_exit = true
+next_dialogue = SubResource("Resource_3lsnh")
+opens_shop = false
+starts_combat = false
+relation_change = 0
+relation_requirement = 0
+
+[sub_resource type="Resource" id="Resource_vj6mq"]
+script = ExtResource("1_rcbkc")
+id = ""
+text = "Language!!!"
+already_said = false
+is_locked = false
+can_exit = true
+opens_shop = false
+starts_combat = false
+relation_change = -20
+relation_requirement = 0
+
+[sub_resource type="Resource" id="Resource_vgl11"]
+script = ExtResource("2_ws1d2")
+npc_lines = Array[ExtResource("1_rcbkc")]([SubResource("Resource_vj6mq")])
+player_lines = Array[ExtResource("1_rcbkc")]([])
+
+[sub_resource type="Resource" id="Resource_jclc3"]
+script = ExtResource("1_rcbkc")
+id = "test_event_unlock2"
+text = "It fooking works!!!"
+already_said = false
+is_locked = true
+can_exit = true
+next_dialogue = SubResource("Resource_vgl11")
+opens_shop = false
+starts_combat = false
+relation_change = 0
+relation_requirement = 0
+
+[resource]
+script = ExtResource("2_ws1d2")
+npc_lines = Array[ExtResource("1_rcbkc")]([SubResource("Resource_dimam"), SubResource("Resource_gt5q8"), SubResource("Resource_b24cj"), SubResource("Resource_o5ryy"), SubResource("Resource_yqreo"), SubResource("Resource_kgqgi")])
+player_lines = Array[ExtResource("1_rcbkc")]([SubResource("Resource_y7m46"), SubResource("Resource_vgnco"), SubResource("Resource_ycat3"), SubResource("Resource_4up7u"), SubResource("Resource_lnvjd"), SubResource("Resource_yveke"), SubResource("Resource_g6ynj"), SubResource("Resource_f6uco"), SubResource("Resource_jclc3")])

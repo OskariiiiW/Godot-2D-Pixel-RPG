@@ -1,0 +1,55 @@
+[gd_scene load_steps=5 format=3 uid="uid://iwoitt4tok4v"]
+
+[ext_resource type="Script" path="res://Inventory/Scripts/item_tooltip.gd" id="1_m6fvn"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_vjp28"]
+font_size = 18
+shadow_color = Color(0, 0, 0, 0.352941)
+
+[sub_resource type="LabelSettings" id="LabelSettings_3uv6t"]
+shadow_color = Color(0, 0, 0, 0.352941)
+
+[sub_resource type="LabelSettings" id="LabelSettings_m2kt4"]
+shadow_color = Color(0, 0, 0, 0.352941)
+
+[node name="ToolTip" type="PanelContainer"]
+visible = false
+z_index = 1
+offset_right = 100.0
+offset_bottom = 89.0
+mouse_filter = 2
+script = ExtResource("1_m6fvn")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(100, 80)
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 5
+
+[node name="StatsContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Name" type="Label" parent="MarginContainer/StatsContainer"]
+layout_mode = 2
+text = "<name>"
+label_settings = SubResource("LabelSettings_vjp28")
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/StatsContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Description" type="Label" parent="MarginContainer/StatsContainer"]
+layout_mode = 2
+text = "<desc>"
+label_settings = SubResource("LabelSettings_3uv6t")
+horizontal_alignment = 1
+
+[node name="Cost" type="Label" parent="MarginContainer/StatsContainer"]
+layout_mode = 2
+text = "<cost>"
+label_settings = SubResource("LabelSettings_m2kt4")
+horizontal_alignment = 2

@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://bqp8itqm8nfpu"]
+
+[ext_resource type="Script" path="res://ActionBar/action_bar_slot.gd" id="1_wifcj"]
+
+[node name="ActionBarSlot" type="PanelContainer"]
+custom_minimum_size = Vector2(64, 64)
+offset_right = 64.0
+offset_bottom = 64.0
+script = ExtResource("1_wifcj")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

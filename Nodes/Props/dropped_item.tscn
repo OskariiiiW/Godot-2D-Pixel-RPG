@@ -1,0 +1,36 @@
+[gd_scene load_steps=8 format=3 uid="uid://c6611mwm1gryk"]
+
+[ext_resource type="Script" path="res://Scripts/dropped_item.gd" id="1_hvcvj"]
+[ext_resource type="PackedScene" uid="uid://blccn3817tqgv" path="res://Nodes/Components/item_component.tscn" id="2_ego17"]
+[ext_resource type="Resource" uid="uid://dsuqborgvcdpm" path="res://Items/debug_item.tres" id="3_j4vgw"]
+[ext_resource type="Script" path="res://Inventory/Scripts/SlotData.gd" id="4_vnlch"]
+[ext_resource type="PackedScene" uid="uid://cs6gi1dg41mch" path="res://Nodes/Components/npc_interact_component.tscn" id="5_qnq17"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2h1s8"]
+radius = 25.02
+
+[sub_resource type="Resource" id="Resource_nvpdt"]
+script = ExtResource("4_vnlch")
+item_data = ExtResource("3_j4vgw")
+quantity = 1
+
+[node name="DroppedItem" type="StaticBody2D" node_paths=PackedStringArray("npc_interact")]
+collision_layer = 32
+script = ExtResource("1_hvcvj")
+npc_interact = NodePath("NPCInteractComponent")
+
+[node name="Item" type="Sprite2D" parent="."]
+scale = Vector2(0.6, 0.6)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_2h1s8")
+
+[node name="ItemComponent" parent="." instance=ExtResource("2_ego17")]
+collision_layer = 32
+item = SubResource("Resource_nvpdt")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="ItemComponent"]
+shape = SubResource("CircleShape2D_2h1s8")
+
+[node name="NPCInteractComponent" parent="." instance=ExtResource("5_qnq17")]
+type = 2

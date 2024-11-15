@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=7 format=3 uid="uid://ckvx670ji88rw"]
+
+[ext_resource type="Script" path="res://Classes/equippable_gear.gd" id="1_jjcrt"]
+[ext_resource type="Script" path="res://Classes/ItemElementType.gd" id="1_mbisy"]
+[ext_resource type="Texture2D" uid="uid://c5vesf8q4slpg" path="res://Textures/Gear/Leather Helmet.png" id="2_bfxbl"]
+[ext_resource type="Script" path="res://Inventory/Scripts/ItemData.gd" id="3_2u7av"]
+
+[sub_resource type="Resource" id="Resource_2ri5r"]
+script = ExtResource("1_mbisy")
+physical = 4.0
+magical = 2.0
+poison = 0.0
+curse = 0.0
+
+[sub_resource type="Resource" id="Resource_s8ioi"]
+script = ExtResource("1_jjcrt")
+resistances = SubResource("Resource_2ri5r")
+weight_class = 1
+
+[resource]
+script = ExtResource("3_2u7av")
+tier = 0
+type = 5
+name = "Test helmet"
+value = 50
+weight = 5.0
+description = "Poor fucking helmet"
+is_stackable = false
+gear = SubResource("Resource_s8ioi")
+texture = ExtResource("2_bfxbl")

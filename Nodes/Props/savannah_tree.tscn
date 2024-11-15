@@ -1,0 +1,50 @@
+[gd_scene load_steps=10 format=3 uid="uid://buhke5eyndl4q"]
+
+[ext_resource type="Resource" uid="uid://8no3jeuo0ykp" path="res://Items/Wood_log.tres" id="2_2mdr1"]
+[ext_resource type="Texture2D" uid="uid://b6ksfsxr73gag" path="res://Props/tree_savannah.png" id="2_pggri"]
+[ext_resource type="PackedScene" uid="uid://co3lke74w50ik" path="res://Nodes/Components/hitbox_component.tscn" id="3_4is7e"]
+[ext_resource type="PackedScene" uid="uid://bq4d7xg3rdumh" path="res://Nodes/Components/stats_component.tscn" id="3_pkhyv"]
+[ext_resource type="PackedScene" uid="uid://demlxi468b16l" path="res://Nodes/Components/loot_component.tscn" id="3_sxmfx"]
+[ext_resource type="Script" path="res://Classes/ItemElementType.gd" id="4_doo62"]
+[ext_resource type="PackedScene" uid="uid://c6611mwm1gryk" path="res://Nodes/Props/dropped_item.tscn" id="4_mewcm"]
+
+[sub_resource type="Resource" id="Resource_8sfjg"]
+script = ExtResource("4_doo62")
+physical = 8.0
+magical = 0.0
+poison = 0.0
+curse = 0.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uenqw"]
+size = Vector2(15.5, 17)
+
+[node name="SavannahTree" type="StaticBody2D"]
+collision_layer = 4
+collision_mask = 15
+
+[node name="StatsComponent" parent="." node_paths=PackedStringArray("loot_component") instance=ExtResource("3_pkhyv")]
+MAX_HEALTH = 20
+resistances = SubResource("Resource_8sfjg")
+loot_component = NodePath("../LootComponent")
+
+[node name="LootComponent" parent="." instance=ExtResource("3_sxmfx")]
+loot_base_node = ExtResource("4_mewcm")
+loot = ExtResource("2_2mdr1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.75, -15.5)
+shape = SubResource("RectangleShape2D_uenqw")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -24.4425)
+scale = Vector2(1.92, 1.92)
+texture = ExtResource("2_pggri")
+
+[node name="HitboxComponent" parent="." node_paths=PackedStringArray("stats_component") instance=ExtResource("3_4is7e")]
+collision_layer = 4
+collision_mask = 15
+stats_component = NodePath("../StatsComponent")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="HitboxComponent"]
+position = Vector2(-0.75, -15.5)
+shape = SubResource("RectangleShape2D_uenqw")

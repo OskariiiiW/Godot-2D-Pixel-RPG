@@ -1,0 +1,50 @@
+[gd_scene load_steps=10 format=3 uid="uid://da51iextlpaa3"]
+
+[ext_resource type="PackedScene" uid="uid://bq4d7xg3rdumh" path="res://Nodes/Components/stats_component.tscn" id="1_slhbv"]
+[ext_resource type="Script" path="res://Classes/ItemElementType.gd" id="2_fdwiw"]
+[ext_resource type="PackedScene" uid="uid://demlxi468b16l" path="res://Nodes/Components/loot_component.tscn" id="3_qxdve"]
+[ext_resource type="PackedScene" uid="uid://c6611mwm1gryk" path="res://Nodes/Props/dropped_item.tscn" id="4_due4x"]
+[ext_resource type="Resource" uid="uid://8no3jeuo0ykp" path="res://Items/Wood_log.tres" id="5_2swl1"]
+[ext_resource type="Texture2D" uid="uid://1v27nh0swcy" path="res://Import/pixel_art_top_down(TX)/TX Bush5.png" id="6_oi6vt"]
+[ext_resource type="PackedScene" uid="uid://co3lke74w50ik" path="res://Nodes/Components/hitbox_component.tscn" id="7_ewnxf"]
+
+[sub_resource type="Resource" id="Resource_f4myc"]
+script = ExtResource("2_fdwiw")
+physical = 0.0
+magical = 0.0
+poison = 0.0
+curse = 0.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_x2y14"]
+radius = 17.0
+height = 34.0
+
+[node name="TxBush5" type="StaticBody2D"]
+collision_layer = 64
+collision_mask = 24
+
+[node name="StatsComponent" parent="." node_paths=PackedStringArray("loot_component") instance=ExtResource("1_slhbv")]
+MAX_HEALTH = 10
+resistances = SubResource("Resource_f4myc")
+loot_component = NodePath("../LootComponent")
+
+[node name="LootComponent" parent="." instance=ExtResource("3_qxdve")]
+loot_base_node = ExtResource("4_due4x")
+loot = ExtResource("5_2swl1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -7)
+texture = ExtResource("6_oi6vt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -6)
+shape = SubResource("CapsuleShape2D_x2y14")
+
+[node name="HitboxComponent" parent="." node_paths=PackedStringArray("stats_component") instance=ExtResource("7_ewnxf")]
+collision_layer = 64
+collision_mask = 24
+stats_component = NodePath("../StatsComponent")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="HitboxComponent"]
+position = Vector2(0, -6)
+shape = SubResource("CapsuleShape2D_x2y14")

@@ -1,0 +1,45 @@
+[gd_resource type="Resource" script_class="Dialogue" load_steps=6 format=3 uid="uid://ccckvg7lg2xaj"]
+
+[ext_resource type="Script" path="res://Dialogue/DialogueLine.gd" id="1_3b6at"]
+[ext_resource type="Script" path="res://Dialogue/Dialogue.gd" id="2_lje2y"]
+
+[sub_resource type="Resource" id="Resource_4efdk"]
+script = ExtResource("1_3b6at")
+id = ""
+text = "???"
+already_said = false
+is_locked = false
+can_exit = true
+opens_shop = false
+starts_combat = false
+relation_change = 0
+relation_requirement = 0
+
+[sub_resource type="Resource" id="Resource_bovwn"]
+script = ExtResource("1_3b6at")
+id = ""
+text = "I'mma kill you"
+already_said = false
+is_locked = false
+can_exit = true
+opens_shop = false
+starts_combat = true
+relation_change = 0
+relation_requirement = 0
+
+[sub_resource type="Resource" id="Resource_ggoc1"]
+script = ExtResource("1_3b6at")
+id = ""
+text = "You mah fren"
+already_said = false
+is_locked = false
+can_exit = true
+opens_shop = false
+starts_combat = false
+relation_change = 100
+relation_requirement = 0
+
+[resource]
+script = ExtResource("2_lje2y")
+npc_lines = Array[ExtResource("1_3b6at")]([SubResource("Resource_4efdk")])
+player_lines = Array[ExtResource("1_3b6at")]([SubResource("Resource_bovwn"), SubResource("Resource_ggoc1")])

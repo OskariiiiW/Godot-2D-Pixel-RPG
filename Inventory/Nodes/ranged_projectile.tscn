@@ -1,0 +1,59 @@
+[gd_scene load_steps=9 format=3 uid="uid://b05v24tn6rpxl"]
+
+[ext_resource type="PackedScene" uid="uid://bq4d7xg3rdumh" path="res://Nodes/Components/stats_component.tscn" id="2_ftbit"]
+[ext_resource type="Script" path="res://Inventory/Scripts/RangedProjectile.gd" id="2_uphkc"]
+[ext_resource type="Texture2D" uid="uid://c6kdis2bbk6g1" path="res://Textures/Fireball.png" id="3_84lqg"]
+[ext_resource type="Script" path="res://Classes/ItemElementType.gd" id="3_eymtm"]
+[ext_resource type="PackedScene" uid="uid://co3lke74w50ik" path="res://Nodes/Components/hitbox_component.tscn" id="4_bupoi"]
+
+[sub_resource type="Resource" id="Resource_gqe5p"]
+script = ExtResource("3_eymtm")
+physical = 0.0
+magical = 0.0
+poison = 0.0
+curse = 0.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4n0xb"]
+radius = 6.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_75ord"]
+radius = 6.0
+
+[node name="RangedProjectile" type="StaticBody2D" node_paths=PackedStringArray("stats_component") groups=["Projectiles"]]
+collision_layer = 16
+collision_mask = 7
+script = ExtResource("2_uphkc")
+stats_component = NodePath("StatsComponent")
+
+[node name="StatsComponent" parent="." instance=ExtResource("2_ftbit")]
+resistances = SubResource("Resource_gqe5p")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("3_84lqg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_4n0xb")
+
+[node name="HitboxComponent" parent="." node_paths=PackedStringArray("stats_component") instance=ExtResource("4_bupoi")]
+collision_layer = 16
+collision_mask = 87
+stats_component = NodePath("../StatsComponent")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="HitboxComponent"]
+shape = SubResource("CircleShape2D_75ord")
+
+[node name="Trail" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 20
+randomness = 0.71
+fixed_fps = 15
+
+[node name="Impact" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 50
+one_shot = true
+explosiveness = 1.0
+fixed_fps = 15
+
+[connection signal="area_entered" from="HitboxComponent" to="." method="_on_hitbox_component_area_entered"]
+[connection signal="body_entered" from="HitboxComponent" to="." method="_on_hitbox_component_body_entered"]

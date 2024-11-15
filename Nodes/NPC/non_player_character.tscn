@@ -1,0 +1,241 @@
+[gd_scene load_steps=45 format=3 uid="uid://b7m8yydx4ytop"]
+
+[ext_resource type="Script" path="res://Scripts/NonPlayerCharacter.gd" id="1_o138j"]
+[ext_resource type="Texture2D" uid="uid://cpa3cmft3vsly" path="res://icon.svg" id="2_0kcas"]
+[ext_resource type="Texture2D" uid="uid://5lm3ctxrl8ry" path="res://Textures/NPC/shop_ui_npc.png" id="2_2bngi"]
+[ext_resource type="PackedScene" uid="uid://bq4d7xg3rdumh" path="res://Nodes/Components/stats_component.tscn" id="2_cya4a"]
+[ext_resource type="PackedScene" uid="uid://demlxi468b16l" path="res://Nodes/Components/loot_component.tscn" id="3_eetm3"]
+[ext_resource type="Script" path="res://Inventory/Scripts/InventoryData.gd" id="3_eqq18"]
+[ext_resource type="Script" path="res://Classes/ItemElementType.gd" id="3_tirv0"]
+[ext_resource type="PackedScene" uid="uid://cksh0fxuu056c" path="res://Nodes/Components/relationship_component.tscn" id="4_4vlc2"]
+[ext_resource type="PackedScene" uid="uid://c6611mwm1gryk" path="res://Nodes/Props/dropped_item.tscn" id="4_grse6"]
+[ext_resource type="PackedScene" uid="uid://co3lke74w50ik" path="res://Nodes/Components/hitbox_component.tscn" id="4_hjuuh"]
+[ext_resource type="Script" path="res://Inventory/Scripts/SlotData.gd" id="4_vguld"]
+[ext_resource type="PackedScene" uid="uid://cya2hwtun4d8h" path="res://Inventory/Nodes/equipped_item.tscn" id="5_w7d7c"]
+[ext_resource type="Resource" uid="uid://ckvx670ji88rw" path="res://Items/Helmet_test.tres" id="5_y3sp3"]
+[ext_resource type="Resource" uid="uid://dpcq75unyhpnv" path="res://Items/megumin_staff.tres" id="6_1fbcb"]
+[ext_resource type="PackedScene" uid="uid://ih6ig6byvcfk" path="res://Dialogue/dialogue_component.tscn" id="6_2rf1s"]
+[ext_resource type="Resource" uid="uid://c708j1ca236gw" path="res://Items/Chest_test.tres" id="6_gwff1"]
+[ext_resource type="Resource" uid="uid://bmvf3r3j7x2fs" path="res://Dialogue/Lines/dialogue_test.tres" id="7_7km4r"]
+
+[sub_resource type="Resource" id="Resource_30nhk"]
+script = ExtResource("4_vguld")
+item_data = ExtResource("5_y3sp3")
+quantity = 1
+
+[sub_resource type="Resource" id="Resource_0350e"]
+script = ExtResource("4_vguld")
+item_data = ExtResource("5_y3sp3")
+quantity = 1
+
+[sub_resource type="Resource" id="Resource_oo5qa"]
+script = ExtResource("4_vguld")
+item_data = ExtResource("5_y3sp3")
+quantity = 1
+
+[sub_resource type="Resource" id="Resource_r6th8"]
+script = ExtResource("4_vguld")
+item_data = ExtResource("5_y3sp3")
+quantity = 1
+
+[sub_resource type="Resource" id="Resource_3paua"]
+script = ExtResource("4_vguld")
+item_data = ExtResource("5_y3sp3")
+quantity = 1
+
+[sub_resource type="Resource" id="Resource_vxtdw"]
+script = ExtResource("4_vguld")
+item_data = ExtResource("5_y3sp3")
+quantity = 1
+
+[sub_resource type="Resource" id="Resource_ej8ka"]
+script = ExtResource("4_vguld")
+item_data = ExtResource("5_y3sp3")
+quantity = 1
+
+[sub_resource type="Resource" id="Resource_2tcbu"]
+script = ExtResource("4_vguld")
+item_data = ExtResource("5_y3sp3")
+quantity = 1
+
+[sub_resource type="Resource" id="Resource_21pwv"]
+script = ExtResource("4_vguld")
+item_data = ExtResource("5_y3sp3")
+quantity = 1
+
+[sub_resource type="Resource" id="Resource_ne7ja"]
+script = ExtResource("4_vguld")
+item_data = ExtResource("6_gwff1")
+quantity = 1
+
+[sub_resource type="Resource" id="Resource_olpp2"]
+script = ExtResource("4_vguld")
+item_data = ExtResource("6_gwff1")
+quantity = 1
+
+[sub_resource type="Resource" id="Resource_7ocrl"]
+script = ExtResource("4_vguld")
+item_data = ExtResource("6_gwff1")
+quantity = 1
+
+[sub_resource type="Resource" id="Resource_848sk"]
+script = ExtResource("4_vguld")
+item_data = ExtResource("6_gwff1")
+quantity = 1
+
+[sub_resource type="Resource" id="Resource_7psl8"]
+script = ExtResource("4_vguld")
+item_data = ExtResource("6_gwff1")
+quantity = 1
+
+[sub_resource type="Resource" id="Resource_4d2us"]
+script = ExtResource("4_vguld")
+item_data = ExtResource("6_gwff1")
+quantity = 1
+
+[sub_resource type="Resource" id="Resource_mnf6p"]
+script = ExtResource("4_vguld")
+item_data = ExtResource("6_gwff1")
+quantity = 1
+
+[sub_resource type="Resource" id="Resource_d6ihy"]
+script = ExtResource("4_vguld")
+item_data = ExtResource("6_gwff1")
+quantity = 1
+
+[sub_resource type="Resource" id="Resource_06cr3"]
+script = ExtResource("4_vguld")
+item_data = ExtResource("6_gwff1")
+quantity = 1
+
+[sub_resource type="Resource" id="Resource_th0cc"]
+script = ExtResource("4_vguld")
+item_data = ExtResource("6_gwff1")
+quantity = 1
+
+[sub_resource type="Resource" id="Resource_l3r1b"]
+script = ExtResource("4_vguld")
+item_data = ExtResource("6_gwff1")
+quantity = 1
+
+[sub_resource type="Resource" id="Resource_7mkgl"]
+script = ExtResource("3_eqq18")
+slot_datas = Array[ExtResource("4_vguld")]([SubResource("Resource_30nhk"), SubResource("Resource_0350e"), SubResource("Resource_oo5qa"), SubResource("Resource_r6th8"), SubResource("Resource_3paua"), SubResource("Resource_vxtdw"), SubResource("Resource_ej8ka"), SubResource("Resource_2tcbu"), SubResource("Resource_21pwv"), SubResource("Resource_ne7ja"), SubResource("Resource_olpp2"), SubResource("Resource_7ocrl"), SubResource("Resource_848sk"), SubResource("Resource_7psl8"), SubResource("Resource_4d2us"), SubResource("Resource_mnf6p"), SubResource("Resource_d6ihy"), SubResource("Resource_06cr3"), SubResource("Resource_th0cc"), SubResource("Resource_l3r1b")])
+
+[sub_resource type="Resource" id="Resource_uhlag"]
+script = ExtResource("3_tirv0")
+physical = 0.0
+magical = 0.0
+poison = 0.0
+curse = 0.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_t1xlp"]
+radius = 12.5006
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jk4xl"]
+radius = 12.5006
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_biuki"]
+radius = 300.167
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jh8gn"]
+size = Vector2(44, 100)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8bqpd"]
+radius = 385.105
+
+[node name="NonPlayerCharacter" type="CharacterBody2D" node_paths=PackedStringArray("stats_component", "relationship_component", "dialogue_component")]
+process_mode = 1
+z_index = 1
+y_sort_enabled = true
+collision_layer = 2
+collision_mask = 6
+motion_mode = 1
+script = ExtResource("1_o138j")
+character_image = ExtResource("2_2bngi")
+stats_component = NodePath("StatsComponent")
+relationship_component = NodePath("RelationshipComponent")
+dialogue_component = NodePath("DialogueComponent")
+shop_inventory = SubResource("Resource_7mkgl")
+
+[node name="StatsComponent" parent="." node_paths=PackedStringArray("loot_component") instance=ExtResource("2_cya4a")]
+character_name = "test_character"
+faction_name = "npc_faction"
+is_unique = true
+resistances = SubResource("Resource_uhlag")
+loot_component = NodePath("../LootComponent")
+
+[node name="RelationshipComponent" parent="." instance=ExtResource("4_4vlc2")]
+
+[node name="DialogueComponent" parent="." instance=ExtResource("6_2rf1s")]
+dialogue = ExtResource("7_7km4r")
+
+[node name="LootComponent" parent="." instance=ExtResource("3_eetm3")]
+loot_base_node = ExtResource("4_grse6")
+loot = ExtResource("6_1fbcb")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_0kcas")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 0.125)
+shape = SubResource("CircleShape2D_t1xlp")
+
+[node name="HitboxComponent" parent="." node_paths=PackedStringArray("stats_component") groups=["HostileCreature"] instance=ExtResource("4_hjuuh")]
+collision_layer = 2
+collision_mask = 120
+stats_component = NodePath("../StatsComponent")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="HitboxComponent"]
+position = Vector2(0.5, 0.125)
+shape = SubResource("CircleShape2D_jk4xl")
+
+[node name="Rotatable" type="Node2D" parent="."]
+
+[node name="NPCVisual" type="Area2D" parent="Rotatable"]
+collision_layer = 128
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rotatable/NPCVisual"]
+position = Vector2(275, 0)
+shape = SubResource("CircleShape2D_biuki")
+
+[node name="MeleeRange" type="Area2D" parent="Rotatable"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rotatable/MeleeRange"]
+position = Vector2(38, 0)
+shape = SubResource("RectangleShape2D_jh8gn")
+
+[node name="WeaponContainer" type="Node2D" parent="Rotatable"]
+visible = false
+
+[node name="EquippedItem" parent="Rotatable/WeaponContainer" instance=ExtResource("5_w7d7c")]
+position = Vector2(18, 2)
+equipped_item = ExtResource("6_1fbcb")
+
+[node name="ProjectileSpawnMark" type="Marker2D" parent="Rotatable/WeaponContainer"]
+position = Vector2(37, 0)
+
+[node name="TaskScanner" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TaskScanner"]
+shape = SubResource("CircleShape2D_8bqpd")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+avoidance_enabled = true
+debug_enabled = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
+
+[connection signal="body_entered" from="Rotatable/NPCVisual" to="." method="_on_NPC_visual_body_entered"]
+[connection signal="body_exited" from="Rotatable/NPCVisual" to="." method="_on_NPC_visual_body_exited"]
+[connection signal="body_entered" from="Rotatable/MeleeRange" to="." method="_on_melee_range_body_entered"]
+[connection signal="body_exited" from="Rotatable/MeleeRange" to="." method="_on_melee_range_body_exited"]
+[connection signal="body_entered" from="TaskScanner" to="." method="_on_task_scanner_body_entered"]
+[connection signal="body_exited" from="TaskScanner" to="." method="_on_task_scanner_body_exited"]
+[connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://cuf4k5ka0von6"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_x6jao"]
+shadow_color = Color(0, 0, 0, 0.352941)
+
+[node name="Tooltip_stat" type="HBoxContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+
+[node name="Stat" type="Label" parent="."]
+layout_mode = 2
+text = "<stat>"
+label_settings = SubResource("LabelSettings_x6jao")
+
+[node name="Value" type="Label" parent="."]
+layout_mode = 2
+text = "<value>"
+label_settings = SubResource("LabelSettings_x6jao")
+
+[node name="Difference" type="Label" parent="."]
+layout_mode = 2
+text = "<diff>"
+label_settings = SubResource("LabelSettings_x6jao")

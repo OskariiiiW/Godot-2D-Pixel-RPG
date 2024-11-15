@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://ccej1j6oqy6wh"]
+
+[ext_resource type="Script" path="res://Scripts/scene_changer.gd" id="1_ac0sj"]
+[ext_resource type="Texture2D" uid="uid://cpa3cmft3vsly" path="res://icon.svg" id="2_djkvb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cjvpk"]
+size = Vector2(38, 38)
+
+[node name="SceneChanger" type="Area2D"]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_ac0sj")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_djkvb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_cjvpk")

@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=7 format=3 uid="uid://iam6mfmnbkbl"]
+
+[ext_resource type="Script" path="res://Inventory/Scripts/ItemData.gd" id="1_ysu1f"]
+[ext_resource type="Texture2D" uid="uid://dumy1my02dla0" path="res://Textures/Weapons/Wooden Sword.png" id="2_61paa"]
+[ext_resource type="Script" path="res://Classes/ItemElementType.gd" id="3_08l3j"]
+[ext_resource type="Script" path="res://Classes/equippable_item.gd" id="3_r3fnm"]
+
+[sub_resource type="Resource" id="Resource_5t7sw"]
+script = ExtResource("3_08l3j")
+physical = 15.0
+magical = 0.0
+poison = 0.0
+curse = 0.0
+
+[sub_resource type="Resource" id="Resource_kvcst"]
+script = ExtResource("3_r3fnm")
+is_ranged = false
+weapon_type = 6
+damage = SubResource("Resource_5t7sw")
+knockback = 0.0
+
+[resource]
+script = ExtResource("1_ysu1f")
+tier = 0
+type = 13
+name = "Test sword"
+value = 100
+weight = 6.0
+description = "Poor fucking sword"
+is_stackable = false
+weapon = SubResource("Resource_kvcst")
+texture = ExtResource("2_61paa")

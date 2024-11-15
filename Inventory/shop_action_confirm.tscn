@@ -1,0 +1,83 @@
+[gd_scene load_steps=2 format=3 uid="uid://danwc4v6f216j"]
+
+[ext_resource type="Script" path="res://Inventory/shop_action_confirm.gd" id="1_6gjur"]
+
+[node name="ShopActionConfirm" type="Control"]
+top_level = true
+z_index = 1
+custom_minimum_size = Vector2(180, 80)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_6gjur")
+
+[node name="PContainer" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(180, 100)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -92.0
+offset_top = -71.5
+offset_right = 92.0
+offset_bottom = 45.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="PContainer"]
+layout_mode = 2
+color = Color(0.180005, 0.180005, 0.180005, 1)
+
+[node name="Margin" type="MarginContainer" parent="PContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBox" type="VBoxContainer" parent="PContainer/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="ItemName" type="Label" parent="PContainer/Margin/VBox"]
+layout_mode = 2
+text = "Lorem Ipsum"
+horizontal_alignment = 1
+
+[node name="AmountSlider" type="HSlider" parent="PContainer/Margin/VBox"]
+layout_mode = 2
+min_value = 1.0
+max_value = 99.0
+value = 1.0
+
+[node name="CostText" type="Label" parent="PContainer/Margin/VBox"]
+layout_mode = 2
+text = "Buy x for: NaN?"
+horizontal_alignment = 1
+
+[node name="HBox" type="HBoxContainer" parent="PContainer/Margin/VBox"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Yes" type="Button" parent="PContainer/Margin/VBox/HBox"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+text = "Yes"
+
+[node name="Cancel" type="Button" parent="PContainer/Margin/VBox/HBox"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.961518, 4.45209e-06, 9.62615e-07, 1)
+text = "Cancel"
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="value_changed" from="PContainer/Margin/VBox/AmountSlider" to="." method="_on_amount_slider_value_changed"]
+[connection signal="pressed" from="PContainer/Margin/VBox/HBox/Yes" to="." method="_on_yes_pressed"]
+[connection signal="pressed" from="PContainer/Margin/VBox/HBox/Cancel" to="." method="_on_cancel_pressed"]

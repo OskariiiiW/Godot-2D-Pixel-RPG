@@ -1,0 +1,238 @@
+[gd_scene load_steps=33 format=3 uid="uid://boqsm34s04dxu"]
+
+[ext_resource type="Script" path="res://Scripts/NonPlayerCharacter.gd" id="1_kmlf8"]
+[ext_resource type="PackedScene" uid="uid://bq4d7xg3rdumh" path="res://Nodes/Components/stats_component.tscn" id="2_bwi4l"]
+[ext_resource type="Resource" uid="uid://64o8hagkgyea" path="res://Inventory/InventoryDatas/ChestTest2.tres" id="3_n508n"]
+[ext_resource type="Script" path="res://Classes/ItemElementType.gd" id="3_tbft2"]
+[ext_resource type="PackedScene" uid="uid://cksh0fxuu056c" path="res://Nodes/Components/relationship_component.tscn" id="4_wlbsw"]
+[ext_resource type="PackedScene" uid="uid://demlxi468b16l" path="res://Nodes/Components/loot_component.tscn" id="5_d2gmr"]
+[ext_resource type="PackedScene" uid="uid://c6611mwm1gryk" path="res://Nodes/Props/dropped_item.tscn" id="6_pop3v"]
+[ext_resource type="PackedScene" uid="uid://ih6ig6byvcfk" path="res://Dialogue/dialogue_component.tscn" id="6_pwqen"]
+[ext_resource type="Resource" uid="uid://dpcq75unyhpnv" path="res://Items/megumin_staff.tres" id="7_qd336"]
+[ext_resource type="Texture2D" uid="uid://cpa3cmft3vsly" path="res://icon.svg" id="8_3ccw7"]
+[ext_resource type="Resource" uid="uid://ccckvg7lg2xaj" path="res://Dialogue/Lines/test_dummy_dialogue.tres" id="8_hql0j"]
+[ext_resource type="Script" path="res://Dialogue/DialogueLine.gd" id="8_mnwfj"]
+[ext_resource type="Script" path="res://Dialogue/Dialogue.gd" id="9_fvivm"]
+[ext_resource type="PackedScene" uid="uid://co3lke74w50ik" path="res://Nodes/Components/hitbox_component.tscn" id="9_k460n"]
+[ext_resource type="PackedScene" uid="uid://cya2hwtun4d8h" path="res://Inventory/Nodes/equipped_item.tscn" id="10_kbmhw"]
+
+[sub_resource type="Resource" id="Resource_uhlag"]
+script = ExtResource("3_tbft2")
+physical = 20.0
+magical = 20.0
+poison = 0.0
+curse = 0.0
+
+[sub_resource type="Resource" id="Resource_suo25"]
+script = ExtResource("8_mnwfj")
+id = ""
+text = "Stahp! You violated the law!!"
+already_said = false
+is_locked = false
+can_exit = false
+opens_shop = false
+starts_combat = false
+relation_change = 0
+relation_requirement = 0
+
+[sub_resource type="Resource" id="Resource_x1yav"]
+script = ExtResource("8_mnwfj")
+id = ""
+text = "*pressing \"x\" to doubt*"
+already_said = false
+is_locked = false
+can_exit = true
+opens_shop = false
+starts_combat = false
+relation_change = 0
+relation_requirement = 0
+
+[sub_resource type="Resource" id="Resource_iq8nq"]
+script = ExtResource("9_fvivm")
+npc_lines = Array[ExtResource("8_mnwfj")]([SubResource("Resource_x1yav")])
+player_lines = Array[ExtResource("8_mnwfj")]([])
+
+[sub_resource type="Resource" id="Resource_oy7kj"]
+script = ExtResource("8_mnwfj")
+id = ""
+text = "Khajiit is innocent of thyis crime!!"
+already_said = false
+is_locked = false
+can_exit = true
+next_dialogue = SubResource("Resource_iq8nq")
+opens_shop = false
+starts_combat = false
+relation_change = 0
+relation_requirement = 0
+
+[sub_resource type="Resource" id="Resource_olc5j"]
+script = ExtResource("8_mnwfj")
+id = ""
+text = "I vill drink from yor skoll!"
+already_said = false
+is_locked = false
+can_exit = true
+opens_shop = false
+starts_combat = true
+relation_change = 0
+relation_requirement = 0
+
+[sub_resource type="Resource" id="Resource_kfcxl"]
+script = ExtResource("9_fvivm")
+npc_lines = Array[ExtResource("8_mnwfj")]([SubResource("Resource_suo25")])
+player_lines = Array[ExtResource("8_mnwfj")]([SubResource("Resource_oy7kj"), SubResource("Resource_olc5j")])
+
+[sub_resource type="Resource" id="Resource_hn6vv"]
+script = ExtResource("8_mnwfj")
+id = ""
+text = "Who was that woman you were talking to?!"
+already_said = false
+is_locked = false
+can_exit = true
+opens_shop = false
+starts_combat = false
+relation_change = 0
+relation_requirement = 0
+
+[sub_resource type="Resource" id="Resource_qq8xr"]
+script = ExtResource("8_mnwfj")
+id = ""
+text = "I can smell her scent all over you!"
+already_said = false
+is_locked = false
+can_exit = true
+opens_shop = false
+starts_combat = false
+relation_change = 0
+relation_requirement = 0
+
+[sub_resource type="Resource" id="Resource_yetk0"]
+script = ExtResource("9_fvivm")
+npc_lines = Array[ExtResource("8_mnwfj")]([SubResource("Resource_qq8xr")])
+player_lines = Array[ExtResource("8_mnwfj")]([])
+
+[sub_resource type="Resource" id="Resource_vhv22"]
+script = ExtResource("8_mnwfj")
+id = ""
+text = "I dont know what you are talking about"
+already_said = false
+is_locked = false
+can_exit = true
+next_dialogue = SubResource("Resource_yetk0")
+opens_shop = false
+starts_combat = false
+relation_change = 0
+relation_requirement = 0
+
+[sub_resource type="Resource" id="Resource_cpv7i"]
+script = ExtResource("8_mnwfj")
+id = ""
+text = "That was my new girlfriend. Do you want me to introduce you?"
+already_said = false
+is_locked = false
+can_exit = true
+opens_shop = false
+starts_combat = true
+relation_change = 0
+relation_requirement = 0
+
+[sub_resource type="Resource" id="Resource_kekkk"]
+script = ExtResource("9_fvivm")
+npc_lines = Array[ExtResource("8_mnwfj")]([SubResource("Resource_hn6vv")])
+player_lines = Array[ExtResource("8_mnwfj")]([SubResource("Resource_vhv22"), SubResource("Resource_cpv7i")])
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_meede"]
+radius = 13.0725
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cllf2"]
+radius = 13.06
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_biuki"]
+radius = 29.5466
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jh8gn"]
+size = Vector2(44, 100)
+
+[node name="NonPlayerCharacter" type="CharacterBody2D" node_paths=PackedStringArray("stats_component", "relationship_component", "dialogue_component")]
+process_mode = 1
+z_index = 1
+y_sort_enabled = true
+collision_layer = 2
+collision_mask = 7
+motion_mode = 1
+wall_min_slide_angle = 0.0
+script = ExtResource("1_kmlf8")
+character_image = ExtResource("8_3ccw7")
+stats_component = NodePath("StatsComponent")
+relationship_component = NodePath("RelationshipComponent")
+dialogue_component = NodePath("DialogueComponent")
+shop_inventory = ExtResource("3_n508n")
+
+[node name="StatsComponent" parent="." node_paths=PackedStringArray("loot_component") instance=ExtResource("2_bwi4l")]
+character_name = "test_dummy"
+faction_name = "DummyThiccFaction"
+is_unique = true
+MAX_HEALTH = 500
+resistances = SubResource("Resource_uhlag")
+loot_component = NodePath("../LootComponent")
+
+[node name="RelationshipComponent" parent="." instance=ExtResource("4_wlbsw")]
+
+[node name="DialogueComponent" parent="." instance=ExtResource("6_pwqen")]
+dialogue = ExtResource("8_hql0j")
+prio_dialogue = Array[ExtResource("9_fvivm")]([SubResource("Resource_kfcxl"), SubResource("Resource_kekkk")])
+
+[node name="LootComponent" parent="." instance=ExtResource("5_d2gmr")]
+loot_base_node = ExtResource("6_pop3v")
+loot = ExtResource("7_qd336")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("8_3ccw7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.375)
+shape = SubResource("CircleShape2D_meede")
+
+[node name="HitboxComponent" parent="." node_paths=PackedStringArray("stats_component") groups=["HostileCreature"] instance=ExtResource("9_k460n")]
+collision_layer = 2
+collision_mask = 120
+stats_component = NodePath("../StatsComponent")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="HitboxComponent"]
+position = Vector2(0, -0.25)
+shape = SubResource("CircleShape2D_cllf2")
+
+[node name="Rotatable" type="Node2D" parent="."]
+
+[node name="NPCVisual" type="Area2D" parent="Rotatable"]
+collision_layer = 128
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rotatable/NPCVisual"]
+position = Vector2(39, 0)
+shape = SubResource("CircleShape2D_biuki")
+
+[node name="MeleeRange" type="Area2D" parent="Rotatable"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rotatable/MeleeRange"]
+position = Vector2(38, 0)
+shape = SubResource("RectangleShape2D_jh8gn")
+
+[node name="WeaponContainer" type="Node2D" parent="Rotatable"]
+visible = false
+
+[node name="EquippedItem" parent="Rotatable/WeaponContainer" instance=ExtResource("10_kbmhw")]
+position = Vector2(18, 2)
+equipped_item = ExtResource("7_qd336")
+
+[node name="ProjectileSpawnMark" type="Marker2D" parent="Rotatable/WeaponContainer"]
+position = Vector2(37, 0)
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+debug_enabled = true
+
+[connection signal="body_entered" from="Rotatable/NPCVisual" to="." method="_on_NPC_visual_body_entered"]
+[connection signal="body_exited" from="Rotatable/NPCVisual" to="." method="_on_NPC_visual_body_exited"]
+[connection signal="body_entered" from="Rotatable/MeleeRange" to="." method="_on_melee_range_body_entered"]
+[connection signal="body_exited" from="Rotatable/MeleeRange" to="." method="_on_melee_range_body_exited"]
