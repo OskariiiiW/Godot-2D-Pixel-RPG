@@ -1,2 +1,2 @@
 # GoodInventoryFRFR
- 2D pixel RPG
+ 2D pixel RPG made in Godot
