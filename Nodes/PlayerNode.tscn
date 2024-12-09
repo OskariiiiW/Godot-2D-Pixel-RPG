@@ -3,17 +3,11 @@
 [ext_resource type="Script" path="res://Scripts/PlayerCharacter.gd" id="1_qmogw"]
 [ext_resource type="Texture2D" uid="uid://cf8r2igmtjui2" path="res://Animations/MeguminSpriteFrames.png" id="2_5arer"]
 [ext_resource type="PackedScene" uid="uid://bq4d7xg3rdumh" path="res://Nodes/Components/stats_component.tscn" id="2_bbxtt"]
+[ext_resource type="Resource" uid="uid://idm0oq0lqbaq" path="res://Resources/Races/human.tres" id="3_gq7e5"]
 [ext_resource type="PackedScene" uid="uid://cksh0fxuu056c" path="res://Nodes/Components/relationship_component.tscn" id="3_j8nr1"]
-[ext_resource type="Script" path="res://Classes/ItemElementType.gd" id="3_mrpje"]
 [ext_resource type="PackedScene" uid="uid://cya2hwtun4d8h" path="res://Inventory/Nodes/equipped_item.tscn" id="3_wa0sh"]
+[ext_resource type="Resource" uid="uid://dydspfehp6xvs" path="res://Resources/CharacterStats/player_stats.tres" id="5_xpfsd"]
 [ext_resource type="PackedScene" uid="uid://co3lke74w50ik" path="res://Nodes/Components/hitbox_component.tscn" id="7_x84cs"]
-
-[sub_resource type="Resource" id="Resource_44ilm"]
-script = ExtResource("3_mrpje")
-physical = 0.0
-magical = 0.0
-poison = 0.0
-curse = 0.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mkipk"]
 atlas = ExtResource("2_5arer")
@@ -245,14 +239,12 @@ relationship_component = NodePath("RelationshipComponent")
 [node name="StatsComponent" parent="." instance=ExtResource("2_bbxtt")]
 character_name = "Player_name_test"
 faction_name = "PlayerFaction"
+body = 1
+race = ExtResource("3_gq7e5")
 is_unique = true
 godmode_enabled = true
-MAX_HEALTH = 100.0
-HEALTH_REGEN = 1.0
-MAX_STAMINA = 100.0
-MAX_MAGICKA = 100.0
-resistances = SubResource("Resource_44ilm")
 has_advanced_stats = true
+stats = ExtResource("5_xpfsd")
 
 [node name="RelationshipComponent" parent="." instance=ExtResource("3_j8nr1")]
 

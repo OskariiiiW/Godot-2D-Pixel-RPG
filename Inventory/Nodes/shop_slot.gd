@@ -5,6 +5,7 @@ extends PanelContainer
 @onready var tool_tip = preload("res://Inventory/Nodes/tool_tip.tscn")
 @onready var shop_confirm = preload("res://Inventory/shop_action_confirm.tscn")
 
+var GUI
 var inv_item_child
 var tool_tip_instance
 var shop_mode : String
@@ -12,6 +13,7 @@ var shop_mode : String
 #TODO - remove being able to drag items
 
 func _ready() -> void:
+	GUI = get_tree().root.get_child(2).gui
 	inv_item_child = get_child(0)
 
 func init(t: ItemData.Type, cms: Vector2, _shop_mode : String):
@@ -21,7 +23,7 @@ func init(t: ItemData.Type, cms: Vector2, _shop_mode : String):
 
 func check_remaining_stack(stack_size : int):
 	if inv_item_child.stack_size - stack_size == 0:
-		var shop_ui = get_tree().root.get_child(3).gui.shop_ui
+		var shop_ui = GUI.shop_ui
 		shop_ui.check_if_empty()
 		#TODO - add item to npc shop inv
 		get_parent().queue_free()

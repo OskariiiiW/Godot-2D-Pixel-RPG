@@ -153,7 +153,7 @@ func _dialogue_button_pressed(line : DialogueLine): # when any player line butto
 	if line.next_dialogue:
 		next_init(line.next_dialogue, false)
 	elif line.opens_shop: # SHOP
-		get_tree().root.get_child(3).shop_ui.init(npc)
+		player.GUI.shop_ui.init(npc)
 		visible = false
 	elif line.starts_combat: # sets player relation to HOSTILE_THRESHOLD unless already less than that
 		if npc_relations.faction_relations[0].get_relation(player_name) > npc.HOSTILE_THRESHOLD:

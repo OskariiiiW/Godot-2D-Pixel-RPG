@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="Stats" load_steps=2 format=3 uid="uid://dydspfehp6xvs"]
+
+[ext_resource type="Script" path="res://Classes/stats.gd" id="1_um2x6"]
+
+[resource]
+script = ExtResource("1_um2x6")
+level = 1
+strength = 1
+agility = 1
+dexterity = 1
+endurance = 1
+intelligence = 1
+perception = 1
+charisma = 1
+luck = 1
+crit_rate = 0.05
+crit_dmg = 0.5
+hit_value = 1.0
+dodge = 0.0
+kill_xp = 1

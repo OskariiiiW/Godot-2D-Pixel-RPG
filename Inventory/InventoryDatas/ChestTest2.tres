@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Inventory/Scripts/InventoryData.gd" id="1_aqeo0"]
 [ext_resource type="Script" path="res://Inventory/Scripts/SlotData.gd" id="2_nncuo"]
-[ext_resource type="Resource" uid="uid://dsuqborgvcdpm" path="res://Items/debug_item.tres" id="3_c4tnw"]
+[ext_resource type="Resource" uid="uid://dsuqborgvcdpm" path="res://Resources/Items/debug_item.tres" id="3_c4tnw"]
 
 [sub_resource type="Resource" id="Resource_artig"]
 script = ExtResource("2_nncuo")

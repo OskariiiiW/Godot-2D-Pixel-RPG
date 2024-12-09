@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://demlxi468b16l" path="res://Nodes/Components/loot_component.tscn" id="5_d2gmr"]
 [ext_resource type="PackedScene" uid="uid://c6611mwm1gryk" path="res://Nodes/Props/dropped_item.tscn" id="6_pop3v"]
 [ext_resource type="PackedScene" uid="uid://ih6ig6byvcfk" path="res://Dialogue/dialogue_component.tscn" id="6_pwqen"]
-[ext_resource type="Resource" uid="uid://dpcq75unyhpnv" path="res://Items/megumin_staff.tres" id="7_qd336"]
+[ext_resource type="Resource" uid="uid://dpcq75unyhpnv" path="res://Resources/Items/megumin_staff.tres" id="7_qd336"]
 [ext_resource type="Texture2D" uid="uid://cpa3cmft3vsly" path="res://icon.svg" id="8_3ccw7"]
 [ext_resource type="Resource" uid="uid://ccckvg7lg2xaj" path="res://Dialogue/Lines/test_dummy_dialogue.tres" id="8_hql0j"]
 [ext_resource type="Script" path="res://Dialogue/DialogueLine.gd" id="8_mnwfj"]

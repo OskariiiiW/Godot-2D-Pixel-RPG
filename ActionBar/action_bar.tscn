@@ -21,7 +21,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 200
 theme_override_constants/margin_right = 200
-theme_override_constants/margin_bottom = 30
+theme_override_constants/margin_bottom = 10
 
 [node name="PanelC" type="PanelContainer" parent="Margin"]
 layout_mode = 2

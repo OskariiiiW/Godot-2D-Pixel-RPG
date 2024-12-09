@@ -5,7 +5,7 @@ extends StaticBody2D
 @onready var trail_obj: GPUParticles2D = $Trail
 @onready var impact_obj: GPUParticles2D = $Impact
 
-@export var stats_component : StatsComponent
+@export var stats_component : SimpleStatsComponent
 
 var projectile_name : String
 var speed = 1.0
@@ -45,14 +45,19 @@ func _on_hitbox_component_area_entered(area):
 				if area.get_parent().projectile_owner == projectile_owner:
 					has_same_owner = true
 		if !has_same_owner: # happens only when colliding with projectiles from other actors
+			var hp_reduction = 0.0
 			if area.stats_component:
-				var hp_reduction = area.stats_component.health
-				stats_component.health -= hp_reduction
-				area.damage(damage)
-				if stats_component.health <= 0 or !is_piercing:
-					handle_freeing(true)
+				hp_reduction = area.stats_component.health
+			elif area.simple_stats_component:
+				hp_reduction = area.simple_stats_component.health
 			else:
 				print(area.get_parent().name + " is missing stats_component (ranged_projectile)")
+
+			if hp_reduction != 0.0:
+				stats_component.health -= hp_reduction
+				area.damage(damage)
+			if stats_component.health <= 0 or !is_piercing:
+				handle_freeing(true)
 
 func handle_freeing(collided : bool):
 	if collided: # wtf was collided supposed to do???

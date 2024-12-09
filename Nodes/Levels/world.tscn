@@ -1,30 +1,21 @@
-[gd_scene load_steps=53 format=4 uid="uid://bm2bmxlwjntd8"]
+[gd_scene load_steps=44 format=4 uid="uid://bm2bmxlwjntd8"]
 
-[ext_resource type="Script" path="res://Inventory/Scripts/PlayerInventoryInterface.gd" id="1_eqjmp"]
-[ext_resource type="Script" path="res://Scripts/GUI.gd" id="1_wj3hu"]
 [ext_resource type="Script" path="res://Nodes/Levels/world.gd" id="1_x8m0k"]
 [ext_resource type="Texture2D" uid="uid://dgpxna2hv2ddd" path="res://Textures/Tiles/32x32/Tileset-Animated Terrains-8 frames-.png" id="2_igagi"]
-[ext_resource type="Script" path="res://Player/PlayerStats.gd" id="3_ijcml"]
 [ext_resource type="Texture2D" uid="uid://diefkajo82ous" path="res://Textures/Tiles/32x32/TX Tileset Grass.png" id="4_361a7"]
-[ext_resource type="PackedScene" uid="uid://bs3oe5bt3eqnu" path="res://Inventory/Nodes/inventory_slot.tscn" id="4_e445b"]
 [ext_resource type="Resource" uid="uid://b5i305t7ucq5p" path="res://Inventory/InventoryDatas/ChestTest1.tres" id="4_geinc"]
 [ext_resource type="PackedScene" uid="uid://dxcitv8ursvm3" path="res://Nodes/PlayerNode.tscn" id="5_34bu4"]
 [ext_resource type="TileSet" uid="uid://chgt2v5b4s55c" path="res://Nodes/PropTileSet.tres" id="5_41pub"]
 [ext_resource type="Resource" uid="uid://64o8hagkgyea" path="res://Inventory/InventoryDatas/ChestTest2.tres" id="5_hdrpi"]
-[ext_resource type="PackedScene" uid="uid://q4jy2ykdqepi" path="res://Nodes/UI/PauseMenu.tscn" id="6_e42cl"]
 [ext_resource type="PackedScene" uid="uid://c6611mwm1gryk" path="res://Nodes/Props/dropped_item.tscn" id="6_fjc1s"]
 [ext_resource type="PackedScene" uid="uid://bsbkykmrurqb6" path="res://Nodes/Props/chest.tscn" id="8_qnivc"]
-[ext_resource type="Script" path="res://Inventory/Scripts/ExternalInventory.gd" id="8_snodw"]
 [ext_resource type="PackedScene" uid="uid://0ijx8xve1epo" path="res://Nodes/Props/atlas_tree_1.tscn" id="9_cikyy"]
 [ext_resource type="PackedScene" uid="uid://buhke5eyndl4q" path="res://Nodes/Props/savannah_tree.tscn" id="11_sqpnc"]
 [ext_resource type="PackedScene" uid="uid://ce4jlk7ebnyyf" path="res://Nodes/Props/spruce_tree.tscn" id="12_7tj20"]
 [ext_resource type="PackedScene" uid="uid://doqm8c7qa0bfv" path="res://Nodes/Props/temperate_tree.tscn" id="13_eabdg"]
-[ext_resource type="PackedScene" uid="uid://bln2tkj2kr0gg" path="res://ActionBar/action_bar.tscn" id="21_0quhh"]
-[ext_resource type="PackedScene" uid="uid://cner6b112gmpi" path="res://Nodes/UI/player_stat_bars.tscn" id="22_biq1b"]
-[ext_resource type="PackedScene" uid="uid://pl7legwd8dgr" path="res://Dialogue/dialogue_box.tscn" id="25_22ehl"]
+[ext_resource type="PackedScene" uid="uid://c0mt7l0irxumt" path="res://Nodes/UI/GUI.tscn" id="14_eopg3"]
 [ext_resource type="PackedScene" uid="uid://b7m8yydx4ytop" path="res://Nodes/NPC/non_player_character.tscn" id="25_30fyo"]
 [ext_resource type="PackedScene" uid="uid://ccej1j6oqy6wh" path="res://Nodes/Props/scene_changer.tscn" id="25_ao17o"]
-[ext_resource type="PackedScene" uid="uid://bf0jmi4bp0ets" path="res://Inventory/shop_ui.tscn" id="25_qi3xh"]
 [ext_resource type="PackedScene" uid="uid://boqsm34s04dxu" path="res://Nodes/NPC/test_dummy.tscn" id="26_3onoj"]
 [ext_resource type="Texture2D" uid="uid://cpa3cmft3vsly" path="res://icon.svg" id="26_dbnyu"]
 [ext_resource type="Script" path="res://Scripts/npc_task.gd" id="29_efyhk"]
@@ -615,133 +606,7 @@ position = Vector2(-163, 0)
 [node name="PlayerCharacter" parent="." instance=ExtResource("5_34bu4")]
 position = Vector2(-21, 274)
 
-[node name="GUI" type="CanvasLayer" parent="PlayerCharacter"]
-script = ExtResource("1_wj3hu")
-
-[node name="ActionBar" parent="PlayerCharacter/GUI" instance=ExtResource("21_0quhh")]
-
-[node name="PlayerInventory" type="PanelContainer" parent="PlayerCharacter/GUI"]
-visible = false
-custom_minimum_size = Vector2(300, 350)
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -340.0
-offset_top = -177.5
-offset_right = 340.0
-offset_bottom = 178.5
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-script = ExtResource("1_eqjmp")
-gold = 2000
-
-[node name="MarginContainer" type="MarginContainer" parent="PlayerCharacter/GUI/PlayerInventory"]
-layout_mode = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
-
-[node name="Inv" type="GridContainer" parent="PlayerCharacter/GUI/PlayerInventory/MarginContainer"]
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-columns = 7
-
-[node name="PlayerStats" type="VBoxContainer" parent="PlayerCharacter/GUI/PlayerInventory/MarginContainer"]
-layout_mode = 2
-size_flags_horizontal = 8
-size_flags_vertical = 4
-script = ExtResource("3_ijcml")
-
-[node name="HBox" type="HBoxContainer" parent="PlayerCharacter/GUI/PlayerInventory/MarginContainer/PlayerStats"]
-layout_mode = 2
-
-[node name="Head" parent="PlayerCharacter/GUI/PlayerInventory/MarginContainer/PlayerStats/HBox" instance=ExtResource("4_e445b")]
-layout_mode = 2
-type = 5
-
-[node name="HBox2" type="HBoxContainer" parent="PlayerCharacter/GUI/PlayerInventory/MarginContainer/PlayerStats"]
-layout_mode = 2
-
-[node name="Chest" parent="PlayerCharacter/GUI/PlayerInventory/MarginContainer/PlayerStats/HBox2" instance=ExtResource("4_e445b")]
-layout_mode = 2
-type = 8
-
-[node name="Back" parent="PlayerCharacter/GUI/PlayerInventory/MarginContainer/PlayerStats/HBox2" instance=ExtResource("4_e445b")]
-layout_mode = 2
-type = 7
-
-[node name="HBox3" type="HBoxContainer" parent="PlayerCharacter/GUI/PlayerInventory/MarginContainer/PlayerStats"]
-layout_mode = 2
-
-[node name="Legs" parent="PlayerCharacter/GUI/PlayerInventory/MarginContainer/PlayerStats/HBox3" instance=ExtResource("4_e445b")]
-layout_mode = 2
-type = 11
-
-[node name="Hands" parent="PlayerCharacter/GUI/PlayerInventory/MarginContainer/PlayerStats/HBox3" instance=ExtResource("4_e445b")]
-layout_mode = 2
-type = 9
-
-[node name="HBox4" type="HBoxContainer" parent="PlayerCharacter/GUI/PlayerInventory/MarginContainer/PlayerStats"]
-layout_mode = 2
-
-[node name="Neck" parent="PlayerCharacter/GUI/PlayerInventory/MarginContainer/PlayerStats/HBox4" instance=ExtResource("4_e445b")]
-layout_mode = 2
-type = 6
-
-[node name="Ring" parent="PlayerCharacter/GUI/PlayerInventory/MarginContainer/PlayerStats/HBox4" instance=ExtResource("4_e445b")]
-layout_mode = 2
-type = 10
-
-[node name="Weapon" parent="PlayerCharacter/GUI/PlayerInventory/MarginContainer/PlayerStats" instance=ExtResource("4_e445b")]
-layout_mode = 2
-type = 13
-
-[node name="ExternalInventory" type="PanelContainer" parent="PlayerCharacter/GUI"]
-visible = false
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -178.0
-offset_top = -42.0
-offset_right = 178.0
-offset_bottom = 42.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("8_snodw")
-
-[node name="MarginContainer" type="MarginContainer" parent="PlayerCharacter/GUI/ExternalInventory"]
-layout_mode = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
-
-[node name="Inv" type="GridContainer" parent="PlayerCharacter/GUI/ExternalInventory/MarginContainer"]
-layout_mode = 2
-columns = 5
-
-[node name="DialogueBox" parent="PlayerCharacter/GUI" instance=ExtResource("25_22ehl")]
-visible = false
-
-[node name="ShopUI" parent="PlayerCharacter/GUI" instance=ExtResource("25_qi3xh")]
-visible = false
-
-[node name="PlayerStatBars" parent="PlayerCharacter/GUI" instance=ExtResource("22_biq1b")]
-
-[node name="PauseMenu" parent="PlayerCharacter/GUI" instance=ExtResource("6_e42cl")]
-
-[node name="FPS" type="Label" parent="PlayerCharacter/GUI"]
-offset_right = 40.0
-offset_bottom = 23.0
-text = "fps"
+[node name="GUI" parent="PlayerCharacter" instance=ExtResource("14_eopg3")]
 
 [node name="NPC" parent="." instance=ExtResource("25_30fyo")]
 position = Vector2(-325, 240)
@@ -758,3 +623,6 @@ obj_texture = ExtResource("26_dbnyu")
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 navigation_polygon = SubResource("NavigationPolygon_8hstg")
+
+[connection signal="handle_buff" from="PlayerCharacter/GUI" to="PlayerCharacter" method="_on_gui_handle_buff"]
+[connection signal="handle_weapon" from="PlayerCharacter/GUI" to="PlayerCharacter" method="_on_gui_handle_weapon"]

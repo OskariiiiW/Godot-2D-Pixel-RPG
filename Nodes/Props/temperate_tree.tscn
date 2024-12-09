@@ -1,19 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://doqm8c7qa0bfv"]
+[gd_scene load_steps=8 format=3 uid="uid://doqm8c7qa0bfv"]
 
-[ext_resource type="Resource" uid="uid://8no3jeuo0ykp" path="res://Items/Wood_log.tres" id="2_7dtjf"]
+[ext_resource type="PackedScene" uid="uid://fblxslfe483l" path="res://Nodes/Components/simple_stats_component.tscn" id="1_pv0uu"]
+[ext_resource type="Resource" uid="uid://8no3jeuo0ykp" path="res://Resources/Items/Wood_log.tres" id="2_7dtjf"]
 [ext_resource type="Texture2D" uid="uid://danbjgwm4ufbd" path="res://Props/tree_temperate.png" id="2_uf5hu"]
 [ext_resource type="PackedScene" uid="uid://demlxi468b16l" path="res://Nodes/Components/loot_component.tscn" id="3_7uxvr"]
 [ext_resource type="PackedScene" uid="uid://co3lke74w50ik" path="res://Nodes/Components/hitbox_component.tscn" id="3_70fes"]
-[ext_resource type="PackedScene" uid="uid://bq4d7xg3rdumh" path="res://Nodes/Components/stats_component.tscn" id="3_miwx3"]
-[ext_resource type="Script" path="res://Classes/ItemElementType.gd" id="4_36l1i"]
 [ext_resource type="PackedScene" uid="uid://c6611mwm1gryk" path="res://Nodes/Props/dropped_item.tscn" id="4_jj7n6"]
-
-[sub_resource type="Resource" id="Resource_7id1q"]
-script = ExtResource("4_36l1i")
-physical = 8.0
-magical = 0.0
-poison = 0.0
-curse = 0.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uenqw"]
 size = Vector2(13.3333, 28.391)
@@ -22,9 +14,7 @@ size = Vector2(13.3333, 28.391)
 collision_layer = 4
 collision_mask = 15
 
-[node name="StatsComponent" parent="." node_paths=PackedStringArray("loot_component") instance=ExtResource("3_miwx3")]
-MAX_HEALTH = 30
-resistances = SubResource("Resource_7id1q")
+[node name="SimpleStatsComponent" parent="." node_paths=PackedStringArray("loot_component") instance=ExtResource("1_pv0uu")]
 loot_component = NodePath("../LootComponent")
 
 [node name="LootComponent" parent="." instance=ExtResource("3_7uxvr")]
@@ -41,10 +31,11 @@ position = Vector2(0, -24.4425)
 scale = Vector2(1.92, 1.92)
 texture = ExtResource("2_uf5hu")
 
-[node name="HitboxComponent" parent="." node_paths=PackedStringArray("stats_component") instance=ExtResource("3_70fes")]
+[node name="HitboxComponent" parent="." node_paths=PackedStringArray("stats_component", "simple_stats_component") instance=ExtResource("3_70fes")]
 collision_layer = 4
 collision_mask = 15
-stats_component = NodePath("../StatsComponent")
+stats_component = NodePath("")
+simple_stats_component = NodePath("../SimpleStatsComponent")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="HitboxComponent"]
 position = Vector2(-0.5, -12.8642)

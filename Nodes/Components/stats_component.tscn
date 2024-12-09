@@ -1,6 +1,134 @@
-[gd_scene load_steps=2 format=3 uid="uid://bq4d7xg3rdumh"]
+[gd_scene load_steps=23 format=3 uid="uid://bq4d7xg3rdumh"]
 
 [ext_resource type="Script" path="res://Scripts/Components/StatsComponent.gd" id="1_snjjf"]
+[ext_resource type="Resource" uid="uid://dreucwaoj3h43" path="res://Resources/Races/no_race.tres" id="2_7ijlr"]
+[ext_resource type="Script" path="res://Classes/Element.gd" id="2_83805"]
+[ext_resource type="Script" path="res://Classes/ItemElementType.gd" id="3_t8aaq"]
+[ext_resource type="Script" path="res://Classes/stats.gd" id="5_iy7ix"]
+
+[sub_resource type="Resource" id="Resource_b8207"]
+script = ExtResource("2_83805")
+element = 0
+value = 0.0
+
+[sub_resource type="Resource" id="Resource_30ws5"]
+script = ExtResource("2_83805")
+element = 1
+value = 0.0
+
+[sub_resource type="Resource" id="Resource_04oq7"]
+script = ExtResource("2_83805")
+element = 2
+value = 0.0
+
+[sub_resource type="Resource" id="Resource_gcjkk"]
+script = ExtResource("2_83805")
+element = 3
+value = 0.0
+
+[sub_resource type="Resource" id="Resource_8sxja"]
+script = ExtResource("3_t8aaq")
+physical = 0.0
+magical = 0.0
+poison = 0.0
+curse = 0.0
+elements = Array[Object]([SubResource("Resource_b8207"), SubResource("Resource_30ws5"), SubResource("Resource_04oq7"), SubResource("Resource_gcjkk")])
+
+[sub_resource type="Resource" id="Resource_650l6"]
+script = ExtResource("2_83805")
+element = 0
+value = 0.0
+
+[sub_resource type="Resource" id="Resource_aq41h"]
+script = ExtResource("2_83805")
+element = 1
+value = 0.0
+
+[sub_resource type="Resource" id="Resource_lnx4c"]
+script = ExtResource("2_83805")
+element = 2
+value = 0.0
+
+[sub_resource type="Resource" id="Resource_0uj0c"]
+script = ExtResource("2_83805")
+element = 3
+value = 0.0
+
+[sub_resource type="Resource" id="Resource_y0kvg"]
+script = ExtResource("3_t8aaq")
+physical = 0.0
+magical = 0.0
+poison = 0.0
+curse = 0.0
+elements = Array[Object]([SubResource("Resource_650l6"), SubResource("Resource_aq41h"), SubResource("Resource_lnx4c"), SubResource("Resource_0uj0c")])
+
+[sub_resource type="Resource" id="Resource_f0hyn"]
+script = ExtResource("2_83805")
+element = 0
+value = 0.0
+
+[sub_resource type="Resource" id="Resource_oapua"]
+script = ExtResource("2_83805")
+element = 1
+value = 0.0
+
+[sub_resource type="Resource" id="Resource_yct1j"]
+script = ExtResource("2_83805")
+element = 2
+value = 0.0
+
+[sub_resource type="Resource" id="Resource_p8hu7"]
+script = ExtResource("2_83805")
+element = 3
+value = 0.0
+
+[sub_resource type="Resource" id="Resource_tygsj"]
+script = ExtResource("3_t8aaq")
+physical = 0.0
+magical = 0.0
+poison = 0.0
+curse = 0.0
+elements = Array[Object]([SubResource("Resource_f0hyn"), SubResource("Resource_oapua"), SubResource("Resource_yct1j"), SubResource("Resource_p8hu7")])
+
+[sub_resource type="Resource" id="Resource_as25m"]
+script = ExtResource("5_iy7ix")
+level = 1
+strength = 1
+agility = 1
+dexterity = 1
+endurance = 1
+intelligence = 1
+perception = 1
+charisma = 1
+luck = 1
+crit_rate = 0.05
+crit_dmg = 0.5
+hit_value = 1.0
+dodge = 0.0
+kill_xp = 1
+
+[sub_resource type="Resource" id="Resource_0e5fy"]
+script = ExtResource("5_iy7ix")
+level = 0
+strength = 0
+agility = 0
+dexterity = 0
+endurance = 0
+intelligence = 0
+perception = 0
+charisma = 0
+luck = 0
+crit_rate = 0.0
+crit_dmg = 0.0
+hit_value = 0.0
+dodge = 0.0
+kill_xp = 0
 
 [node name="StatsComponent" type="Node2D"]
 script = ExtResource("1_snjjf")
+race = ExtResource("2_7ijlr")
+resistances = SubResource("Resource_8sxja")
+resistances_buff = SubResource("Resource_y0kvg")
+resistances_percent_buff = SubResource("Resource_tygsj")
+stats = SubResource("Resource_as25m")
+stat_buffs = SubResource("Resource_0e5fy")

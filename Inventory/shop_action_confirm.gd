@@ -4,6 +4,7 @@ extends Control
 @onready var amount_slider: HSlider = $PContainer/Margin/VBox/AmountSlider
 @onready var label: Label = $PContainer/Margin/VBox/CostText
 
+var GUI
 var shop_mode : String
 var item_data : ItemData
 var stack_size : int
@@ -13,6 +14,7 @@ var slider_value : float = 1.0
 #TODO - if not enough money, buy as much from desired stack as possible
 
 func _ready() -> void:
+	GUI = get_tree().root.get_child(2).gui
 	name_label.text = item_data.name
 	total_price = item_data.value #value for a stack of 1 of the item
 	if stack_size == 1:
@@ -45,26 +47,26 @@ func _on_yes_pressed() -> void:
 	var new_slot = SlotData.new()
 	new_slot.item_data = item_data
 	new_slot.quantity = int(slider_value)
-	var shop_ui = get_tree().root.get_child(3).gui.shop_ui
 	#var shop_ui = get_parent().get_parent().get_parent().get_parent().get_parent().get_parent()\
 		#.get_parent().get_parent().get_parent() # pls kill me
 	if shop_mode == "Buying":
-		var remaining_stack = get_tree().root.get_child(3).player.inventory_data.add_item(new_slot)
+		#var remaining_stack = GUI.player.inventory_data.add_item(new_slot)
+		var remaining_stack = GUI.player_inventory.add_item(new_slot)
 		if remaining_stack != int(slider_value):
 			total_price = (int(slider_value) - remaining_stack) * item_data.value
-			var was_successful = shop_ui.update_gold_values(total_price, true) # checks if has enough gold
+			var was_successful = GUI.shop_ui.update_gold_values(total_price, true) # checks if has enough gold
 			if was_successful:
 				get_parent().get_parent().check_remaining_stack(int(slider_value) - remaining_stack)
 			else:
 				print("dafuq?")
 		else:
-			PopUpScene.queue_popup("No room in inventory")
+			GUI.pop_up.queue_popup("No room in inventory")
 	else: # Selling
-		var was_successful = shop_ui.update_gold_values(total_price, false)
+		var was_successful = GUI.shop_ui.update_gold_values(total_price, false)
 		if was_successful:
 			get_tree().root.get_child(3).player.inventory_data.remove_item(new_slot, stack_size)
 			get_parent().get_parent().check_remaining_stack(int(slider_value))
-			shop_ui.add_item(new_slot)
+			GUI.shop_ui.add_item(new_slot)
 	queue_free()
 
 func _on_cancel_pressed() -> void:

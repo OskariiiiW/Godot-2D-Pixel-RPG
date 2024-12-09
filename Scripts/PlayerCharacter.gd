@@ -10,15 +10,19 @@ class_name Player
 @onready var ray_cast = $RayCast2D
 @onready var equipped_item_projectile = $WeaponContainer/EquippedItem.base_projectile_node
 @onready var hitbox: HitboxComponent = $HitboxComponent
-@onready var inventory_data = $GUI/PlayerInventory # not in player node
-@onready var player_stats_node = $GUI/PlayerInventory/MarginContainer/PlayerStats # not in player node
-@onready var action_bar: Control = $GUI/ActionBar # not in player node
-@onready var player_stat_bars: Control = $GUI/PlayerStatBars # not in player node
+@onready var GUI: CanvasLayer = $GUI
 
-@export var stats_component : StatsComponent
-@export var relationship_component : RelationshipComponent
+@export var stats_component : StatsComponent # dunno why tf not onready - bc called before its ready
+@export var relationship_component : RelationshipComponent # dunno why tf not onready - bc called before its ready
+
+var inventory_data
+var player_stats_node # is this needed here?
+var action_bar # is this needed here?
+var player_stat_bars # is this needed here?
+var buff_list # is this needed here?
 
 const SPEED : float = 250.0
+var speed_buff : float
 var speed_mult : float = 1
 var dodge_velocity : float = 1.8
 var player_state
@@ -31,15 +35,23 @@ var is_dead : bool
 
 var base_dodge_cost : float = 30.0
 
-#TODO - debuff ui in top right corner - make dodge movement debuff
+#TODO - convert current dodge movement reduction into a debuff
 #TODO - add cooldown to dodge?? (skill based??)
 #TODO - add cooldown to attacks (skill based??)
 
 func _ready():
-	stats_component.resistances = player_stats_node.resistances
+	inventory_data = GUI.player_inventory
+	player_stats_node = GUI.player_stats
+	#stats_component.resistances = GUI.player_stats.resistances
+	action_bar = GUI.action_bar
+	player_stat_bars = GUI.player_stat_bars
+	buff_list = GUI.buff_list
+	GUI.player = self
 	if player_stat_bars: # inits hp bar (if player doesnt have full hp)
 		stats_component.stat_bars_node = player_stat_bars
-		stats_component.update_stat_bars()
+		stats_component.set_stat_bar_max_values()
+	else:
+		print("player missing player_stat_bars (player)")
 
 func change_weapon(weapon : ItemData):
 	if weapon.weapon: # bad check whether has itemdata
@@ -87,16 +99,20 @@ func _input(event):
 			dodge()
 			await get_tree().create_timer(0.2).timeout # duration of dodge "animation"
 			can_move = true
-			speed_mult = 0.4
+			speed_mult -= 0.6  # = 0.4
 			await get_tree().create_timer(0.5).timeout # duration of speed debuff
-			speed_mult = 1
+			speed_mult += 0.6
 			is_dodging = false
+		else:
+			GUI.pop_up.add_message("Not enough stamina to dodge", 0)
+			# 0 = misc, 1 = battle, 2 = dialogue, 3 = system, 4 = all
 
 	if Input.is_action_just_pressed("toggle_weapon"):
 		weapon_container.visible = !weapon_container.visible
 
-	if Input.is_action_just_pressed("popup_test"): #TODO - make popup centered
-		PopUpScene.queue_popup("testestets")
+	if Input.is_action_just_pressed("popup_test"): #TODO - make popup centered after changing text
+		GUI.pop_up.queue_popup("aaiaiaiai")
+		GUI.pop_up.add_message("The player was kinda cringe just now", 0)
 		stats_component.add_xp("Skilltest", 1000)
 	if Input.is_action_just_pressed("music_test"):
 		MusicPlayer.play()
@@ -143,7 +159,7 @@ func _physics_process(_delta):
 			last_player_direction = "down"
 			ray_cast.target_position.x = 0
 			ray_cast.target_position.y = 40
-		velocity = direction * SPEED * speed_mult
+		velocity = direction * (SPEED + speed_buff) * speed_mult
 	elif is_in_dialogue:
 		velocity = Vector2.ZERO
 		player_state = "idle"
@@ -155,8 +171,7 @@ func _physics_process(_delta):
 	play_anim()
 
 func dodge():
-	print("dodgeee")
-	stats_component.handle_stat_change(-base_dodge_cost, ConsumableEffect.StatType.SP)
+	stats_component.handle_stat_change(-base_dodge_cost, true, ConsumableEffect.StatType.SP)
 	hitbox.monitorable = false
 	await get_tree().create_timer(0.4).timeout # TODO - make duration skillbased?
 	hitbox.monitorable = true
@@ -193,3 +208,11 @@ func toggle_death():
 
 func _on_timer_timeout() -> void:
 	stats_component.handle_regeneration()
+
+func _on_gui_handle_buff(element_type: Variant, stat_type: Variant, effect_type: Variant, \
+amount_type: Variant, amount: Variant, is_added: Variant) -> void:
+	stats_component.handle_buff(element_type, stat_type, effect_type, amount_type, amount, is_added)
+
+
+func _on_gui_handle_weapon(weapon: Variant) -> void:
+	change_weapon(weapon)

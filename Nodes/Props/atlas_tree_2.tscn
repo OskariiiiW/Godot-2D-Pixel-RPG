@@ -1,19 +1,19 @@
 [gd_scene load_steps=10 format=3 uid="uid://cdabwj6cqv1ct"]
 
+[ext_resource type="PackedScene" uid="uid://fblxslfe483l" path="res://Nodes/Components/simple_stats_component.tscn" id="1_yndic"]
 [ext_resource type="Texture2D" uid="uid://bg3g5ym72ffc4" path="res://Props/AtlasTree2.png" id="2_ae8tu"]
-[ext_resource type="Resource" uid="uid://8no3jeuo0ykp" path="res://Items/Wood_log.tres" id="2_s7o38"]
+[ext_resource type="Resource" uid="uid://8no3jeuo0ykp" path="res://Resources/Items/Wood_log.tres" id="2_s7o38"]
 [ext_resource type="PackedScene" uid="uid://co3lke74w50ik" path="res://Nodes/Components/hitbox_component.tscn" id="3_hhrh4"]
-[ext_resource type="PackedScene" uid="uid://bq4d7xg3rdumh" path="res://Nodes/Components/stats_component.tscn" id="3_l4y6h"]
 [ext_resource type="Script" path="res://Classes/ItemElementType.gd" id="4_g081p"]
 [ext_resource type="PackedScene" uid="uid://demlxi468b16l" path="res://Nodes/Components/loot_component.tscn" id="5_50l40"]
 [ext_resource type="PackedScene" uid="uid://c6611mwm1gryk" path="res://Nodes/Props/dropped_item.tscn" id="6_gk06q"]
 
-[sub_resource type="Resource" id="Resource_o657i"]
+[sub_resource type="Resource" id="Resource_xkfny"]
 script = ExtResource("4_g081p")
-physical = 8.0
+physical = 0.0
 magical = 0.0
-poison = 0.0
-curse = 0.0
+poison = 30.0
+curse = 100.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_x2y14"]
 radius = 7.0
@@ -23,9 +23,9 @@ height = 36.0
 collision_layer = 4
 collision_mask = 123
 
-[node name="StatsComponent" parent="." node_paths=PackedStringArray("loot_component") instance=ExtResource("3_l4y6h")]
-MAX_HEALTH = 130
-resistances = SubResource("Resource_o657i")
+[node name="SimpleStatsComponent" parent="." node_paths=PackedStringArray("loot_component") instance=ExtResource("1_yndic")]
+MAX_HEALTH = 120.0
+resistances = SubResource("Resource_xkfny")
 loot_component = NodePath("../LootComponent")
 
 [node name="LootComponent" parent="." instance=ExtResource("5_50l40")]
@@ -40,10 +40,10 @@ texture = ExtResource("2_ae8tu")
 position = Vector2(0, -8)
 shape = SubResource("CapsuleShape2D_x2y14")
 
-[node name="HitboxComponent" parent="." node_paths=PackedStringArray("stats_component") instance=ExtResource("3_hhrh4")]
+[node name="HitboxComponent" parent="." node_paths=PackedStringArray("simple_stats_component") instance=ExtResource("3_hhrh4")]
 collision_layer = 4
 collision_mask = 123
-stats_component = NodePath("../StatsComponent")
+simple_stats_component = NodePath("../SimpleStatsComponent")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="HitboxComponent"]
 position = Vector2(0, -8)

@@ -14,4 +14,5 @@ enum Type {MISC, BOOK, CONSUMABLE, FOOD, MATERIAL, HEAD, NECK, BACK, CHEST, HAND
 @export var gear : EquippableGear
 @export var consumable : Consumable
 @export var texture : Texture2D
+@export var modifiers : Array[ConsumableEffect] # buffs/debuffs item has
 # 0 = common, 1 = uncommon, 2 = rare, 3 = epic, 4 = legendary, 5 = mythic, 6 = godly, (7 = demonic)

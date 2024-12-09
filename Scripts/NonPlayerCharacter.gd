@@ -24,6 +24,9 @@ const HOSTILE_THRESHOLD = -70 # how low relation with player needs to be before 
 
 enum State {IDLE, COMBAT, CHASE, FOLLOW, SEARCH, TASKS}
 
+var GUI
+
+var speed_buff : float
 var speedmult : float
 var target
 var target_relation : int
@@ -38,7 +41,7 @@ var state : State
 
 var interact_target
 
-var rng = RandomNumberGenerator.new()
+var rng = RandomNumberGenerator.new() # used for idle direction
 
 #TODO - replace sprite2d with animatedSprite
 #TODO - if npc hit, give location where hit came from and change state to chase
@@ -47,6 +50,7 @@ var rng = RandomNumberGenerator.new()
 #TODO - only shoot projectiles if clear view to target (excl. destroyable props)
 
 func _ready() -> void:
+	GUI = get_tree().root.get_child(2)
 	if !is_alert:
 		speedmult = 0.5
 	else:
@@ -134,7 +138,7 @@ func follow():
 		elif target.name == "PlayerCharacter" and dialogue_component.prio_dialogue.size() > 0:
 			if !is_in_dialogue: # stops spamming all prio dialogue at once
 				is_in_dialogue = true
-				get_tree().root.get_child(3).dialogue_box.init(self, dialogue_component.prio_dialogue[0])
+				GUI.dialogue_box.init(self, dialogue_component.prio_dialogue[0])
 				dialogue_component.prio_dialogue.remove_at(0)
 	else:
 		set_state(State.CHASE)
@@ -144,10 +148,10 @@ func interact():
 		if dialogue_component.dialogue and state != State.COMBAT: # possibly surrender dialogue??
 			is_in_dialogue = true
 			if dialogue_component.prio_dialogue.size() > 0:
-				get_tree().root.get_child(3).dialogue_box.init(self, dialogue_component.prio_dialogue[0])
+				GUI.dialogue_box.init(self, dialogue_component.prio_dialogue[0])
 				dialogue_component.prio_dialogue.remove_at(0)
 			else:
-				get_tree().root.get_child(3).dialogue_box.init(self, dialogue_component.dialogue)
+				GUI.dialogue_box.init(self, dialogue_component.dialogue)
 		else:
 			print("no dialogue in dialogue_component (npc)")
 	elif is_dead:
@@ -242,7 +246,7 @@ func set_alert(alert : bool):
 		weapon_container.visible = false
 
 func dialogue_attack(player_relation : int): # only for attacking player because of dialogue
-	target = get_tree().root.get_child(3).player
+	target = GUI.player
 	has_target = true
 	target_relation = player_relation
 	last_target_location = null

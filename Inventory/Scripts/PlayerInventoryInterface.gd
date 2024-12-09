@@ -44,10 +44,18 @@ func _ready():
 	if _parent is Control: # UI drag
 		parent = _parent # UI drag
 
-func remove_item(item: SlotData, or_stack_size : int):
-	var new_slot = SlotData.new()
-	new_slot.item_data = item.item_data
-	new_slot.quantity = or_stack_size
+func get_item_count(item : ItemData): # used in action_bar_slot to stack size of all same items
+	var counter = 0
+	for i in player_inventory.slot_datas.size():
+		if player_inventory.slot_datas[i]:
+			if player_inventory.slot_datas[i].item_data == item:
+				counter += player_inventory.slot_datas[i].quantity
+	return counter
+
+func remove_item(item: SlotData, or_stack_size : int): # removes the whole ItemData?
+	var new_slot = SlotData.new() 		# wtf is this used for?
+	new_slot.item_data = item.item_data # wtf is this used for?
+	new_slot.quantity = or_stack_size 	# wtf is this used for?
 
 	for i in inv.get_child_count():
 		if inv.get_child(i).get_child_count() > 0: # if slot_data has data (stops crash)
@@ -58,6 +66,17 @@ func remove_item(item: SlotData, or_stack_size : int):
 				else:
 					inv.get_child(i).get_child(0).stack_size = (or_stack_size - item.quantity)
 				save_inventory_data()
+
+func remove_one(item : ItemData): # removes 1 of ItemData
+	for i in inv.get_child_count():
+		if inv.get_child(i).get_child_count() > 0: # if slot_data has data (stops crash)
+			if inv.get_child(i).get_child(0).data == item:
+				if inv.get_child(i).get_child(0).stack_size - 1 == 0:
+					inv.get_child(i).get_child(0).free()
+				else:
+					inv.get_child(i).get_child(0).stack_size -= 1
+				save_inventory_data()
+				break
 
 func add_item(item : SlotData):
 	for i in inv.get_child_count(): # combine stack with existing

@@ -2,6 +2,8 @@ extends PanelContainer
 
 class_name InventorySlot
 
+signal handle_gear_equip(item, is_equipping)
+
 @export var type: ItemData.Type
 @onready var tool_tip = preload("res://Inventory/Nodes/tool_tip.tscn")
 
@@ -45,24 +47,30 @@ func _drop_data(_at_position, data): #where combine and swap happens
 					data.update_stack()
 				return
 		item.reparent(data.get_parent())
-	if data.get_parent().type > 4 and data.get_parent().type < 13: # if dragged slot is gear slot
-		var parent = data.get_parent().get_parent().get_parent()
-		if parent.has_method("handle_stat_change"):
-			parent.handle_stat_change()
-	elif data.get_parent().type == 13: # if dragged slot is weapon slot
+	if data.get_parent().type > 4 and data.get_parent().type < 13: # dragging from equip slot
+		#print("dragging from equip slot (inventoryslot)")
+		var playerstats = data.get_parent().get_parent().get_parent()
+		#if playerstats.has_method("handle_stat_change"):
+		#	playerstats.handle_stat_change()
+		if playerstats.has_method("handle_gear"):
+			playerstats.handle_gear(data.data, false)
+			# signal no work bc slot not equip slot
+	elif data.get_parent().type == 13: # weapon slot
 		if type == 0: # type = target slot
 			var is_unequip : bool = false
 			if data.get_parent().get_child_count() < 2:
 				is_unequip = true
 			else:
 				is_unequip = false
-			var parent = data.get_parent().get_parent()
-			if parent.has_method("handle_weapon_change"):
-				parent.handle_weapon_change(is_unequip)
+			var playerstats = data.get_parent().get_parent()
+			if playerstats.has_method("handle_weapon_change"):
+				playerstats.handle_weapon_change(is_unequip)
 	data.reparent(self)
-	if type != 0 and type != 13: # might cause crash with non-player inventories
-		get_parent().get_parent().handle_stat_change()
-	elif type == 13:
+	if type != 0 and type != 13: # dragging to equip slot
+		#print("dragging to equip slot (inventoryslot)")
+		handle_gear_equip.emit(data.data, true)
+		#get_parent().get_parent().handle_stat_change()
+	elif type == 13: # weapon slot
 		data.get_parent().get_parent().handle_weapon_change(false)
 
 func _on_mouse_entered():

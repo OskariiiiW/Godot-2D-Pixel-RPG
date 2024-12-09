@@ -1,12 +1,12 @@
 [gd_scene load_steps=9 format=3 uid="uid://b05v24tn6rpxl"]
 
-[ext_resource type="PackedScene" uid="uid://bq4d7xg3rdumh" path="res://Nodes/Components/stats_component.tscn" id="2_ftbit"]
+[ext_resource type="PackedScene" uid="uid://fblxslfe483l" path="res://Nodes/Components/simple_stats_component.tscn" id="2_jgo7y"]
 [ext_resource type="Script" path="res://Inventory/Scripts/RangedProjectile.gd" id="2_uphkc"]
 [ext_resource type="Texture2D" uid="uid://c6kdis2bbk6g1" path="res://Textures/Fireball.png" id="3_84lqg"]
 [ext_resource type="Script" path="res://Classes/ItemElementType.gd" id="3_eymtm"]
 [ext_resource type="PackedScene" uid="uid://co3lke74w50ik" path="res://Nodes/Components/hitbox_component.tscn" id="4_bupoi"]
 
-[sub_resource type="Resource" id="Resource_gqe5p"]
+[sub_resource type="Resource" id="Resource_qjt85"]
 script = ExtResource("3_eymtm")
 physical = 0.0
 magical = 0.0
@@ -23,10 +23,10 @@ radius = 6.0
 collision_layer = 16
 collision_mask = 7
 script = ExtResource("2_uphkc")
-stats_component = NodePath("StatsComponent")
+stats_component = NodePath("SimpleStatsComponent")
 
-[node name="StatsComponent" parent="." instance=ExtResource("2_ftbit")]
-resistances = SubResource("Resource_gqe5p")
+[node name="SimpleStatsComponent" parent="." instance=ExtResource("2_jgo7y")]
+resistances = SubResource("Resource_qjt85")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("3_84lqg")
@@ -34,10 +34,11 @@ texture = ExtResource("3_84lqg")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_4n0xb")
 
-[node name="HitboxComponent" parent="." node_paths=PackedStringArray("stats_component") instance=ExtResource("4_bupoi")]
+[node name="HitboxComponent" parent="." node_paths=PackedStringArray("stats_component", "simple_stats_component") instance=ExtResource("4_bupoi")]
 collision_layer = 16
 collision_mask = 87
-stats_component = NodePath("../StatsComponent")
+stats_component = NodePath("")
+simple_stats_component = NodePath("../SimpleStatsComponent")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="HitboxComponent"]
 shape = SubResource("CircleShape2D_75ord")

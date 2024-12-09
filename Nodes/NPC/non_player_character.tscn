@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://b7m8yydx4ytop"]
+[gd_scene load_steps=43 format=3 uid="uid://b7m8yydx4ytop"]
 
 [ext_resource type="Script" path="res://Scripts/NonPlayerCharacter.gd" id="1_o138j"]
 [ext_resource type="Texture2D" uid="uid://cpa3cmft3vsly" path="res://icon.svg" id="2_0kcas"]
@@ -6,16 +6,15 @@
 [ext_resource type="PackedScene" uid="uid://bq4d7xg3rdumh" path="res://Nodes/Components/stats_component.tscn" id="2_cya4a"]
 [ext_resource type="PackedScene" uid="uid://demlxi468b16l" path="res://Nodes/Components/loot_component.tscn" id="3_eetm3"]
 [ext_resource type="Script" path="res://Inventory/Scripts/InventoryData.gd" id="3_eqq18"]
-[ext_resource type="Script" path="res://Classes/ItemElementType.gd" id="3_tirv0"]
 [ext_resource type="PackedScene" uid="uid://cksh0fxuu056c" path="res://Nodes/Components/relationship_component.tscn" id="4_4vlc2"]
 [ext_resource type="PackedScene" uid="uid://c6611mwm1gryk" path="res://Nodes/Props/dropped_item.tscn" id="4_grse6"]
 [ext_resource type="PackedScene" uid="uid://co3lke74w50ik" path="res://Nodes/Components/hitbox_component.tscn" id="4_hjuuh"]
 [ext_resource type="Script" path="res://Inventory/Scripts/SlotData.gd" id="4_vguld"]
 [ext_resource type="PackedScene" uid="uid://cya2hwtun4d8h" path="res://Inventory/Nodes/equipped_item.tscn" id="5_w7d7c"]
-[ext_resource type="Resource" uid="uid://ckvx670ji88rw" path="res://Items/Helmet_test.tres" id="5_y3sp3"]
-[ext_resource type="Resource" uid="uid://dpcq75unyhpnv" path="res://Items/megumin_staff.tres" id="6_1fbcb"]
+[ext_resource type="Resource" uid="uid://ckvx670ji88rw" path="res://Resources/Items/Helmet_test.tres" id="5_y3sp3"]
+[ext_resource type="Resource" uid="uid://dpcq75unyhpnv" path="res://Resources/Items/megumin_staff.tres" id="6_1fbcb"]
 [ext_resource type="PackedScene" uid="uid://ih6ig6byvcfk" path="res://Dialogue/dialogue_component.tscn" id="6_2rf1s"]
-[ext_resource type="Resource" uid="uid://c708j1ca236gw" path="res://Items/Chest_test.tres" id="6_gwff1"]
+[ext_resource type="Resource" uid="uid://c708j1ca236gw" path="res://Resources/Items/Chest_test.tres" id="6_gwff1"]
 [ext_resource type="Resource" uid="uid://bmvf3r3j7x2fs" path="res://Dialogue/Lines/dialogue_test.tres" id="7_7km4r"]
 
 [sub_resource type="Resource" id="Resource_30nhk"]
@@ -122,13 +121,6 @@ quantity = 1
 script = ExtResource("3_eqq18")
 slot_datas = Array[ExtResource("4_vguld")]([SubResource("Resource_30nhk"), SubResource("Resource_0350e"), SubResource("Resource_oo5qa"), SubResource("Resource_r6th8"), SubResource("Resource_3paua"), SubResource("Resource_vxtdw"), SubResource("Resource_ej8ka"), SubResource("Resource_2tcbu"), SubResource("Resource_21pwv"), SubResource("Resource_ne7ja"), SubResource("Resource_olpp2"), SubResource("Resource_7ocrl"), SubResource("Resource_848sk"), SubResource("Resource_7psl8"), SubResource("Resource_4d2us"), SubResource("Resource_mnf6p"), SubResource("Resource_d6ihy"), SubResource("Resource_06cr3"), SubResource("Resource_th0cc"), SubResource("Resource_l3r1b")])
 
-[sub_resource type="Resource" id="Resource_uhlag"]
-script = ExtResource("3_tirv0")
-physical = 0.0
-magical = 0.0
-poison = 0.0
-curse = 0.0
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_t1xlp"]
 radius = 12.5006
 
@@ -162,7 +154,6 @@ shop_inventory = SubResource("Resource_7mkgl")
 character_name = "test_character"
 faction_name = "npc_faction"
 is_unique = true
-resistances = SubResource("Resource_uhlag")
 loot_component = NodePath("../LootComponent")
 
 [node name="RelationshipComponent" parent="." instance=ExtResource("4_4vlc2")]

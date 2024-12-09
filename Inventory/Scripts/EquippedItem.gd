@@ -3,7 +3,13 @@ extends Sprite2D
 var is_ranged : bool
 var projectile : RangedProjectile
 var swing_speed : float
+
 var damage : ItemElementType
+var damage_buff : float = 0.0 # add to dmg calc
+var damage_buff_percent = 1.0 # add to dmg calc
+var element_damage_buff : ItemElementType # add to dmg calc
+var element_damage_buff_percent : ItemElementType # add to dmg calc
+
 var is_attacking : bool = false
 
 @export var base_projectile_node : PackedScene

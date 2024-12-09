@@ -1,13 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://dl8hvlhpuewll"]
+[gd_scene load_steps=6 format=3 uid="uid://dl8hvlhpuewll"]
 
 [ext_resource type="Script" path="res://Scripts/pop_up.gd" id="1_thoud"]
+[ext_resource type="Script" path="res://Nodes/UI/movable_message_box.gd" id="2_e0f3b"]
 
 [sub_resource type="Animation" id="Animation_28318"]
 length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Control/Panel:position")
+tracks/0/path = NodePath("Panel:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -23,7 +24,7 @@ length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Control/Panel:position")
+tracks/0/path = NodePath("Panel:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -39,39 +40,122 @@ _data = {
 "popIn": SubResource("Animation_8irt8")
 }
 
-[node name="PopUp" type="CanvasLayer"]
-script = ExtResource("1_thoud")
-
-[node name="Control" type="Control" parent="."]
+[node name="PopUp" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_thoud")
 
-[node name="Panel" type="PanelContainer" parent="Control"]
+[node name="VBox" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -76.0
+offset_right = 300.0
+grow_vertical = 0
+mouse_filter = 2
+theme_override_constants/separation = -20
+alignment = 2
+
+[node name="HBox" type="HBoxContainer" parent="VBox"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="All" type="Button" parent="VBox/HBox"]
+layout_mode = 2
+text = "All"
+
+[node name="Misc" type="Button" parent="VBox/HBox"]
+layout_mode = 2
+text = "Misc
+"
+
+[node name="Battle" type="Button" parent="VBox/HBox"]
+layout_mode = 2
+text = "Battle
+"
+
+[node name="Dialogue" type="Button" parent="VBox/HBox"]
+layout_mode = 2
+text = "Dialogue
+"
+
+[node name="System" type="Button" parent="VBox/HBox"]
+layout_mode = 2
+text = "System
+"
+
+[node name="MovableMessageBox" type="MarginContainer" parent="VBox"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+mouse_filter = 0
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+script = ExtResource("2_e0f3b")
+
+[node name="PanelC" type="PanelContainer" parent="VBox/MovableMessageBox"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Margin2" type="MarginContainer" parent="VBox/MovableMessageBox/PanelC"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="ScrollC" type="ScrollContainer" parent="VBox/MovableMessageBox/PanelC/Margin2"]
+layout_mode = 2
+mouse_filter = 2
+follow_focus = true
+horizontal_scroll_mode = 0
+
+[node name="TextContainer" type="VBoxContainer" parent="VBox/MovableMessageBox/PanelC/Margin2/ScrollC"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+alignment = 2
+
+[node name="ShowHideButton" type="Button" parent="VBox/MovableMessageBox/PanelC"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+toggle_mode = true
+text = "Hide"
+
+[node name="Panel" type="PanelContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.40408
 anchor_top = 0.938272
 anchor_right = 0.59592
 anchor_bottom = 1.0
-offset_left = 0.5
-offset_top = 54.0
-offset_right = 0.5
-offset_bottom = 54.0
+offset_left = 0.499847
+offset_top = 53.9998
+offset_right = 0.500122
+offset_bottom = 53.9998
 grow_horizontal = 2
 grow_vertical = 0
 size_flags_vertical = 8
+mouse_filter = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="Margin" type="MarginContainer" parent="Control/Panel"]
+[node name="Margin" type="MarginContainer" parent="Panel"]
 layout_mode = 2
+mouse_filter = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_right = 10
 
-[node name="PopInText" type="Label" parent="Control/Panel/Margin"]
+[node name="PopInText" type="Label" parent="Panel/Margin"]
 layout_mode = 2
 size_flags_vertical = 8
 theme_override_font_sizes/font_size = 25
@@ -83,3 +167,10 @@ vertical_alignment = 1
 libraries = {
 "": SubResource("AnimationLibrary_r4l3b")
 }
+
+[connection signal="pressed" from="VBox/HBox/All" to="." method="_on_all_pressed"]
+[connection signal="pressed" from="VBox/HBox/Misc" to="." method="_on_misc_pressed"]
+[connection signal="pressed" from="VBox/HBox/Battle" to="." method="_on_battle_pressed"]
+[connection signal="pressed" from="VBox/HBox/Dialogue" to="." method="_on_dialogue_pressed"]
+[connection signal="pressed" from="VBox/HBox/System" to="." method="_on_system_pressed"]
+[connection signal="toggled" from="VBox/MovableMessageBox/PanelC/ShowHideButton" to="." method="_on_show_hide_button_toggled"]

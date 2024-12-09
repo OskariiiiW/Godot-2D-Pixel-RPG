@@ -21,7 +21,7 @@ var shop_mode : String
 func init(_npc : NonPlayerCharacter):
 	shop_mode = "Buying"
 	current_shop_mode.text = shop_mode
-	player = get_tree().root.get_child(3).player
+	player = get_tree().root.get_child(2).player
 	npc = _npc
 	if npc.shop_inventory:
 		npc_name.text = npc.stats_component.character_name
@@ -111,14 +111,14 @@ func update_gold_values(value : int, is_buying : bool): # maybe change name to s
 			npc.gold += value
 			update_item_cost_color()
 		else:
-			PopUpScene.queue_popup("You don't have enough money")
+			player.GUI.pop_up.queue_popup("You don't have enough money")
 			return false
 	else:
 		if npc.gold - value >= 0:
 			player.inventory_data.gold += value
 			npc.gold -= value
 		else:
-			PopUpScene.queue_popup(npc.stats_component.character_name + " doesn't have enough money")
+			player.GUI.pop_up.queue_popup(npc.stats_component.character_name + " doesn't have enough money")
 			return false
 	p_gold.text = str(player.inventory_data.gold)
 	n_gold.text = str(npc.gold)

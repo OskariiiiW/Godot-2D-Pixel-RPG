@@ -1,8 +1,9 @@
-[gd_resource type="Resource" script_class="ItemData" load_steps=6 format=3 uid="uid://c75y0a7cb3tkr"]
+[gd_resource type="Resource" script_class="ItemData" load_steps=7 format=3 uid="uid://c75y0a7cb3tkr"]
 
+[ext_resource type="Script" path="res://Classes/ConsumableEffect.gd" id="1_bskff"]
 [ext_resource type="Script" path="res://Inventory/Scripts/ItemData.gd" id="1_fmeid"]
 [ext_resource type="Script" path="res://Classes/equippable_item.gd" id="1_lj0u4"]
-[ext_resource type="Resource" uid="uid://mnqfwngggpy4" path="res://Items/projectile_test.tres" id="1_uytkn"]
+[ext_resource type="Resource" uid="uid://mnqfwngggpy4" path="res://Resources/Items/projectile_test.tres" id="1_uytkn"]
 [ext_resource type="Texture2D" uid="uid://bvqfnq5es7iwv" path="res://Textures/Weapons/Bow.png" id="2_wvhtl"]
 
 [sub_resource type="Resource" id="Resource_2uy1v"]
@@ -23,3 +24,4 @@ description = ":3"
 is_stackable = false
 weapon = SubResource("Resource_2uy1v")
 texture = ExtResource("2_wvhtl")
+modifiers = Array[ExtResource("1_bskff")]([])

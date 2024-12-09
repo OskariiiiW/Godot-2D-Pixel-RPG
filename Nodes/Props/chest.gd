@@ -8,12 +8,12 @@ extends StaticBody2D
 @export var npc_interact_component : NPCInteractComponent
 
 var chest_opened = false
-var gui_node
+var GUI
 
 func _ready():
 	chest.texture = closed_texture
 	await get_tree().create_timer(0.2).timeout # pretty bad way to ensure everything loads
-	gui_node = get_tree().root.get_child(3).gui
+	GUI = get_tree().root.get_child(2).gui
 
 #TODO - (maybe?) generate loot based on rarity if not manually set inventory_data
 #TODO - edit chest textures so the bottom of the chest stays in the same place
@@ -21,13 +21,14 @@ func _ready():
 
 func interact():
 	if inventory_data:
-		if not chest_opened and not gui_node.external_inventory.visible:
-			gui_node.init_external_inventory(inventory_data.slot_datas.size(), inventory_data)
+		if not chest_opened and not GUI.external_inventory.visible:
+			GUI.init_external_inventory(inventory_data.slot_datas.size(), inventory_data)
+			GUI.init_external_inventory(inventory_data.slot_datas.size(), inventory_data)
 			chest.texture = opened_texture
 			chest_opened = true
 		else:
 			save_inventory_data()
-			gui_node.hide_external_inventory()
+			GUI.hide_external_inventory()
 			chest.texture = closed_texture
 			chest_opened = false
 	else:
@@ -48,7 +49,7 @@ func npc_interact(item : SlotData, is_taking : bool): #TODO - currently not used
 					return true
 	else: # should the npc actually have the items in their inv???
 		for i in inventory_data.slot_datas.size():
-			if gui_node.external_inventory.inv.get_child(i).get_child_count() >! 0: #if slot has data
+			if GUI.external_inventory.inv.get_child(i).get_child_count() >! 0: #if slot has data
 				inventory_data.slot_datas[i] = item # puts slot data in an empty slot
 				save_inventory_data()
 				return true
@@ -62,17 +63,17 @@ func save_inventory_data():
 	var new_inventory = InventoryData.new()
 	for i in inventory_data.slot_datas.size(): # problems if inv size changes??
 		var new_slot_data
-		if gui_node.external_inventory.inv.get_child(i).get_child_count() > 0: #if slot has data
+		if GUI.external_inventory.inv.get_child(i).get_child_count() > 0: #if slot has data
 			new_slot_data = SlotData.new()
-			new_slot_data.item_data = gui_node.external_inventory.inv.get_child(i).get_child(0).data
-			new_slot_data.quantity = gui_node.external_inventory.inv.get_child(i).get_child(0).stack_size
+			new_slot_data.item_data = GUI.external_inventory.inv.get_child(i).get_child(0).data
+			new_slot_data.quantity = GUI.external_inventory.inv.get_child(i).get_child(0).stack_size
 		new_inventory.slot_datas.append(new_slot_data)
-	gui_node.player_inventory.save_inventory_data()
+	GUI.player_inventory.save_inventory_data()
 	inventory_data = new_inventory
 
 func _on_inventory_boundary_body_exited(_body):
 	if chest_opened:
 		save_inventory_data()
-		gui_node.hide_external_inventory()
+		GUI.hide_external_inventory()
 		chest.texture = closed_texture
 		chest_opened = false

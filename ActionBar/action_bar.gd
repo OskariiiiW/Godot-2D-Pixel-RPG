@@ -7,6 +7,8 @@ var slots : Array[ActionBarSlot]
 func _ready() -> void:
 	for i in slot_container.get_children():
 		slots.append(i)
+		if i.get_child_count() > 0:
+			i.get_child(0).init(i.get_child(0).data, 1)
 
 func _can_drop_data(_at_position, _data):
 	return true

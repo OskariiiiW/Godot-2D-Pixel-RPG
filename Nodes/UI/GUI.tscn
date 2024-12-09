@@ -1,0 +1,158 @@
+[gd_scene load_steps=13 format=3 uid="uid://c0mt7l0irxumt"]
+
+[ext_resource type="Script" path="res://Scripts/GUI.gd" id="1_0po0u"]
+[ext_resource type="PackedScene" uid="uid://bln2tkj2kr0gg" path="res://ActionBar/action_bar.tscn" id="2_llj1k"]
+[ext_resource type="Script" path="res://Inventory/Scripts/PlayerInventoryInterface.gd" id="3_5d28e"]
+[ext_resource type="Script" path="res://Player/PlayerStats.gd" id="4_000ho"]
+[ext_resource type="PackedScene" uid="uid://bs3oe5bt3eqnu" path="res://Inventory/Nodes/inventory_slot.tscn" id="5_wdn12"]
+[ext_resource type="Script" path="res://Inventory/Scripts/ExternalInventory.gd" id="6_gix8e"]
+[ext_resource type="PackedScene" uid="uid://pl7legwd8dgr" path="res://Dialogue/dialogue_box.tscn" id="7_hlgia"]
+[ext_resource type="PackedScene" uid="uid://bf0jmi4bp0ets" path="res://Inventory/shop_ui.tscn" id="8_gpay8"]
+[ext_resource type="PackedScene" uid="uid://cner6b112gmpi" path="res://Nodes/UI/player_stat_bars.tscn" id="9_pgdct"]
+[ext_resource type="PackedScene" uid="uid://gkm4wl6jrusc" path="res://Nodes/UI/Buffs_Debuffs/buff_list.tscn" id="10_a7cce"]
+[ext_resource type="PackedScene" uid="uid://dl8hvlhpuewll" path="res://Nodes/UI/pop_up.tscn" id="11_llequ"]
+[ext_resource type="PackedScene" uid="uid://q4jy2ykdqepi" path="res://Nodes/UI/PauseMenu.tscn" id="12_732ny"]
+
+[node name="GUI" type="CanvasLayer" node_paths=PackedStringArray("player_stats")]
+script = ExtResource("1_0po0u")
+player_stats = NodePath("PlayerInventory/MarginContainer/PlayerStats")
+
+[node name="ActionBar" parent="." instance=ExtResource("2_llj1k")]
+
+[node name="PlayerStatBars" parent="." instance=ExtResource("9_pgdct")]
+
+[node name="BuffList" parent="." instance=ExtResource("10_a7cce")]
+
+[node name="PlayerInventory" type="PanelContainer" parent="."]
+visible = false
+custom_minimum_size = Vector2(300, 350)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -340.0
+offset_top = -177.5
+offset_right = 340.0
+offset_bottom = 178.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("3_5d28e")
+gold = 2000
+
+[node name="MarginContainer" type="MarginContainer" parent="PlayerInventory"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Inv" type="GridContainer" parent="PlayerInventory/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+columns = 7
+
+[node name="PlayerStats" type="VBoxContainer" parent="PlayerInventory/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+script = ExtResource("4_000ho")
+
+[node name="HBox" type="HBoxContainer" parent="PlayerInventory/MarginContainer/PlayerStats"]
+layout_mode = 2
+
+[node name="Head" parent="PlayerInventory/MarginContainer/PlayerStats/HBox" instance=ExtResource("5_wdn12")]
+layout_mode = 2
+type = 5
+
+[node name="HBox2" type="HBoxContainer" parent="PlayerInventory/MarginContainer/PlayerStats"]
+layout_mode = 2
+
+[node name="Chest" parent="PlayerInventory/MarginContainer/PlayerStats/HBox2" instance=ExtResource("5_wdn12")]
+layout_mode = 2
+type = 8
+
+[node name="Back" parent="PlayerInventory/MarginContainer/PlayerStats/HBox2" instance=ExtResource("5_wdn12")]
+layout_mode = 2
+type = 7
+
+[node name="HBox3" type="HBoxContainer" parent="PlayerInventory/MarginContainer/PlayerStats"]
+layout_mode = 2
+
+[node name="Legs" parent="PlayerInventory/MarginContainer/PlayerStats/HBox3" instance=ExtResource("5_wdn12")]
+layout_mode = 2
+type = 11
+
+[node name="Hands" parent="PlayerInventory/MarginContainer/PlayerStats/HBox3" instance=ExtResource("5_wdn12")]
+layout_mode = 2
+type = 9
+
+[node name="HBox4" type="HBoxContainer" parent="PlayerInventory/MarginContainer/PlayerStats"]
+layout_mode = 2
+
+[node name="Neck" parent="PlayerInventory/MarginContainer/PlayerStats/HBox4" instance=ExtResource("5_wdn12")]
+layout_mode = 2
+type = 6
+
+[node name="Ring" parent="PlayerInventory/MarginContainer/PlayerStats/HBox4" instance=ExtResource("5_wdn12")]
+layout_mode = 2
+type = 10
+
+[node name="Weapon" parent="PlayerInventory/MarginContainer/PlayerStats" instance=ExtResource("5_wdn12")]
+layout_mode = 2
+type = 13
+
+[node name="ExternalInventory" type="PanelContainer" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -178.0
+offset_top = -42.0
+offset_right = 178.0
+offset_bottom = 42.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("6_gix8e")
+
+[node name="MarginContainer" type="MarginContainer" parent="ExternalInventory"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Inv" type="GridContainer" parent="ExternalInventory/MarginContainer"]
+layout_mode = 2
+columns = 5
+
+[node name="DialogueBox" parent="." instance=ExtResource("7_hlgia")]
+visible = false
+
+[node name="ShopUI" parent="." instance=ExtResource("8_gpay8")]
+visible = false
+
+[node name="PopUp" parent="." instance=ExtResource("11_llequ")]
+
+[node name="PauseMenu" parent="." instance=ExtResource("12_732ny")]
+
+[node name="FPS" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "fps"
+
+[connection signal="handle_buff" from="BuffList" to="." method="_on_buff_list_handle_buff"]
+[connection signal="handle_stat" from="PlayerInventory/MarginContainer/PlayerStats" to="." method="_on_player_stats_handle_stat"]
+[connection signal="handle_weapon" from="PlayerInventory/MarginContainer/PlayerStats" to="." method="_on_player_stats_handle_weapon"]
+[connection signal="handle_gear_equip" from="PlayerInventory/MarginContainer/PlayerStats/HBox/Head" to="PlayerInventory/MarginContainer/PlayerStats" method="_on_head_handle_gear_equip"]
+[connection signal="handle_gear_equip" from="PlayerInventory/MarginContainer/PlayerStats/HBox2/Chest" to="PlayerInventory/MarginContainer/PlayerStats" method="_on_chest_handle_gear_equip"]
+[connection signal="handle_gear_equip" from="PlayerInventory/MarginContainer/PlayerStats/HBox2/Back" to="PlayerInventory/MarginContainer/PlayerStats" method="_on_back_handle_gear_equip"]
+[connection signal="handle_gear_equip" from="PlayerInventory/MarginContainer/PlayerStats/HBox3/Legs" to="PlayerInventory/MarginContainer/PlayerStats" method="_on_legs_handle_gear_equip"]
+[connection signal="handle_gear_equip" from="PlayerInventory/MarginContainer/PlayerStats/HBox3/Hands" to="PlayerInventory/MarginContainer/PlayerStats" method="_on_hands_handle_gear_equip"]
+[connection signal="handle_gear_equip" from="PlayerInventory/MarginContainer/PlayerStats/HBox4/Neck" to="PlayerInventory/MarginContainer/PlayerStats" method="_on_neck_handle_gear_equip"]
+[connection signal="handle_gear_equip" from="PlayerInventory/MarginContainer/PlayerStats/HBox4/Ring" to="PlayerInventory/MarginContainer/PlayerStats" method="_on_ring_handle_gear_equip"]

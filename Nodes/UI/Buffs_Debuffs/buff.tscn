@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://6107es7k18ag"]
+
+[ext_resource type="Script" path="res://Nodes/UI/Buffs_Debuffs/buff.gd" id="1_1g0hj"]
+[ext_resource type="Texture2D" uid="uid://cpa3cmft3vsly" path="res://icon.svg" id="1_t2tw5"]
+
+[node name="Buff" type="TextureRect"]
+custom_minimum_size = Vector2(25, 25)
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -128.0
+offset_bottom = 128.0
+grow_horizontal = 0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource("1_t2tw5")
+script = ExtResource("1_1g0hj")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "NaN"
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

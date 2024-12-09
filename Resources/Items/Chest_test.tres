@@ -1,0 +1,64 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=13 format=3 uid="uid://c708j1ca236gw"]
+
+[ext_resource type="Script" path="res://Classes/Element.gd" id="1_6p438"]
+[ext_resource type="Script" path="res://Classes/ItemElementType.gd" id="1_fboy6"]
+[ext_resource type="Script" path="res://Classes/equippable_gear.gd" id="1_swnvb"]
+[ext_resource type="Texture2D" uid="uid://waxfqbicni87" path="res://Textures/Gear/Iron Armor.png" id="3_2wdpt"]
+[ext_resource type="Script" path="res://Inventory/Scripts/ItemData.gd" id="3_iibij"]
+[ext_resource type="Script" path="res://Classes/ConsumableEffect.gd" id="3_sfiaj"]
+
+[sub_resource type="Resource" id="Resource_xeeij"]
+script = ExtResource("1_6p438")
+element = 0
+value = 20.0
+
+[sub_resource type="Resource" id="Resource_uj7tk"]
+script = ExtResource("1_6p438")
+element = 1
+value = 20.0
+
+[sub_resource type="Resource" id="Resource_scn4t"]
+script = ExtResource("1_fboy6")
+physical = 20.0
+magical = 20.0
+poison = 0.0
+curse = 0.0
+elements = Array[ExtResource("1_6p438")]([SubResource("Resource_xeeij"), SubResource("Resource_uj7tk")])
+
+[sub_resource type="Resource" id="Resource_cmlhx"]
+script = ExtResource("1_swnvb")
+resistances = SubResource("Resource_scn4t")
+weight_class = 3
+
+[sub_resource type="Resource" id="Resource_f8ua5"]
+script = ExtResource("3_sfiaj")
+element_type = 0
+stat_type = 0
+effect_type = 1
+amount_type = 0
+amount = 69.0
+duration = 0.0
+can_stack = true
+
+[sub_resource type="Resource" id="Resource_koa7g"]
+script = ExtResource("3_sfiaj")
+element_type = 1
+stat_type = 4
+effect_type = 1
+amount_type = 0
+amount = 999.0
+duration = 0.0
+can_stack = true
+
+[resource]
+script = ExtResource("3_iibij")
+tier = 0
+type = 8
+name = "Test chest"
+value = 200
+weight = 20.0
+description = "its chewsday innit?"
+is_stackable = false
+gear = SubResource("Resource_cmlhx")
+texture = ExtResource("3_2wdpt")
+modifiers = Array[ExtResource("3_sfiaj")]([SubResource("Resource_f8ua5"), SubResource("Resource_koa7g")])

@@ -18,7 +18,6 @@ config/icon="res://icon.svg"
 [autoload]
 
 SceneTransition="*res://Nodes/UI/scene_transition.tscn"
-PopUpScene="*res://Nodes/UI/pop_up.tscn"
 MusicPlayer="*res://Nodes/Sound/music_player.tscn"
 
 [input]
