@@ -4,20 +4,21 @@ extends StaticBody2D
 @onready var hitbox_component: HitboxComponent = $HitboxComponent
 @onready var trail_obj: GPUParticles2D = $Trail
 @onready var impact_obj: GPUParticles2D = $Impact
+@onready var timer: Timer = $Timer
 
 @export var stats_component : SimpleStatsComponent
 
 var projectile_name : String
 var speed = 1.0
-var projectile_duration = 1.0
+var duration = 1.0
 var is_piercing = false
 var knockback = 1.0
-var damage = ItemElementType
+var damage : Array[Element]
 var weapon_damage_multiplier = 1.0
 var projectile_texture
 var trail : ParticleProcessMaterial
 var impact : ParticleProcessMaterial
-var projectile_owner : Node2D
+var p_owner : Node2D
 
 func _ready():
 	if projectile_texture:
@@ -26,26 +27,33 @@ func _ready():
 		trail_obj.process_material = trail
 		impact_obj.process_material = impact
 		trail_obj.emitting = true
-	if stats_component:
-		var total_damage = damage.physical + damage.magical + damage.poison + damage.curse
-		stats_component.health = total_damage
-	else:
+	if !stats_component:
 		print(self.name + " stats_component missing (ranged_projectile)")
+	timer.wait_time = duration
+	timer.start()
+
+func init(_texture : Texture2D, _speed : float, _damage : Array[Element], total_dmg : float, _duration : float\
+, _is_piercing : bool, _p_owner : Node):
+	projectile_texture = _texture
+	speed = _speed
+	damage = _damage
+	stats_component.health = total_dmg
+	duration = _duration
+	is_piercing = _is_piercing
+	p_owner = _p_owner
 
 func _physics_process(_delta):
 	position += transform.x * speed
-	await get_tree().create_timer(projectile_duration).timeout #BUG - counts down even if game paused
-	handle_freeing(false)
 
 func _on_hitbox_component_area_entered(area):
-	if area is HitboxComponent and area.get_parent() != projectile_owner:
+	if area is HitboxComponent and area.get_parent() != p_owner:
 		var has_same_owner = false
 		if area.get_parent() is StaticBody2D:
 			if area.get_parent().has_method("_physics_process"): # vewwy bad way to identify
-				if area.get_parent().projectile_owner == projectile_owner:
+				if area.get_parent().p_owner == p_owner:
 					has_same_owner = true
 		if !has_same_owner: # happens only when colliding with projectiles from other actors
-			var hp_reduction = 0.0
+			var hp_reduction = 0.0 # amount to be reduced from projectile hp
 			if area.stats_component:
 				hp_reduction = area.stats_component.health
 			elif area.simple_stats_component:
@@ -60,9 +68,8 @@ func _on_hitbox_component_area_entered(area):
 				handle_freeing(true)
 
 func handle_freeing(collided : bool):
-	if collided: # wtf was collided supposed to do???
-		pass
-	impact_obj.emitting = true
+	if collided:
+		impact_obj.emitting = true # if collided, creates explosion effect
 	trail_obj.emitting = false
 	sprite_2d.visible = false
 	hitbox_component.set_deferred("monitorable", false)
@@ -73,3 +80,6 @@ func handle_freeing(collided : bool):
 func _on_hitbox_component_body_entered(body: Node2D) -> void: #collision with tilemap
 	if body is TileMapLayer:
 		handle_freeing(true)
+
+func _on_timer_timeout() -> void:
+	handle_freeing(false)

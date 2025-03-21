@@ -16,7 +16,7 @@ var race_name : String
 @export var BASE_MAX_MAGICKA : float = 1.0
 @export var BASE_MAGICKA_REGEN : float = 0.1
 
-@export var resistances : ItemElementType# : set = wtf
+@export var resistances : Array[Element]# : set = wtf
 
 #func wtf(value):
 #	print(value)
@@ -32,7 +32,7 @@ func change_race(value):
 		BASE_STAMINA_REGEN = 0.3
 		BASE_MAX_MAGICKA = 30.0
 		BASE_MAGICKA_REGEN = 0.1
-		resistances = ItemElementType.new()
+		add_base_resistances()
 	elif value == RaceType.ELF:
 		pass
 	elif value == RaceType.HALFELF:
@@ -53,3 +53,17 @@ func change_race(value):
 		pass
 	elif value == RaceType.ELEMENTAL:
 		pass
+
+func add_base_resistances():
+	var phys = Element.new()
+	# no phys bc new() is phys by default
+	resistances.append(phys)
+	var mag = Element.new()
+	mag.element = Element.Element_type.MAGICAL
+	resistances.append(mag)
+	var pois = Element.new()
+	pois.element = Element.Element_type.POISON
+	resistances.append(pois)
+	var curs = Element.new()
+	curs.element = Element.Element_type.CURSE
+	resistances.append(curs)

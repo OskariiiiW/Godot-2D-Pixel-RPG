@@ -7,7 +7,7 @@ extends StaticBody2D
 
 func _ready():
 	if item_component:
-		item.texture = item_component.item.item_data.texture
+		item.texture = item_component.item.item_data.icon
 	else:
 		print("Item component missing from dropped_item")
 

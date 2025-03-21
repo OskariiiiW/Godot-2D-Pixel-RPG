@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=9 format=3 uid="uid://c708j1ca236gw"]
+
+[ext_resource type="Script" uid="uid://bng0786sarjuc" path="res://Classes/Element.gd" id="1_6p438"]
+[ext_resource type="Script" uid="uid://bqdhixorqmko2" path="res://Classes/equippable_gear.gd" id="1_swnvb"]
+[ext_resource type="Script" uid="uid://b4uuj4eu7lqrl" path="res://Inventory/Scripts/ItemData.gd" id="3_iibij"]
+[ext_resource type="Script" uid="uid://b5n22gac4gbi1" path="res://Classes/ConsumableEffect.gd" id="3_sfiaj"]
+[ext_resource type="Texture2D" uid="uid://bnqtsfaafthub" path="res://Textures/Icons/Equipment/Iron Armor.png" id="4_644ep"]
+
+[sub_resource type="Resource" id="Resource_weclv"]
+script = ExtResource("1_6p438")
+element = 0
+value = 10.0
+
+[sub_resource type="Resource" id="Resource_iw0g5"]
+script = ExtResource("1_6p438")
+element = 1
+value = 10.0
+
+[sub_resource type="Resource" id="Resource_cmlhx"]
+script = ExtResource("1_swnvb")
+resistances = Array[ExtResource("1_6p438")]([SubResource("Resource_weclv"), SubResource("Resource_iw0g5")])
+weight_class = 3
+
+[resource]
+script = ExtResource("3_iibij")
+tier = 0
+type = 8
+name = "Test chest"
+value = 200
+weight = 20.0
+description = "its chewsday innit?"
+is_stackable = false
+gear = SubResource("Resource_cmlhx")
+icon = ExtResource("4_644ep")
+effects = Array[ExtResource("3_sfiaj")]([])

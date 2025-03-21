@@ -1,6 +1,28 @@
-[gd_scene load_steps=2 format=3 uid="uid://fblxslfe483l"]
+[gd_scene load_steps=7 format=3 uid="uid://fblxslfe483l"]
 
-[ext_resource type="Script" path="res://Scripts/Components/simple_stats_component.gd" id="1_73ysv"]
+[ext_resource type="Script" uid="uid://chiyvbkxid5hq" path="res://Nodes/Components/simple_stats_component.gd" id="1_73ysv"]
+[ext_resource type="Script" uid="uid://bng0786sarjuc" path="res://Classes/Element.gd" id="2_yvl8d"]
+
+[sub_resource type="Resource" id="Resource_etgmf"]
+script = ExtResource("2_yvl8d")
+element = 0
+value = 0.0
+
+[sub_resource type="Resource" id="Resource_vme31"]
+script = ExtResource("2_yvl8d")
+element = 1
+value = 0.0
+
+[sub_resource type="Resource" id="Resource_dsg73"]
+script = ExtResource("2_yvl8d")
+element = 2
+value = 0.0
+
+[sub_resource type="Resource" id="Resource_k1g6g"]
+script = ExtResource("2_yvl8d")
+element = 3
+value = 0.0
 
 [node name="SimpleStatsComponent" type="Node2D"]
 script = ExtResource("1_73ysv")
+resistances = Array[ExtResource("2_yvl8d")]([SubResource("Resource_etgmf"), SubResource("Resource_vme31"), SubResource("Resource_dsg73"), SubResource("Resource_k1g6g")])

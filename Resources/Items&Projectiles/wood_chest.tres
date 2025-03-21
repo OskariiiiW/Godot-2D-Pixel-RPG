@@ -1,0 +1,40 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=9 format=3 uid="uid://x5e5eefb2mk0"]
+
+[ext_resource type="Script" uid="uid://b5n22gac4gbi1" path="res://Classes/ConsumableEffect.gd" id="1_kr3x3"]
+[ext_resource type="Script" uid="uid://bng0786sarjuc" path="res://Classes/Element.gd" id="2_6hmix"]
+[ext_resource type="Script" uid="uid://b4uuj4eu7lqrl" path="res://Inventory/Scripts/ItemData.gd" id="2_nrbg0"]
+[ext_resource type="Script" uid="uid://bqdhixorqmko2" path="res://Classes/equippable_gear.gd" id="3_6hw2k"]
+[ext_resource type="Texture2D" uid="uid://cxt4lc2hq51as" path="res://Textures/Gear/Wooden Armor.png" id="5_1lm3t"]
+
+[sub_resource type="Resource" id="Resource_7vqly"]
+script = ExtResource("1_kr3x3")
+element_type = 0
+stat_type = 5
+effect_type = 1
+amount_type = 0
+amount = -40.0
+duration = 0.0
+can_stack = true
+
+[sub_resource type="Resource" id="Resource_dp4nq"]
+script = ExtResource("2_6hmix")
+element = 0
+value = 10.0
+
+[sub_resource type="Resource" id="Resource_r48is"]
+script = ExtResource("3_6hw2k")
+resistances = Array[ExtResource("2_6hmix")]([SubResource("Resource_dp4nq")])
+weight_class = 2
+
+[resource]
+script = ExtResource("2_nrbg0")
+tier = 0
+type = 8
+name = "Wooden Chestpiece"
+value = 5
+weight = 5.0
+description = ":3"
+is_stackable = false
+gear = SubResource("Resource_r48is")
+icon = ExtResource("5_1lm3t")
+effects = Array[ExtResource("1_kr3x3")]([SubResource("Resource_7vqly")])

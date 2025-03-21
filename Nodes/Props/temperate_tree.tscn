@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://doqm8c7qa0bfv"]
 
 [ext_resource type="PackedScene" uid="uid://fblxslfe483l" path="res://Nodes/Components/simple_stats_component.tscn" id="1_pv0uu"]
-[ext_resource type="Resource" uid="uid://8no3jeuo0ykp" path="res://Resources/Items/Wood_log.tres" id="2_7dtjf"]
+[ext_resource type="Resource" uid="uid://8no3jeuo0ykp" path="res://Resources/Items&Projectiles/Misc/wood_log.tres" id="2_7dtjf"]
 [ext_resource type="Texture2D" uid="uid://danbjgwm4ufbd" path="res://Props/tree_temperate.png" id="2_uf5hu"]
 [ext_resource type="PackedScene" uid="uid://demlxi468b16l" path="res://Nodes/Components/loot_component.tscn" id="3_7uxvr"]
 [ext_resource type="PackedScene" uid="uid://co3lke74w50ik" path="res://Nodes/Components/hitbox_component.tscn" id="3_70fes"]

@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="ActionSkill" load_steps=6 format=3 uid="uid://dpxjloyx1xhuv"]
+
+[ext_resource type="Script" uid="uid://bng0786sarjuc" path="res://Classes/Element.gd" id="1_pm8hk"]
+[ext_resource type="Texture2D" uid="uid://c8f8yqfist5lf" path="res://Textures/Icons/Misc/Rune Stone.png" id="2_fwkl8"]
+[ext_resource type="Script" uid="uid://b5n22gac4gbi1" path="res://Classes/ConsumableEffect.gd" id="2_n6coi"]
+[ext_resource type="Script" uid="uid://4pi3wi7bguu0" path="res://Classes/ActionSkill.gd" id="2_sbeix"]
+
+[sub_resource type="Resource" id="Resource_xshbu"]
+script = ExtResource("1_pm8hk")
+element = 0
+value = 69.0
+
+[resource]
+script = ExtResource("2_sbeix")
+name = "Beam radius and length"
+damage = Array[ExtResource("1_pm8hk")]([SubResource("Resource_xshbu")])
+cost = 1.0
+description = ":3"
+cost_type = 0
+skill_type = 1
+target_type = 1
+beam_length = 10.0
+beam_radius = 10.0
+target_count = 1
+effects = Array[ExtResource("2_n6coi")]([])
+icon = ExtResource("2_fwkl8")

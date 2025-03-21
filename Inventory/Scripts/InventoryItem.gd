@@ -20,7 +20,7 @@ func _ready():
 	self.add_child(stack_label)
 	
 	if data:
-		texture = data.texture
+		texture = data.icon
 		stack_label.text = str(stack_size)
 		if stack_size == 1:
 			stack_label.hide()

@@ -50,8 +50,6 @@ func _drop_data(_at_position, data): #where combine and swap happens
 	if data.get_parent().type > 4 and data.get_parent().type < 13: # dragging from equip slot
 		#print("dragging from equip slot (inventoryslot)")
 		var playerstats = data.get_parent().get_parent().get_parent()
-		#if playerstats.has_method("handle_stat_change"):
-		#	playerstats.handle_stat_change()
 		if playerstats.has_method("handle_gear"):
 			playerstats.handle_gear(data.data, false)
 			# signal no work bc slot not equip slot
@@ -69,7 +67,6 @@ func _drop_data(_at_position, data): #where combine and swap happens
 	if type != 0 and type != 13: # dragging to equip slot
 		#print("dragging to equip slot (inventoryslot)")
 		handle_gear_equip.emit(data.data, true)
-		#get_parent().get_parent().handle_stat_change()
 	elif type == 13: # weapon slot
 		data.get_parent().get_parent().handle_weapon_change(false)
 

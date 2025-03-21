@@ -1,0 +1,53 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=10 format=3 uid="uid://c8q2qn043wtpr"]
+
+[ext_resource type="Script" uid="uid://b5n22gac4gbi1" path="res://Classes/ConsumableEffect.gd" id="1_48gay"]
+[ext_resource type="Script" uid="uid://b4uuj4eu7lqrl" path="res://Inventory/Scripts/ItemData.gd" id="1_pgwu8"]
+[ext_resource type="Texture2D" uid="uid://c7hdw0150p4t8" path="res://Textures/Icons/Misc/Heart.png" id="2_rcdcy"]
+[ext_resource type="Texture2D" uid="uid://cgo5gbl1ie8lv" path="res://Textures/Icons/Weapon & Tool/Axe.png" id="3_3jj0a"]
+[ext_resource type="Texture2D" uid="uid://bneu8bno7os0u" path="res://Textures/Icons/Weapon & Tool/Golden Sword.png" id="4_fes4i"]
+[ext_resource type="Texture2D" uid="uid://q0jstcp67wva" path="res://Textures/Icons/Food/Bread.png" id="5_47lki"]
+
+[sub_resource type="Resource" id="Resource_uwphi"]
+script = ExtResource("1_48gay")
+element_type = 0
+stat_type = 0
+effect_type = 1
+amount_type = 0
+amount = 50.0
+duration = 5.0
+can_stack = true
+icon = ExtResource("2_rcdcy")
+
+[sub_resource type="Resource" id="Resource_4bkxq"]
+script = ExtResource("1_48gay")
+element_type = 2
+stat_type = 3
+effect_type = 1
+amount_type = 0
+amount = 999.0
+duration = 5.0
+can_stack = false
+icon = ExtResource("3_3jj0a")
+
+[sub_resource type="Resource" id="Resource_gfvn7"]
+script = ExtResource("1_48gay")
+element_type = 1
+stat_type = 3
+effect_type = 1
+amount_type = 0
+amount = 420.0
+duration = 20.0
+can_stack = false
+icon = ExtResource("4_fes4i")
+
+[resource]
+script = ExtResource("1_pgwu8")
+tier = 0
+type = 3
+name = "Bread"
+value = 20
+weight = 2.0
+description = "crunchyroll bread"
+is_stackable = true
+icon = ExtResource("5_47lki")
+effects = Array[ExtResource("1_48gay")]([SubResource("Resource_uwphi"), SubResource("Resource_4bkxq"), SubResource("Resource_gfvn7")])

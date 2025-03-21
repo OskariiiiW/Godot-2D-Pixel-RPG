@@ -1,0 +1,99 @@
+[gd_resource type="Resource" script_class="InventoryData" load_steps=30 format=3 uid="uid://csa8wvc7kgaok"]
+
+[ext_resource type="Script" uid="uid://dyu3g6levh1po" path="res://Inventory/Scripts/InventoryData.gd" id="1_fi6qi"]
+[ext_resource type="Script" uid="uid://s8nuariqhdlw" path="res://Inventory/Scripts/SlotData.gd" id="2_5damg"]
+[ext_resource type="Resource" uid="uid://8no3jeuo0ykp" path="res://Resources/Items&Projectiles/Misc/wood_log.tres" id="3_ayfw5"]
+[ext_resource type="Resource" uid="uid://dpcq75unyhpnv" path="res://Resources/Items&Projectiles/megumin_staff.tres" id="4_fwcad"]
+[ext_resource type="Resource" uid="uid://c8q2qn043wtpr" path="res://Resources/Items&Projectiles/Food/Bread.tres" id="5_f3m84"]
+[ext_resource type="Resource" uid="uid://6ndsniaxf5mu" path="res://Resources/Items&Projectiles/Potions_Poisons/strong_stam_potion.tres" id="6_wrmtk"]
+[ext_resource type="Resource" uid="uid://c75y0a7cb3tkr" path="res://Resources/Items&Projectiles/Projectile_test_item.tres" id="7_sl8dv"]
+[ext_resource type="Resource" uid="uid://x5e5eefb2mk0" path="res://Resources/Items&Projectiles/wood_chest.tres" id="8_rfe2l"]
+[ext_resource type="Resource" uid="uid://cy1ye84rtcylu" path="res://Resources/Items&Projectiles/Potions_Poisons/weak_hp_potion.tres" id="9_ff6m2"]
+[ext_resource type="Resource" uid="uid://iam6mfmnbkbl" path="res://Resources/Items&Projectiles/wood_sword.tres" id="10_qdp1p"]
+[ext_resource type="Resource" uid="uid://ckvx670ji88rw" path="res://Resources/Items&Projectiles/Helmet_test.tres" id="11_lpjkk"]
+[ext_resource type="Resource" uid="uid://c708j1ca236gw" path="res://Resources/Items&Projectiles/iron_chest.tres" id="12_e4h4o"]
+[ext_resource type="Resource" uid="uid://c00bbx3t0oni0" path="res://Resources/Items&Projectiles/Food/Apple.tres" id="13_x1bgd"]
+
+[sub_resource type="Resource" id="Resource_qpqob"]
+script = ExtResource("2_5damg")
+item_data = ExtResource("3_ayfw5")
+quantity = 99
+
+[sub_resource type="Resource" id="Resource_uitlw"]
+script = ExtResource("2_5damg")
+item_data = ExtResource("4_fwcad")
+quantity = 1
+
+[sub_resource type="Resource" id="Resource_2fo62"]
+script = ExtResource("2_5damg")
+item_data = ExtResource("5_f3m84")
+quantity = 1
+
+[sub_resource type="Resource" id="Resource_g8cnu"]
+script = ExtResource("2_5damg")
+item_data = ExtResource("4_fwcad")
+quantity = 1
+
+[sub_resource type="Resource" id="Resource_fle2j"]
+script = ExtResource("2_5damg")
+item_data = ExtResource("6_wrmtk")
+quantity = 99
+
+[sub_resource type="Resource" id="Resource_kcc7r"]
+script = ExtResource("2_5damg")
+item_data = ExtResource("7_sl8dv")
+quantity = 1
+
+[sub_resource type="Resource" id="Resource_5qcgs"]
+script = ExtResource("2_5damg")
+item_data = ExtResource("8_rfe2l")
+quantity = 1
+
+[sub_resource type="Resource" id="Resource_ks6gj"]
+script = ExtResource("2_5damg")
+item_data = ExtResource("9_ff6m2")
+quantity = 99
+
+[sub_resource type="Resource" id="Resource_ki4qg"]
+script = ExtResource("2_5damg")
+item_data = ExtResource("10_qdp1p")
+quantity = 1
+
+[sub_resource type="Resource" id="Resource_5sox0"]
+script = ExtResource("2_5damg")
+item_data = ExtResource("11_lpjkk")
+quantity = 1
+
+[sub_resource type="Resource" id="Resource_fr25m"]
+script = ExtResource("2_5damg")
+item_data = ExtResource("12_e4h4o")
+quantity = 1
+
+[sub_resource type="Resource" id="Resource_soitk"]
+script = ExtResource("2_5damg")
+item_data = ExtResource("12_e4h4o")
+quantity = 1
+
+[sub_resource type="Resource" id="Resource_kpg10"]
+script = ExtResource("2_5damg")
+item_data = ExtResource("5_f3m84")
+quantity = 7
+
+[sub_resource type="Resource" id="Resource_saq5o"]
+script = ExtResource("2_5damg")
+item_data = ExtResource("13_x1bgd")
+quantity = 55
+
+[sub_resource type="Resource" id="Resource_c2gyy"]
+script = ExtResource("2_5damg")
+item_data = ExtResource("13_x1bgd")
+quantity = 69
+
+[sub_resource type="Resource" id="Resource_jechd"]
+script = ExtResource("2_5damg")
+item_data = ExtResource("12_e4h4o")
+quantity = 1
+
+[resource]
+script = ExtResource("1_fi6qi")
+slot_datas = Array[ExtResource("2_5damg")]([SubResource("Resource_qpqob"), SubResource("Resource_uitlw"), SubResource("Resource_2fo62"), SubResource("Resource_g8cnu"), SubResource("Resource_fle2j"), SubResource("Resource_kcc7r"), SubResource("Resource_5qcgs"), SubResource("Resource_ks6gj"), SubResource("Resource_ki4qg"), SubResource("Resource_5sox0"), SubResource("Resource_fr25m"), SubResource("Resource_soitk"), SubResource("Resource_kpg10"), SubResource("Resource_saq5o"), SubResource("Resource_c2gyy"), SubResource("Resource_jechd")])

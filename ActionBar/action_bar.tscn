@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://bln2tkj2kr0gg"]
+[gd_scene load_steps=7 format=3 uid="uid://bln2tkj2kr0gg"]
 
 [ext_resource type="PackedScene" uid="uid://bqp8itqm8nfpu" path="res://ActionBar/action_bar_slot.tscn" id="1_auanj"]
-[ext_resource type="Script" path="res://ActionBar/action_bar.gd" id="1_w3k3g"]
+[ext_resource type="Script" uid="uid://5mwc3h552qkr" path="res://ActionBar/action_bar.gd" id="1_w3k3g"]
+[ext_resource type="Script" uid="uid://brwjqfuerkf8q" path="res://ActionBar/ActionBarSlotAction.gd" id="3_knily"]
+[ext_resource type="Resource" uid="uid://d2m2r5ijg1ey1" path="res://Resources/ActionSkills/projectile_skill_test.tres" id="4_b3x63"]
+[ext_resource type="Resource" uid="uid://bfvobd1solopx" path="res://Resources/ActionSkills/buff_skill_test.tres" id="5_007w8"]
+[ext_resource type="Resource" uid="uid://kehhg3ok1k2x" path="res://Resources/ActionSkills/beam_skill_test.tres" id="6_0t6wp"]
 
 [node name="ActionBar" type="Control"]
 layout_mode = 3
@@ -44,11 +48,26 @@ size_flags_horizontal = 4
 [node name="ActionBarSlot" parent="Margin/PanelC/Margin2/SlotContainer" instance=ExtResource("1_auanj")]
 layout_mode = 2
 
+[node name="ActionBarSlotAction" type="TextureRect" parent="Margin/PanelC/Margin2/SlotContainer/ActionBarSlot"]
+layout_mode = 2
+script = ExtResource("3_knily")
+data = ExtResource("4_b3x63")
+
 [node name="ActionBarSlot2" parent="Margin/PanelC/Margin2/SlotContainer" instance=ExtResource("1_auanj")]
 layout_mode = 2
 
+[node name="ActionBarSlotAction" type="TextureRect" parent="Margin/PanelC/Margin2/SlotContainer/ActionBarSlot2"]
+layout_mode = 2
+script = ExtResource("3_knily")
+data = ExtResource("5_007w8")
+
 [node name="ActionBarSlot3" parent="Margin/PanelC/Margin2/SlotContainer" instance=ExtResource("1_auanj")]
 layout_mode = 2
+
+[node name="ActionBarSlotAction" type="TextureRect" parent="Margin/PanelC/Margin2/SlotContainer/ActionBarSlot3"]
+layout_mode = 2
+script = ExtResource("3_knily")
+data = ExtResource("6_0t6wp")
 
 [node name="ActionBarSlot4" parent="Margin/PanelC/Margin2/SlotContainer" instance=ExtResource("1_auanj")]
 layout_mode = 2

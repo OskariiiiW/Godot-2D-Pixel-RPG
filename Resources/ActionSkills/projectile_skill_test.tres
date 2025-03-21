@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="ActionSkill" load_steps=8 format=3 uid="uid://d2m2r5ijg1ey1"]
+
+[ext_resource type="Script" uid="uid://bng0786sarjuc" path="res://Classes/Element.gd" id="1_o0kti"]
+[ext_resource type="Script" uid="uid://b5n22gac4gbi1" path="res://Classes/ConsumableEffect.gd" id="2_60uh3"]
+[ext_resource type="Texture2D" uid="uid://c6kdis2bbk6g1" path="res://Textures/Fireball.png" id="2_oy1lw"]
+[ext_resource type="Resource" uid="uid://c2f2gkd2l8kfo" path="res://Resources/Items&Projectiles/ParticleProjectiles/firebolt.tres" id="3_qc003"]
+[ext_resource type="Script" uid="uid://4pi3wi7bguu0" path="res://Classes/ActionSkill.gd" id="4_3cm5k"]
+
+[sub_resource type="Resource" id="Resource_5vwgl"]
+script = ExtResource("1_o0kti")
+element = 1
+value = 69.0
+
+[sub_resource type="Resource" id="Resource_p07mj"]
+script = ExtResource("1_o0kti")
+element = 3
+value = 420.0
+
+[resource]
+script = ExtResource("4_3cm5k")
+name = "firebolt test"
+damage = Array[ExtResource("1_o0kti")]([SubResource("Resource_5vwgl"), SubResource("Resource_p07mj")])
+cost = 10.0
+description = ""
+cost_type = 0
+skill_type = 0
+target_type = 0
+projectile = ExtResource("3_qc003")
+beam_length = 1.0
+beam_radius = 1.0
+target_count = 1
+effects = Array[ExtResource("2_60uh3")]([])
+icon = ExtResource("2_oy1lw")

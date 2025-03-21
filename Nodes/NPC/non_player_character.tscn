@@ -1,21 +1,24 @@
-[gd_scene load_steps=43 format=3 uid="uid://b7m8yydx4ytop"]
+[gd_scene load_steps=46 format=3 uid="uid://b7m8yydx4ytop"]
 
-[ext_resource type="Script" path="res://Scripts/NonPlayerCharacter.gd" id="1_o138j"]
+[ext_resource type="Script" uid="uid://bw8tsv1dmurqd" path="res://Scripts/NonPlayerCharacter.gd" id="1_o138j"]
 [ext_resource type="Texture2D" uid="uid://cpa3cmft3vsly" path="res://icon.svg" id="2_0kcas"]
 [ext_resource type="Texture2D" uid="uid://5lm3ctxrl8ry" path="res://Textures/NPC/shop_ui_npc.png" id="2_2bngi"]
 [ext_resource type="PackedScene" uid="uid://bq4d7xg3rdumh" path="res://Nodes/Components/stats_component.tscn" id="2_cya4a"]
 [ext_resource type="PackedScene" uid="uid://demlxi468b16l" path="res://Nodes/Components/loot_component.tscn" id="3_eetm3"]
-[ext_resource type="Script" path="res://Inventory/Scripts/InventoryData.gd" id="3_eqq18"]
+[ext_resource type="Script" uid="uid://dyu3g6levh1po" path="res://Inventory/Scripts/InventoryData.gd" id="3_eqq18"]
 [ext_resource type="PackedScene" uid="uid://cksh0fxuu056c" path="res://Nodes/Components/relationship_component.tscn" id="4_4vlc2"]
 [ext_resource type="PackedScene" uid="uid://c6611mwm1gryk" path="res://Nodes/Props/dropped_item.tscn" id="4_grse6"]
 [ext_resource type="PackedScene" uid="uid://co3lke74w50ik" path="res://Nodes/Components/hitbox_component.tscn" id="4_hjuuh"]
-[ext_resource type="Script" path="res://Inventory/Scripts/SlotData.gd" id="4_vguld"]
+[ext_resource type="Script" uid="uid://s8nuariqhdlw" path="res://Inventory/Scripts/SlotData.gd" id="4_vguld"]
 [ext_resource type="PackedScene" uid="uid://cya2hwtun4d8h" path="res://Inventory/Nodes/equipped_item.tscn" id="5_w7d7c"]
-[ext_resource type="Resource" uid="uid://ckvx670ji88rw" path="res://Resources/Items/Helmet_test.tres" id="5_y3sp3"]
-[ext_resource type="Resource" uid="uid://dpcq75unyhpnv" path="res://Resources/Items/megumin_staff.tres" id="6_1fbcb"]
+[ext_resource type="Resource" uid="uid://ckvx670ji88rw" path="res://Resources/Items&Projectiles/Helmet_test.tres" id="5_y3sp3"]
+[ext_resource type="Resource" uid="uid://dpcq75unyhpnv" path="res://Resources/Items&Projectiles/megumin_staff.tres" id="6_1fbcb"]
 [ext_resource type="PackedScene" uid="uid://ih6ig6byvcfk" path="res://Dialogue/dialogue_component.tscn" id="6_2rf1s"]
-[ext_resource type="Resource" uid="uid://c708j1ca236gw" path="res://Resources/Items/Chest_test.tres" id="6_gwff1"]
+[ext_resource type="Resource" uid="uid://c708j1ca236gw" path="res://Resources/Items&Projectiles/iron_chest.tres" id="6_gwff1"]
 [ext_resource type="Resource" uid="uid://bmvf3r3j7x2fs" path="res://Dialogue/Lines/dialogue_test.tres" id="7_7km4r"]
+[ext_resource type="Script" uid="uid://bng0786sarjuc" path="res://Classes/Element.gd" id="8_2hb2t"]
+[ext_resource type="Script" uid="uid://4kxhcjy8y6fu" path="res://Nodes/Components/buff_component.gd" id="15_uk4cw"]
+[ext_resource type="PackedScene" uid="uid://dvt6flyr1fouc" path="res://Nodes/Components/interact_component.tscn" id="16_8mhds"]
 
 [sub_resource type="Resource" id="Resource_30nhk"]
 script = ExtResource("4_vguld")
@@ -141,7 +144,7 @@ process_mode = 1
 z_index = 1
 y_sort_enabled = true
 collision_layer = 2
-collision_mask = 6
+collision_mask = 7
 motion_mode = 1
 script = ExtResource("1_o138j")
 character_image = ExtResource("2_2bngi")
@@ -154,6 +157,12 @@ shop_inventory = SubResource("Resource_7mkgl")
 character_name = "test_character"
 faction_name = "npc_faction"
 is_unique = true
+resistances = Array[ExtResource("8_2hb2t")]([])
+resistances_buff = Array[ExtResource("8_2hb2t")]([])
+resistances_percent_buff = Array[ExtResource("8_2hb2t")]([])
+dmg = Array[ExtResource("8_2hb2t")]([])
+dmg_buff = Array[ExtResource("8_2hb2t")]([])
+dmg_percent_buff = Array[ExtResource("8_2hb2t")]([])
 loot_component = NodePath("../LootComponent")
 
 [node name="RelationshipComponent" parent="." instance=ExtResource("4_4vlc2")]
@@ -165,6 +174,9 @@ dialogue = ExtResource("7_7km4r")
 loot_base_node = ExtResource("4_grse6")
 loot = ExtResource("6_1fbcb")
 
+[node name="BuffComponent" type="Node2D" parent="."]
+script = ExtResource("15_uk4cw")
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("2_0kcas")
@@ -173,10 +185,15 @@ texture = ExtResource("2_0kcas")
 position = Vector2(0.5, 0.125)
 shape = SubResource("CircleShape2D_t1xlp")
 
-[node name="HitboxComponent" parent="." node_paths=PackedStringArray("stats_component") groups=["HostileCreature"] instance=ExtResource("4_hjuuh")]
+[node name="InteractComponent" parent="." instance=ExtResource("16_8mhds")]
+collision_layer = 128
+collision_mask = 128
+
+[node name="HitboxComponent" parent="." node_paths=PackedStringArray("stats_component", "buff_component") groups=["HostileCreature"] instance=ExtResource("4_hjuuh")]
 collision_layer = 2
 collision_mask = 120
 stats_component = NodePath("../StatsComponent")
+buff_component = NodePath("../BuffComponent")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="HitboxComponent"]
 position = Vector2(0.5, 0.125)
@@ -185,14 +202,16 @@ shape = SubResource("CircleShape2D_jk4xl")
 [node name="Rotatable" type="Node2D" parent="."]
 
 [node name="NPCVisual" type="Area2D" parent="Rotatable"]
-collision_layer = 128
+collision_layer = 32
 collision_mask = 3
+monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Rotatable/NPCVisual"]
 position = Vector2(275, 0)
 shape = SubResource("CircleShape2D_biuki")
 
 [node name="MeleeRange" type="Area2D" parent="Rotatable"]
+monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Rotatable/MeleeRange"]
 position = Vector2(38, 0)
@@ -209,7 +228,9 @@ equipped_item = ExtResource("6_1fbcb")
 position = Vector2(37, 0)
 
 [node name="TaskScanner" type="Area2D" parent="."]
-visible = false
+collision_layer = 32
+collision_mask = 32
+monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TaskScanner"]
 shape = SubResource("CircleShape2D_8bqpd")
@@ -220,8 +241,8 @@ debug_enabled = true
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 10.0
-autostart = true
 
+[connection signal="interact_call" from="InteractComponent" to="." method="_on_interact_component_interact_call"]
 [connection signal="body_entered" from="Rotatable/NPCVisual" to="." method="_on_NPC_visual_body_entered"]
 [connection signal="body_exited" from="Rotatable/NPCVisual" to="." method="_on_NPC_visual_body_exited"]
 [connection signal="body_entered" from="Rotatable/MeleeRange" to="." method="_on_melee_range_body_entered"]

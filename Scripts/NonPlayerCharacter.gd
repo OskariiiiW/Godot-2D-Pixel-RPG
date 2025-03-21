@@ -7,6 +7,7 @@ class_name NonPlayerCharacter
 @onready var weapon_container = $Rotatable/WeaponContainer
 @onready var projectile_spawn_point = $Rotatable/WeaponContainer/ProjectileSpawnMark
 @onready var equipped_item = $Rotatable/WeaponContainer/EquippedItem
+@onready var timer: Timer = $Timer
 
 const SPEED = 100.0 # 50
 const HOSTILE_THRESHOLD = -70 # how low relation with player needs to be before npc will ne hostile
@@ -63,14 +64,19 @@ func _physics_process(_delta):
 
 func handle_state():
 	if state == State.IDLE:
+		#timer.start()
 		idle()
 	elif state == State.COMBAT:
+		#timer.stop()
 		combat()
 	elif state == State.CHASE:
+		#timer.stop()
 		chase()
 	elif state == State.FOLLOW:
+		#timer.stop()
 		follow()
 	elif state == State.TASKS:
+		#timer.stop()
 		#complete_tasks()
 		pass
 
@@ -98,22 +104,23 @@ func complete_tasks():
 			tasks.pop_front() # first element
 
 func idle():
-	if tasks.size() > 0:
-		print("set state = tasks (npc)")
-		state = State.TASKS
+	pass
+	#if tasks.size() > 0:
+	#	print("set state = tasks (npc)")
+	#	state = State.TASKS
 
 func combat():
 	if target:
-		if position.distance_to(target.global_position) > 125 and equipped_item.is_ranged: #ranged
-			move_to(target.global_position)
-		elif position.distance_to(target.global_position) > 10 and !equipped_item.is_ranged: #melee
-			# does nothing atm
-			rotatable_container.look_at(target.global_position)
-		if not on_cooldown:
-				if equipped_item.is_ranged:
-					shoot_ranged_weapon()
-				elif in_melee_range:
-					print("swoosh (npc)")
+		if equipped_item.has_weapon:
+			if position.distance_to(target.global_position) > 125 and equipped_item.is_ranged: #ranged
+				move_to(target.global_position)
+			elif position.distance_to(target.global_position) > 10 and !equipped_item.is_ranged: #melee
+				# does nothing atm
+				rotatable_container.look_at(target.global_position)
+			if not on_cooldown:
+				attack()
+		else:
+			print("dunno what they should do if no weapon (npc)")
 	else:
 		set_state(State.CHASE)
 
@@ -180,11 +187,21 @@ func set_state(inc_state : State):
 		print("set state = search (npc)")
 		state = State.SEARCH
 
-func shoot_ranged_weapon():
-	equipped_item.ranged_attack(projectile_spawn_point.global_transform, self)
-	on_cooldown = true
-	await get_tree().create_timer(1.0).timeout #TODO - make cooldown skill based? weapon based?
-	on_cooldown = false
+func attack():
+	if equipped_item.is_ranged:
+		equipped_item.attack(self)
+		#equipped_item.ranged_attack(projectile_spawn_point.global_transform, self)
+		on_cooldown = true
+		await get_tree().create_timer(1.0).timeout #TODO - make cooldown skill based? weapon based?
+		on_cooldown = false
+	else:
+		print("melee not implemented (npc)")
+
+func update_weapon_dmg():
+	if equipped_item:
+		equipped_item.damage_buff = stats_component.dmg
+	else:
+		print("no equipped item on player (player)")
 
 func _on_NPC_visual_body_entered(body):
 	if !is_dead:
@@ -194,7 +211,7 @@ func _on_NPC_visual_body_entered(body):
 				body.stats_component.character_name, body.stats_component.faction_name)
 			var new_target_faction_relation = relationship_component.check_fact_relation(\
 				body.stats_component.faction_name)
-#BUG - if new_target_relation == null, check that faction exists in relationship_component
+## if new_target_relation == null, check that faction exists in relationship_component
 			if not has_target:
 				if new_target_relation <= HOSTILE_THRESHOLD or new_target_faction_relation <= HOSTILE_THRESHOLD:
 					target = body
@@ -291,14 +308,15 @@ func _on_navigation_agent_2d_velocity_computed(safe_velocity: Vector2) -> void: 
 	velocity = safe_velocity
 
 func _on_timer_timeout() -> void: # creates new idle movement tasks
-	if tasks.size() == 0 and state == State.IDLE:
-		var rand_direction = Vector2(rng.randf_range(-1.0, 1.0), rng.randf_range(-1.0, 1.0))
-		var rand_dist = rng.randf_range(50.0, 300.0)
-		var new_task = NPCTask.new()
-		new_task.type = NPCTask.Type.MOVE
-		new_task.move_target = self.global_position + (rand_direction * rand_dist)
+	pass
+	#if tasks.size() == 0 and state == State.IDLE:
+	#	var rand_direction = Vector2(rng.randf_range(-1.0, 1.0), rng.randf_range(-1.0, 1.0))
+	#	var rand_dist = rng.randf_range(50.0, 300.0)
+	#	var new_task = NPCTask.new()
+	#	new_task.type = NPCTask.Type.MOVE
+	#	new_task.move_target = self.global_position + (rand_direction * rand_dist)
 		#tasks.append(new_task)
-		print("idle tasks disabled (npc)")
+	#	print("idle tasks disabled (npc)")
 		#print("new task added" + ", tasks size: " + str(tasks.size()))
 		#print("set state = tasks")
 		#state = State.TASKS
@@ -337,3 +355,6 @@ func _on_task_scanner_body_exited(body: Node2D) -> void:
 	if interact_target == body:
 		if interact_target == null:
 			last_target_location = body
+
+func _on_interact_component_interact_call() -> void:
+	interact()

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="SkillsData" load_steps=8 format=3 uid="uid://cs3m6le7g7ybn"]
+
+[ext_resource type="Script" uid="uid://dgiq0qdl5x6os" path="res://Inventory/Scripts/SkillsData.gd" id="1_116tc"]
+[ext_resource type="Script" uid="uid://4pi3wi7bguu0" path="res://Classes/ActionSkill.gd" id="2_yswmg"]
+[ext_resource type="Resource" uid="uid://dpxjloyx1xhuv" path="res://Resources/ActionSkills/beam_rad_len_test.tres" id="3_rihgo"]
+[ext_resource type="Resource" uid="uid://kehhg3ok1k2x" path="res://Resources/ActionSkills/beam_skill_test.tres" id="4_6gs0o"]
+[ext_resource type="Resource" uid="uid://5xkec0vttdh6" path="res://Resources/ActionSkills/buff_aoe_test.tres" id="5_axlch"]
+[ext_resource type="Resource" uid="uid://bfvobd1solopx" path="res://Resources/ActionSkills/buff_skill_test.tres" id="6_fttj1"]
+[ext_resource type="Resource" uid="uid://d2m2r5ijg1ey1" path="res://Resources/ActionSkills/projectile_skill_test.tres" id="7_0wblp"]
+
+[resource]
+script = ExtResource("1_116tc")
+skill_datas = Array[ExtResource("2_yswmg")]([ExtResource("3_rihgo"), ExtResource("4_6gs0o"), ExtResource("5_axlch"), ExtResource("6_fttj1"), ExtResource("7_0wblp")])

@@ -23,7 +23,6 @@ func interact():
 	if inventory_data:
 		if not chest_opened and not GUI.external_inventory.visible:
 			GUI.init_external_inventory(inventory_data.slot_datas.size(), inventory_data)
-			GUI.init_external_inventory(inventory_data.slot_datas.size(), inventory_data)
 			chest.texture = opened_texture
 			chest_opened = true
 		else:

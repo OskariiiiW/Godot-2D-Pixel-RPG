@@ -1,94 +1,129 @@
-[gd_scene load_steps=23 format=3 uid="uid://bq4d7xg3rdumh"]
+[gd_scene load_steps=31 format=3 uid="uid://bq4d7xg3rdumh"]
 
-[ext_resource type="Script" path="res://Scripts/Components/StatsComponent.gd" id="1_snjjf"]
+[ext_resource type="Script" uid="uid://b7al3hymejblx" path="res://Nodes/Components/StatsComponent.gd" id="1_snjjf"]
 [ext_resource type="Resource" uid="uid://dreucwaoj3h43" path="res://Resources/Races/no_race.tres" id="2_7ijlr"]
-[ext_resource type="Script" path="res://Classes/Element.gd" id="2_83805"]
-[ext_resource type="Script" path="res://Classes/ItemElementType.gd" id="3_t8aaq"]
-[ext_resource type="Script" path="res://Classes/stats.gd" id="5_iy7ix"]
+[ext_resource type="Script" uid="uid://bng0786sarjuc" path="res://Classes/Element.gd" id="2_83805"]
+[ext_resource type="Script" uid="uid://clf3y328pifxb" path="res://Classes/stats.gd" id="5_iy7ix"]
 
-[sub_resource type="Resource" id="Resource_b8207"]
+[sub_resource type="Resource" id="Resource_wu5lo"]
 script = ExtResource("2_83805")
 element = 0
 value = 0.0
 
-[sub_resource type="Resource" id="Resource_30ws5"]
+[sub_resource type="Resource" id="Resource_0xmot"]
 script = ExtResource("2_83805")
 element = 1
 value = 0.0
 
-[sub_resource type="Resource" id="Resource_04oq7"]
+[sub_resource type="Resource" id="Resource_6u83j"]
 script = ExtResource("2_83805")
 element = 2
 value = 0.0
 
-[sub_resource type="Resource" id="Resource_gcjkk"]
+[sub_resource type="Resource" id="Resource_j8sk3"]
 script = ExtResource("2_83805")
 element = 3
 value = 0.0
 
-[sub_resource type="Resource" id="Resource_8sxja"]
-script = ExtResource("3_t8aaq")
-physical = 0.0
-magical = 0.0
-poison = 0.0
-curse = 0.0
-elements = Array[Object]([SubResource("Resource_b8207"), SubResource("Resource_30ws5"), SubResource("Resource_04oq7"), SubResource("Resource_gcjkk")])
-
-[sub_resource type="Resource" id="Resource_650l6"]
+[sub_resource type="Resource" id="Resource_03hfo"]
 script = ExtResource("2_83805")
 element = 0
 value = 0.0
 
-[sub_resource type="Resource" id="Resource_aq41h"]
+[sub_resource type="Resource" id="Resource_35vrs"]
 script = ExtResource("2_83805")
 element = 1
 value = 0.0
 
-[sub_resource type="Resource" id="Resource_lnx4c"]
+[sub_resource type="Resource" id="Resource_v8rgn"]
 script = ExtResource("2_83805")
 element = 2
 value = 0.0
 
-[sub_resource type="Resource" id="Resource_0uj0c"]
+[sub_resource type="Resource" id="Resource_slhqj"]
 script = ExtResource("2_83805")
 element = 3
 value = 0.0
 
-[sub_resource type="Resource" id="Resource_y0kvg"]
-script = ExtResource("3_t8aaq")
-physical = 0.0
-magical = 0.0
-poison = 0.0
-curse = 0.0
-elements = Array[Object]([SubResource("Resource_650l6"), SubResource("Resource_aq41h"), SubResource("Resource_lnx4c"), SubResource("Resource_0uj0c")])
-
-[sub_resource type="Resource" id="Resource_f0hyn"]
+[sub_resource type="Resource" id="Resource_bddaq"]
 script = ExtResource("2_83805")
 element = 0
 value = 0.0
 
-[sub_resource type="Resource" id="Resource_oapua"]
+[sub_resource type="Resource" id="Resource_ufsaw"]
 script = ExtResource("2_83805")
 element = 1
 value = 0.0
 
-[sub_resource type="Resource" id="Resource_yct1j"]
+[sub_resource type="Resource" id="Resource_jgjjw"]
 script = ExtResource("2_83805")
 element = 2
 value = 0.0
 
-[sub_resource type="Resource" id="Resource_p8hu7"]
+[sub_resource type="Resource" id="Resource_8nfjf"]
 script = ExtResource("2_83805")
 element = 3
 value = 0.0
 
-[sub_resource type="Resource" id="Resource_tygsj"]
-script = ExtResource("3_t8aaq")
-physical = 0.0
-magical = 0.0
-poison = 0.0
-curse = 0.0
-elements = Array[Object]([SubResource("Resource_f0hyn"), SubResource("Resource_oapua"), SubResource("Resource_yct1j"), SubResource("Resource_p8hu7")])
+[sub_resource type="Resource" id="Resource_baq7p"]
+script = ExtResource("2_83805")
+element = 0
+value = 0.0
+
+[sub_resource type="Resource" id="Resource_4fvhl"]
+script = ExtResource("2_83805")
+element = 1
+value = 0.0
+
+[sub_resource type="Resource" id="Resource_o3y2h"]
+script = ExtResource("2_83805")
+element = 2
+value = 0.0
+
+[sub_resource type="Resource" id="Resource_0l3f6"]
+script = ExtResource("2_83805")
+element = 3
+value = 0.0
+
+[sub_resource type="Resource" id="Resource_t7025"]
+script = ExtResource("2_83805")
+element = 0
+value = 0.0
+
+[sub_resource type="Resource" id="Resource_l8iob"]
+script = ExtResource("2_83805")
+element = 1
+value = 0.0
+
+[sub_resource type="Resource" id="Resource_vdgtg"]
+script = ExtResource("2_83805")
+element = 2
+value = 0.0
+
+[sub_resource type="Resource" id="Resource_d22t2"]
+script = ExtResource("2_83805")
+element = 3
+value = 0.0
+
+[sub_resource type="Resource" id="Resource_g4iqr"]
+script = ExtResource("2_83805")
+element = 0
+value = 0.0
+
+[sub_resource type="Resource" id="Resource_rlpdn"]
+script = ExtResource("2_83805")
+element = 1
+value = 0.0
+
+[sub_resource type="Resource" id="Resource_f3a66"]
+script = ExtResource("2_83805")
+element = 2
+value = 0.0
+
+[sub_resource type="Resource" id="Resource_oy5jv"]
+script = ExtResource("2_83805")
+element = 3
+value = 0.0
 
 [sub_resource type="Resource" id="Resource_as25m"]
 script = ExtResource("5_iy7ix")
@@ -127,8 +162,11 @@ kill_xp = 0
 [node name="StatsComponent" type="Node2D"]
 script = ExtResource("1_snjjf")
 race = ExtResource("2_7ijlr")
-resistances = SubResource("Resource_8sxja")
-resistances_buff = SubResource("Resource_y0kvg")
-resistances_percent_buff = SubResource("Resource_tygsj")
+resistances = Array[ExtResource("2_83805")]([SubResource("Resource_wu5lo"), SubResource("Resource_0xmot"), SubResource("Resource_6u83j"), SubResource("Resource_j8sk3")])
+resistances_buff = Array[ExtResource("2_83805")]([SubResource("Resource_03hfo"), SubResource("Resource_35vrs"), SubResource("Resource_v8rgn"), SubResource("Resource_slhqj")])
+resistances_percent_buff = Array[ExtResource("2_83805")]([SubResource("Resource_bddaq"), SubResource("Resource_ufsaw"), SubResource("Resource_jgjjw"), SubResource("Resource_8nfjf")])
+dmg = Array[ExtResource("2_83805")]([SubResource("Resource_baq7p"), SubResource("Resource_4fvhl"), SubResource("Resource_o3y2h"), SubResource("Resource_0l3f6")])
+dmg_buff = Array[ExtResource("2_83805")]([SubResource("Resource_t7025"), SubResource("Resource_l8iob"), SubResource("Resource_vdgtg"), SubResource("Resource_d22t2")])
+dmg_percent_buff = Array[ExtResource("2_83805")]([SubResource("Resource_g4iqr"), SubResource("Resource_rlpdn"), SubResource("Resource_f3a66"), SubResource("Resource_oy5jv")])
 stats = SubResource("Resource_as25m")
 stat_buffs = SubResource("Resource_0e5fy")

@@ -1,0 +1,158 @@
+[gd_scene load_steps=6 format=3 uid="uid://dl8hvlhpuewll"]
+
+[ext_resource type="Script" uid="uid://uy5sl3j8sa8c" path="res://Nodes/UI/PopUp/gui_messages.gd" id="1_thoud"]
+[ext_resource type="Script" uid="uid://uudegq5ap8pe" path="res://Nodes/UI/Player/movable_message_box.gd" id="2_e0f3b"]
+
+[sub_resource type="Animation" id="Animation_qhel3"]
+resource_name = "PopIn"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PopInContainer:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ql1ig"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PopInContainer:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_r4l3b"]
+_data = {
+&"PopIn": SubResource("Animation_qhel3"),
+&"RESET": SubResource("Animation_ql1ig")
+}
+
+[node name="GUIMessages" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_thoud")
+
+[node name="MessageBox" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -76.0
+offset_right = 300.0
+grow_vertical = 0
+mouse_filter = 0
+theme_override_constants/separation = -20
+alignment = 2
+script = ExtResource("2_e0f3b")
+
+[node name="TabBar" type="TabBar" parent="MessageBox"]
+layout_mode = 2
+current_tab = 0
+clip_tabs = false
+scrolling_enabled = false
+tab_count = 5
+tab_0/title = "All"
+tab_1/title = "Dialogue"
+tab_2/title = "Battle"
+tab_3/title = "System"
+tab_4/title = "Misc"
+
+[node name="Margin" type="MarginContainer" parent="MessageBox"]
+custom_minimum_size = Vector2(300, 50)
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="PanelC" type="PanelContainer" parent="MessageBox/Margin"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Margin2" type="MarginContainer" parent="MessageBox/Margin/PanelC"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="ScrollC" type="ScrollContainer" parent="MessageBox/Margin/PanelC/Margin2"]
+layout_mode = 2
+mouse_filter = 2
+follow_focus = true
+horizontal_scroll_mode = 0
+
+[node name="TextContainer" type="VBoxContainer" parent="MessageBox/Margin/PanelC/Margin2/ScrollC"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+alignment = 2
+
+[node name="ShowHideButton" type="Button" parent="MessageBox/Margin/PanelC"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+toggle_mode = true
+text = "Hide"
+
+[node name="PopInContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -110.5
+offset_top = -135.0
+offset_right = 110.5
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_bottom = 100
+
+[node name="Panel" type="PanelContainer" parent="PopInContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+mouse_filter = 2
+
+[node name="Margin" type="MarginContainer" parent="PopInContainer/Panel"]
+layout_mode = 2
+size_flags_vertical = 8
+mouse_filter = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+
+[node name="PopInText" type="Label" parent="PopInContainer/Panel/Margin"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 25
+text = "placeholder_text"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_r4l3b")
+}
+
+[connection signal="tab_changed" from="MessageBox/TabBar" to="." method="_on_tab_bar_tab_changed"]
+[connection signal="toggled" from="MessageBox/Margin/PanelC/ShowHideButton" to="." method="_on_show_hide_button_toggled"]

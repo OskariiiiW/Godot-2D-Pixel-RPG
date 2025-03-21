@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://fblxslfe483l" path="res://Nodes/Components/simple_stats_component.tscn" id="1_lfuc6"]
 [ext_resource type="Texture2D" uid="uid://boidcsrpserov" path="res://Props/tree_tundra.png" id="1_m2t4a"]
-[ext_resource type="Resource" uid="uid://8no3jeuo0ykp" path="res://Resources/Items/Wood_log.tres" id="2_br4fv"]
+[ext_resource type="Resource" uid="uid://8no3jeuo0ykp" path="res://Resources/Items&Projectiles/Misc/wood_log.tres" id="2_br4fv"]
 [ext_resource type="PackedScene" uid="uid://demlxi468b16l" path="res://Nodes/Components/loot_component.tscn" id="3_egr1i"]
 [ext_resource type="PackedScene" uid="uid://co3lke74w50ik" path="res://Nodes/Components/hitbox_component.tscn" id="3_raio5"]
 [ext_resource type="PackedScene" uid="uid://c6611mwm1gryk" path="res://Nodes/Props/dropped_item.tscn" id="4_si12w"]

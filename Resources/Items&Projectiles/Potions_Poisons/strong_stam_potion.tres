@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=5 format=3 uid="uid://6ndsniaxf5mu"]
+
+[ext_resource type="Script" uid="uid://b5n22gac4gbi1" path="res://Classes/ConsumableEffect.gd" id="1_8x1rl"]
+[ext_resource type="Texture2D" uid="uid://cqqfervlryi05" path="res://Textures/Icons/Potion/Green Potion 2.png" id="2_rd4uq"]
+[ext_resource type="Script" uid="uid://b4uuj4eu7lqrl" path="res://Inventory/Scripts/ItemData.gd" id="2_tqflv"]
+
+[sub_resource type="Resource" id="Resource_a2x7n"]
+script = ExtResource("1_8x1rl")
+element_type = 0
+stat_type = 1
+effect_type = 0
+amount_type = 0
+amount = 100.0
+duration = 0.0
+can_stack = false
+icon = ExtResource("2_rd4uq")
+
+[resource]
+script = ExtResource("2_tqflv")
+tier = 3
+type = 2
+name = "Strong Stamina Potion"
+value = 500
+weight = 1.0
+description = "Restores x amount of stamina"
+is_stackable = true
+icon = ExtResource("2_rd4uq")
+effects = Array[ExtResource("1_8x1rl")]([SubResource("Resource_a2x7n")])

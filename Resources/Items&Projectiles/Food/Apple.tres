@@ -1,0 +1,39 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=7 format=3 uid="uid://c00bbx3t0oni0"]
+
+[ext_resource type="Script" uid="uid://b5n22gac4gbi1" path="res://Classes/ConsumableEffect.gd" id="1_jb1ir"]
+[ext_resource type="Script" uid="uid://b4uuj4eu7lqrl" path="res://Inventory/Scripts/ItemData.gd" id="1_qhwun"]
+[ext_resource type="Texture2D" uid="uid://kekc251vcaf3" path="res://Textures/Gear/Leather Boot.png" id="2_m4va7"]
+[ext_resource type="Texture2D" uid="uid://busxa202c2ok4" path="res://Textures/Icons/Food/Apple.png" id="2_v5pk6"]
+
+[sub_resource type="Resource" id="Resource_h3d5g"]
+script = ExtResource("1_jb1ir")
+element_type = 0
+stat_type = 0
+effect_type = 0
+amount_type = 0
+amount = 10.0
+duration = 0.0
+can_stack = false
+
+[sub_resource type="Resource" id="Resource_nh3ev"]
+script = ExtResource("1_jb1ir")
+element_type = 0
+stat_type = 1
+effect_type = 3
+amount_type = 0
+amount = -1.0
+duration = 5.0
+can_stack = false
+icon = ExtResource("2_m4va7")
+
+[resource]
+script = ExtResource("1_qhwun")
+tier = 0
+type = 3
+name = "Apple_test"
+value = 10
+weight = 1.0
+description = "Juicyyyy"
+is_stackable = true
+icon = ExtResource("2_v5pk6")
+effects = Array[ExtResource("1_jb1ir")]([SubResource("Resource_h3d5g"), SubResource("Resource_nh3ev")])

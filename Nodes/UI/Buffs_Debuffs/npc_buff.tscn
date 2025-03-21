@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://df24juevcvbch"]
+
+[ext_resource type="Script" uid="uid://btu20sw5yongg" path="res://Nodes/UI/Buffs_Debuffs/npc_buff.gd" id="1_nwyyf"]
+
+[node name="NPCBuff" type="Timer"]
+autostart = true
+script = ExtResource("1_nwyyf")
+
+[connection signal="timeout" from="." to="." method="_on_timeout"]

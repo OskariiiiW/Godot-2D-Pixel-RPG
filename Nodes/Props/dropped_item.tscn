@@ -1,9 +1,9 @@
 [gd_scene load_steps=8 format=3 uid="uid://c6611mwm1gryk"]
 
-[ext_resource type="Script" path="res://Scripts/dropped_item.gd" id="1_hvcvj"]
+[ext_resource type="Script" uid="uid://b4gtmem7qsyoi" path="res://Scripts/dropped_item.gd" id="1_hvcvj"]
 [ext_resource type="PackedScene" uid="uid://blccn3817tqgv" path="res://Nodes/Components/item_component.tscn" id="2_ego17"]
-[ext_resource type="Resource" uid="uid://dsuqborgvcdpm" path="res://Resources/Items/debug_item.tres" id="3_j4vgw"]
-[ext_resource type="Script" path="res://Inventory/Scripts/SlotData.gd" id="4_vnlch"]
+[ext_resource type="Resource" uid="uid://dsuqborgvcdpm" path="res://Resources/Items&Projectiles/Misc/holy_log.tres" id="3_j4vgw"]
+[ext_resource type="Script" uid="uid://s8nuariqhdlw" path="res://Inventory/Scripts/SlotData.gd" id="4_vnlch"]
 [ext_resource type="PackedScene" uid="uid://cs6gi1dg41mch" path="res://Nodes/Components/npc_interact_component.tscn" id="5_qnq17"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2h1s8"]

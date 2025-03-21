@@ -2,7 +2,7 @@ extends Resource
 
 class_name ConsumableEffect
 
-enum ElementType {NONE, PHYSICAL, POISON, MAGIC, CURSE}
+enum ElementType {NONE, PHYSICAL, MAGIC, POISON, CURSE}
 enum StatType {HP, SP, MP, DMG, RES, SPEED}
 enum EffectType {RESTORE, ENHANCE, REGEN, SKILLCOST}
 enum AmountType {FLATVALUE, PERCENT}

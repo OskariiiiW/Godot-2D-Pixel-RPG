@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://iwoitt4tok4v"]
 
-[ext_resource type="Script" path="res://Inventory/Scripts/item_tooltip.gd" id="1_m6fvn"]
+[ext_resource type="Script" uid="uid://bxamflu2jvltx" path="res://Inventory/Scripts/item_tooltip.gd" id="1_m6fvn"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_vjp28"]
 font_size = 18

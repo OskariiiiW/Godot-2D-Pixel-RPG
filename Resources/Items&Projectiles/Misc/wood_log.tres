@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=4 format=3 uid="uid://8no3jeuo0ykp"]
+
+[ext_resource type="Script" uid="uid://b5n22gac4gbi1" path="res://Classes/ConsumableEffect.gd" id="1_fg6rp"]
+[ext_resource type="Script" uid="uid://b4uuj4eu7lqrl" path="res://Inventory/Scripts/ItemData.gd" id="1_lnw75"]
+[ext_resource type="Texture2D" uid="uid://d2qcdn1mic2cd" path="res://Textures/Icons/Material/Wood Log.png" id="2_rgosm"]
+
+[resource]
+script = ExtResource("1_lnw75")
+tier = 0
+type = 4
+name = "Wood log"
+value = 10
+weight = 2.0
+description = "Logs from a tree"
+is_stackable = true
+icon = ExtResource("2_rgosm")
+effects = Array[ExtResource("1_fg6rp")]([])

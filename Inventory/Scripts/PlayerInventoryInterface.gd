@@ -1,13 +1,15 @@
 extends PanelContainer
 
-var base_player_inventory = preload("res://Inventory/player_inventory.tres")
+#var base_player_inventory = preload("res://Inventory/player_inventory.tres")
 var inventory_item_slot = preload("res://Inventory/Nodes/inventory_slot.tscn")
 
-@onready var inv: GridContainer = $MarginContainer/Inv
+@onready var inv: GridContainer = $MarginContainer/HBox/Inv
 
+@export var player_inventory : InventoryData
 @export var gold : int
+@export var player_skills : SkillsData
 
-var player_inventory : InventoryData
+#var player_inventory : InventoryData
 var isDragging = false
 var movedToTop = false # dunno if even works
 var parent
@@ -24,7 +26,7 @@ func _gui_input(event):
 			isDragging = true
 
 func _ready():
-	player_inventory = base_player_inventory
+	#player_inventory = base_player_inventory
 	
 	for i in player_inventory.slot_datas.size(): #makes empty slots for every object in array
 		var slot := inventory_item_slot.instantiate()

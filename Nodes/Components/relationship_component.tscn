@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cksh0fxuu056c"]
 
-[ext_resource type="Script" path="res://Scripts/Components/relationship_component.gd" id="1_kcthy"]
+[ext_resource type="Script" uid="uid://dk7ff0m5frvno" path="res://Nodes/Components/relationship_component.gd" id="1_kcthy"]
 
 [node name="RelationshipComponent" type="Node2D"]
 script = ExtResource("1_kcthy")

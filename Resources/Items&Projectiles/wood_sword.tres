@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=8 format=3 uid="uid://iam6mfmnbkbl"]
+
+[ext_resource type="Script" uid="uid://b5n22gac4gbi1" path="res://Classes/ConsumableEffect.gd" id="1_eeimk"]
+[ext_resource type="Script" uid="uid://b4uuj4eu7lqrl" path="res://Inventory/Scripts/ItemData.gd" id="1_ysu1f"]
+[ext_resource type="Texture2D" uid="uid://dumy1my02dla0" path="res://Textures/Weapons/Wooden Sword.png" id="2_61paa"]
+[ext_resource type="Script" uid="uid://cr5yt258iapqc" path="res://Classes/equippable_item.gd" id="3_r3fnm"]
+[ext_resource type="Script" uid="uid://bng0786sarjuc" path="res://Classes/Element.gd" id="4_fbt3g"]
+
+[sub_resource type="Resource" id="Resource_mu7ty"]
+script = ExtResource("4_fbt3g")
+element = 0
+value = 10.0
+
+[sub_resource type="Resource" id="Resource_kvcst"]
+script = ExtResource("3_r3fnm")
+is_ranged = false
+weapon_type = 6
+projectile_type = 0
+projectile_count = 1
+damage = Array[ExtResource("4_fbt3g")]([SubResource("Resource_mu7ty")])
+knockback = 0.0
+
+[resource]
+script = ExtResource("1_ysu1f")
+tier = 0
+type = 13
+name = "Test sword"
+value = 100
+weight = 6.0
+description = "Poor fucking sword"
+is_stackable = false
+weapon = SubResource("Resource_kvcst")
+icon = ExtResource("2_61paa")
+effects = Array[ExtResource("1_eeimk")]([])

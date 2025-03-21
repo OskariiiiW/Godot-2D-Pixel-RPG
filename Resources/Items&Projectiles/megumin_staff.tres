@@ -1,0 +1,36 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=9 format=3 uid="uid://dpcq75unyhpnv"]
+
+[ext_resource type="Script" uid="uid://b5n22gac4gbi1" path="res://Classes/ConsumableEffect.gd" id="1_qk67s"]
+[ext_resource type="Script" uid="uid://b4uuj4eu7lqrl" path="res://Inventory/Scripts/ItemData.gd" id="2_h3aj8"]
+[ext_resource type="Texture2D" uid="uid://dei422crn8j6i" path="res://Textures/Weapons/MeguStaff.png" id="3_8d6xd"]
+[ext_resource type="Script" uid="uid://bng0786sarjuc" path="res://Classes/Element.gd" id="4_eqe05"]
+[ext_resource type="Resource" uid="uid://c2f2gkd2l8kfo" path="res://Resources/Items&Projectiles/ParticleProjectiles/firebolt.tres" id="5_hi2gu"]
+[ext_resource type="Script" uid="uid://cr5yt258iapqc" path="res://Classes/equippable_item.gd" id="6_nmfiy"]
+
+[sub_resource type="Resource" id="Resource_tjl18"]
+script = ExtResource("4_eqe05")
+element = 0
+value = 10.0
+
+[sub_resource type="Resource" id="Resource_73xwi"]
+script = ExtResource("6_nmfiy")
+is_ranged = true
+weapon_type = 5
+projectile = ExtResource("5_hi2gu")
+projectile_type = 0
+projectile_count = 1
+damage = Array[ExtResource("4_eqe05")]([SubResource("Resource_tjl18")])
+knockback = 0.0
+
+[resource]
+script = ExtResource("2_h3aj8")
+tier = 3
+type = 13
+name = "Megumin's Staff"
+value = 150
+weight = 5.0
+description = "Be afraid of the Crimson Clan"
+is_stackable = false
+weapon = SubResource("Resource_73xwi")
+icon = ExtResource("3_8d6xd")
+effects = Array[ExtResource("1_qk67s")]([])

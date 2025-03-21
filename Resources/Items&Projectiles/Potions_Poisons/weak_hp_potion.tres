@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=5 format=3 uid="uid://cy1ye84rtcylu"]
+
+[ext_resource type="Script" uid="uid://b5n22gac4gbi1" path="res://Classes/ConsumableEffect.gd" id="1_36k7p"]
+[ext_resource type="Script" uid="uid://b4uuj4eu7lqrl" path="res://Inventory/Scripts/ItemData.gd" id="2_4mo4l"]
+[ext_resource type="Texture2D" uid="uid://bmhf47q0u71jh" path="res://Textures/Icons/Potion/Red Potion.png" id="3_v607t"]
+
+[sub_resource type="Resource" id="Resource_sybe8"]
+script = ExtResource("1_36k7p")
+element_type = 0
+stat_type = 0
+effect_type = 0
+amount_type = 0
+amount = 20.0
+duration = 0.0
+can_stack = false
+
+[resource]
+script = ExtResource("2_4mo4l")
+tier = 1
+type = 2
+name = "Weak Health Potion"
+value = 100
+weight = 0.1
+description = "Restores 20 health"
+is_stackable = true
+icon = ExtResource("3_v607t")
+effects = Array[ExtResource("1_36k7p")]([SubResource("Resource_sybe8")])

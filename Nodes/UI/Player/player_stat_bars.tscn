@@ -1,0 +1,127 @@
+[gd_scene load_steps=2 format=3 uid="uid://cner6b112gmpi"]
+
+[ext_resource type="Script" uid="uid://lj3qfo113wob" path="res://Nodes/UI/Player/player_stat_bars.gd" id="1_6nigt"]
+
+[node name="PlayerStatBars" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_6nigt")
+
+[node name="Margin" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+
+[node name="VBox" type="VBoxContainer" parent="Margin"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="HealthBar" type="ProgressBar" parent="Margin/VBox"]
+modulate = Color(0.961518, 4.45209e-06, 9.62615e-07, 1)
+custom_minimum_size = Vector2(300, 25)
+layout_mode = 2
+size_flags_horizontal = 0
+mouse_filter = 2
+value = 69.0
+show_percentage = false
+
+[node name="HBox" type="HBoxContainer" parent="Margin/VBox/HealthBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Current" type="Label" parent="Margin/VBox/HealthBar/HBox"]
+layout_mode = 2
+text = "NaN"
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="Margin/VBox/HealthBar/HBox"]
+layout_mode = 2
+text = "/"
+horizontal_alignment = 1
+
+[node name="Max" type="Label" parent="Margin/VBox/HealthBar/HBox"]
+layout_mode = 2
+text = "NaN"
+horizontal_alignment = 1
+
+[node name="StaminaBar" type="ProgressBar" parent="Margin/VBox"]
+modulate = Color(0, 0.638958, 0.229855, 1)
+custom_minimum_size = Vector2(250, 25)
+layout_mode = 2
+size_flags_horizontal = 0
+mouse_filter = 2
+value = 69.0
+show_percentage = false
+
+[node name="HBox" type="HBoxContainer" parent="Margin/VBox/StaminaBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Current" type="Label" parent="Margin/VBox/StaminaBar/HBox"]
+layout_mode = 2
+text = "NaN"
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="Margin/VBox/StaminaBar/HBox"]
+layout_mode = 2
+text = "/"
+horizontal_alignment = 1
+
+[node name="Max" type="Label" parent="Margin/VBox/StaminaBar/HBox"]
+layout_mode = 2
+text = "NaN"
+horizontal_alignment = 1
+
+[node name="MagickaBar" type="ProgressBar" parent="Margin/VBox"]
+modulate = Color(0, 0.443513, 0.98818, 1)
+custom_minimum_size = Vector2(250, 25)
+layout_mode = 2
+size_flags_horizontal = 0
+mouse_filter = 2
+value = 69.0
+show_percentage = false
+
+[node name="HBox" type="HBoxContainer" parent="Margin/VBox/MagickaBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Current" type="Label" parent="Margin/VBox/MagickaBar/HBox"]
+layout_mode = 2
+text = "NaN"
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="Margin/VBox/MagickaBar/HBox"]
+layout_mode = 2
+text = "/"
+horizontal_alignment = 1
+
+[node name="Max" type="Label" parent="Margin/VBox/MagickaBar/HBox"]
+layout_mode = 2
+text = "NaN"
+horizontal_alignment = 1

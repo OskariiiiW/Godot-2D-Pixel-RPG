@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bqp8itqm8nfpu"]
 
-[ext_resource type="Script" path="res://ActionBar/action_bar_slot.gd" id="1_wifcj"]
+[ext_resource type="Script" uid="uid://bxw6i43i2oakk" path="res://ActionBar/action_bar_slot.gd" id="1_wifcj"]
 
 [node name="ActionBarSlot" type="PanelContainer"]
 custom_minimum_size = Vector2(64, 64)

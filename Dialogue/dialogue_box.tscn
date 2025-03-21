@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=3 uid="uid://pl7legwd8dgr"]
 
-[ext_resource type="Script" path="res://Dialogue/dialogue_box.gd" id="1_n48cu"]
-[ext_resource type="Script" path="res://Dialogue/Dialogue.gd" id="2_5auac"]
+[ext_resource type="Script" uid="uid://c7qq47t678yy" path="res://Dialogue/dialogue_box.gd" id="1_n48cu"]
+[ext_resource type="Script" uid="uid://fw5pnh6c4g0f" path="res://Dialogue/Dialogue.gd" id="2_5auac"]
 [ext_resource type="Resource" uid="uid://bmvf3r3j7x2fs" path="res://Dialogue/Lines/dialogue_test.tres" id="3_wlnxj"]
 [ext_resource type="Resource" uid="uid://ccckvg7lg2xaj" path="res://Dialogue/Lines/test_dummy_dialogue.tres" id="4_uulnf"]
-[ext_resource type="Texture2D" uid="uid://n5r5wkwfw8p" path="res://Textures/NPC/jahyyy.png" id="5_18y1g"]
+[ext_resource type="Texture2D" uid="uid://bgewgu37sineg" path="res://Textures/NPC/jahyyyy3.png" id="5_0u2xf"]
 
 [node name="DialogueBox" type="Control"]
 layout_mode = 3
@@ -42,7 +42,7 @@ scale = Vector2(0.55, 0.55)
 pivot_offset = Vector2(448, 1152)
 size_flags_horizontal = 0
 size_flags_vertical = 0
-texture = ExtResource("5_18y1g")
+texture = ExtResource("5_0u2xf")
 stretch_mode = 2
 
 [node name="TextBoxToggle" type="CheckButton" parent="."]

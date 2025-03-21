@@ -3,10 +3,10 @@
 [ext_resource type="PackedScene" uid="uid://fblxslfe483l" path="res://Nodes/Components/simple_stats_component.tscn" id="1_t0y5m"]
 [ext_resource type="Texture2D" uid="uid://0me50eu717u4" path="res://Props/TxTree1.png" id="2_rorsy"]
 [ext_resource type="PackedScene" uid="uid://co3lke74w50ik" path="res://Nodes/Components/hitbox_component.tscn" id="3_cfgsw"]
-[ext_resource type="Resource" uid="uid://8no3jeuo0ykp" path="res://Resources/Items/Wood_log.tres" id="3_lw2ud"]
+[ext_resource type="Resource" uid="uid://8no3jeuo0ykp" path="res://Resources/Items&Projectiles/Misc/wood_log.tres" id="3_lw2ud"]
 [ext_resource type="PackedScene" uid="uid://demlxi468b16l" path="res://Nodes/Components/loot_component.tscn" id="3_m84l0"]
 [ext_resource type="PackedScene" uid="uid://c6611mwm1gryk" path="res://Nodes/Props/dropped_item.tscn" id="4_tbwqv"]
-[ext_resource type="Script" path="res://Classes/ItemElementType.gd" id="5_pcrdg"]
+[ext_resource type="Script" uid="uid://bt2pu1y3yux8e" path="res://Classes/ItemElementType.gd" id="5_pcrdg"]
 
 [sub_resource type="Resource" id="Resource_h2lgq"]
 script = ExtResource("5_pcrdg")
@@ -14,6 +14,7 @@ physical = 0.0
 magical = 0.0
 poison = 20.0
 curse = 100.0
+elements = null
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_x2y14"]
 radius = 5.0

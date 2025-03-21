@@ -1,8 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://cmakhrorlww66"]
-
-[ext_resource type="Script" path="res://Scripts/Components/HealthComponent.gd" id="1_oy4u6"]
-[ext_resource type="PackedScene" uid="uid://c6611mwm1gryk" path="res://Nodes/Props/dropped_item.tscn" id="2_a77gy"]
-
-[node name="HealthComponent" type="Node2D"]
-script = ExtResource("1_oy4u6")
-loot_base_node = ExtResource("2_a77gy")

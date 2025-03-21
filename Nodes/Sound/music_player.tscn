@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://yvbajhqftfjn"]
 
 [ext_resource type="AudioStream" uid="uid://dd8ms573h7nwc" path="res://Sounds/afushi.wav" id="1_ycxgg"]
-[ext_resource type="Script" path="res://Scripts/music_player.gd" id="2_ra1xl"]
+[ext_resource type="Script" uid="uid://c5d1kt667cjgd" path="res://Scripts/music_player.gd" id="2_ra1xl"]
 
 [node name="MusicPlayer" type="AudioStreamPlayer"]
 stream = ExtResource("1_ycxgg")

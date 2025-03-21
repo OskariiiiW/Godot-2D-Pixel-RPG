@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="ActionSkill" load_steps=6 format=3 uid="uid://kehhg3ok1k2x"]
+
+[ext_resource type="Script" uid="uid://bng0786sarjuc" path="res://Classes/Element.gd" id="1_xel0j"]
+[ext_resource type="Script" uid="uid://b5n22gac4gbi1" path="res://Classes/ConsumableEffect.gd" id="2_plias"]
+[ext_resource type="Script" uid="uid://4pi3wi7bguu0" path="res://Classes/ActionSkill.gd" id="2_stu3b"]
+[ext_resource type="Texture2D" uid="uid://b86cddo8ochw" path="res://Textures/Icons/Monster Part/Monster Meat.png" id="2_vyygj"]
+
+[sub_resource type="Resource" id="Resource_3xikq"]
+script = ExtResource("1_xel0j")
+element = 3
+value = 7e+07
+
+[resource]
+script = ExtResource("2_stu3b")
+name = "Beam test"
+damage = Array[ExtResource("1_xel0j")]([SubResource("Resource_3xikq")])
+cost = 5.0
+description = "BEEEEMU"
+cost_type = 2
+skill_type = 1
+target_type = 1
+beam_length = 100.0
+beam_radius = 10.0
+target_count = 5
+effects = Array[ExtResource("2_plias")]([])
+icon = ExtResource("2_vyygj")

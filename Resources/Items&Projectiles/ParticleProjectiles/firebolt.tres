@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="RangedProjectile" load_steps=7 format=3 uid="uid://c2f2gkd2l8kfo"]
+
+[ext_resource type="Script" uid="uid://bng0786sarjuc" path="res://Classes/Element.gd" id="1_rthjg"]
+[ext_resource type="Material" uid="uid://bgd7o78n4dead" path="res://Resources/Items&Projectiles/ParticleProjectiles/Firebolt/firebolt_impact.tres" id="2_swf0v"]
+[ext_resource type="Script" uid="uid://csvjnunq7m3o4" path="res://Classes/ranged_projectile.gd" id="3_72vrc"]
+[ext_resource type="Texture2D" uid="uid://c6kdis2bbk6g1" path="res://Textures/Fireball.png" id="4_hsqsl"]
+[ext_resource type="Material" uid="uid://ry1uubv7xplw" path="res://Resources/Items&Projectiles/ParticleProjectiles/Firebolt/firebolt_trail.tres" id="5_heyqy"]
+
+[sub_resource type="Resource" id="Resource_0w8au"]
+script = ExtResource("1_rthjg")
+element = 1
+value = 15.0
+
+[resource]
+script = ExtResource("3_72vrc")
+name = "Firebolt"
+texture = ExtResource("4_hsqsl")
+trail = ExtResource("5_heyqy")
+impact = ExtResource("2_swf0v")
+speed = 3.0
+duration = 2.0
+is_piercing = false
+knockback = 0.0
+damage = Array[ExtResource("1_rthjg")]([SubResource("Resource_0w8au")])

@@ -1,0 +1,45 @@
+[gd_resource type="Resource" script_class="ActionSkill" load_steps=9 format=3 uid="uid://bfvobd1solopx"]
+
+[ext_resource type="Script" uid="uid://bng0786sarjuc" path="res://Classes/Element.gd" id="1_2ix8g"]
+[ext_resource type="Script" uid="uid://4pi3wi7bguu0" path="res://Classes/ActionSkill.gd" id="2_4db5j"]
+[ext_resource type="Texture2D" uid="uid://c7hdw0150p4t8" path="res://Textures/Icons/Misc/Heart.png" id="3_ebiw3"]
+[ext_resource type="Texture2D" uid="uid://daq28kufxluah" path="res://Textures/Icons/Weapon & Tool/Knife.png" id="3_stant"]
+[ext_resource type="Script" uid="uid://b5n22gac4gbi1" path="res://Classes/ConsumableEffect.gd" id="3_wmjwr"]
+[ext_resource type="Texture2D" uid="uid://dosvb6655diia" path="res://Textures/Icons/Weapon & Tool/Silver Sword.png" id="4_juf54"]
+
+[sub_resource type="Resource" id="Resource_i33dp"]
+script = ExtResource("3_wmjwr")
+element_type = 1
+stat_type = 3
+effect_type = 1
+amount_type = 0
+amount = 50.0
+duration = 20.0
+can_stack = false
+icon = ExtResource("3_stant")
+
+[sub_resource type="Resource" id="Resource_cf465"]
+script = ExtResource("3_wmjwr")
+element_type = 0
+stat_type = 0
+effect_type = 1
+amount_type = 0
+amount = 666.0
+duration = 5.0
+can_stack = false
+icon = ExtResource("3_ebiw3")
+
+[resource]
+script = ExtResource("2_4db5j")
+name = "Buff test"
+damage = Array[ExtResource("1_2ix8g")]([])
+cost = 20.0
+description = ""
+cost_type = 2
+skill_type = 2
+target_type = 1
+beam_length = 1.0
+beam_radius = 1.0
+target_count = 1
+effects = Array[ExtResource("3_wmjwr")]([SubResource("Resource_i33dp"), SubResource("Resource_cf465")])
+icon = ExtResource("4_juf54")

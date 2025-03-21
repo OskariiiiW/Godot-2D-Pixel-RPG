@@ -1,17 +1,21 @@
-[gd_scene load_steps=13 format=3 uid="uid://c0mt7l0irxumt"]
+[gd_scene load_steps=17 format=3 uid="uid://c0mt7l0irxumt"]
 
-[ext_resource type="Script" path="res://Scripts/GUI.gd" id="1_0po0u"]
+[ext_resource type="Script" uid="uid://hmwgxio6vdoh" path="res://Nodes/UI/GUI.gd" id="1_0po0u"]
 [ext_resource type="PackedScene" uid="uid://bln2tkj2kr0gg" path="res://ActionBar/action_bar.tscn" id="2_llj1k"]
-[ext_resource type="Script" path="res://Inventory/Scripts/PlayerInventoryInterface.gd" id="3_5d28e"]
-[ext_resource type="Script" path="res://Player/PlayerStats.gd" id="4_000ho"]
+[ext_resource type="Script" uid="uid://cp0ylakwl0icg" path="res://Inventory/Scripts/PlayerInventoryInterface.gd" id="3_5d28e"]
+[ext_resource type="Script" uid="uid://cfhl7hxn0fg0s" path="res://Player/PlayerStats.gd" id="4_000ho"]
 [ext_resource type="PackedScene" uid="uid://bs3oe5bt3eqnu" path="res://Inventory/Nodes/inventory_slot.tscn" id="5_wdn12"]
-[ext_resource type="Script" path="res://Inventory/Scripts/ExternalInventory.gd" id="6_gix8e"]
+[ext_resource type="Resource" uid="uid://csa8wvc7kgaok" path="res://Inventory/InventoryDatas/player_inventory.tres" id="6_dh7fq"]
+[ext_resource type="Texture2D" uid="uid://xuc3b0jeu66f" path="res://Textures/Icons/Equipment/Bag.png" id="6_fp6yj"]
+[ext_resource type="Script" uid="uid://bvpcgjjvdpyy5" path="res://Inventory/Scripts/ExternalInventory.gd" id="6_gix8e"]
+[ext_resource type="Texture2D" uid="uid://g360gkcwj5k2" path="res://Textures/Icons/Misc/Scroll.png" id="7_143ot"]
 [ext_resource type="PackedScene" uid="uid://pl7legwd8dgr" path="res://Dialogue/dialogue_box.tscn" id="7_hlgia"]
+[ext_resource type="Resource" uid="uid://cs3m6le7g7ybn" path="res://Inventory/SkillDatas/player_skills.tres" id="7_y7jxc"]
 [ext_resource type="PackedScene" uid="uid://bf0jmi4bp0ets" path="res://Inventory/shop_ui.tscn" id="8_gpay8"]
-[ext_resource type="PackedScene" uid="uid://cner6b112gmpi" path="res://Nodes/UI/player_stat_bars.tscn" id="9_pgdct"]
-[ext_resource type="PackedScene" uid="uid://gkm4wl6jrusc" path="res://Nodes/UI/Buffs_Debuffs/buff_list.tscn" id="10_a7cce"]
-[ext_resource type="PackedScene" uid="uid://dl8hvlhpuewll" path="res://Nodes/UI/pop_up.tscn" id="11_llequ"]
-[ext_resource type="PackedScene" uid="uid://q4jy2ykdqepi" path="res://Nodes/UI/PauseMenu.tscn" id="12_732ny"]
+[ext_resource type="PackedScene" uid="uid://cner6b112gmpi" path="res://Nodes/UI/Player/player_stat_bars.tscn" id="9_pgdct"]
+[ext_resource type="PackedScene" uid="uid://gkm4wl6jrusc" path="res://Nodes/UI/Player/buff_list.tscn" id="10_a7cce"]
+[ext_resource type="PackedScene" uid="uid://dl8hvlhpuewll" path="res://Nodes/UI/PopUp/gui_messages.tscn" id="11_llequ"]
+[ext_resource type="PackedScene" uid="uid://q4jy2ykdqepi" path="res://Nodes/UI/PauseMenu/PauseMenu.tscn" id="12_732ny"]
 
 [node name="GUI" type="CanvasLayer" node_paths=PackedStringArray("player_stats")]
 script = ExtResource("1_0po0u")
@@ -31,16 +35,18 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -340.0
-offset_top = -177.5
-offset_right = 340.0
-offset_bottom = 178.5
+offset_left = -360.0
+offset_top = -178.0
+offset_right = 360.0
+offset_bottom = 178.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("3_5d28e")
+player_inventory = ExtResource("6_dh7fq")
 gold = 2000
+player_skills = ExtResource("7_y7jxc")
 
 [node name="MarginContainer" type="MarginContainer" parent="PlayerInventory"]
 layout_mode = 2
@@ -49,7 +55,27 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="Inv" type="GridContainer" parent="PlayerInventory/MarginContainer"]
+[node name="HBox" type="HBoxContainer" parent="PlayerInventory/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="VBox" type="VBoxContainer" parent="PlayerInventory/MarginContainer/HBox"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="ChangeToInv" type="Button" parent="PlayerInventory/MarginContainer/HBox/VBox"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+icon = ExtResource("6_fp6yj")
+
+[node name="ChangeToSkills" type="Button" parent="PlayerInventory/MarginContainer/HBox/VBox"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+icon = ExtResource("7_143ot")
+
+[node name="Inv" type="GridContainer" parent="PlayerInventory/MarginContainer/HBox"]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
@@ -61,43 +87,43 @@ size_flags_horizontal = 8
 size_flags_vertical = 4
 script = ExtResource("4_000ho")
 
-[node name="HBox" type="HBoxContainer" parent="PlayerInventory/MarginContainer/PlayerStats"]
+[node name="Head" type="HBoxContainer" parent="PlayerInventory/MarginContainer/PlayerStats"]
 layout_mode = 2
 
-[node name="Head" parent="PlayerInventory/MarginContainer/PlayerStats/HBox" instance=ExtResource("5_wdn12")]
+[node name="Head" parent="PlayerInventory/MarginContainer/PlayerStats/Head" instance=ExtResource("5_wdn12")]
 layout_mode = 2
 type = 5
 
-[node name="HBox2" type="HBoxContainer" parent="PlayerInventory/MarginContainer/PlayerStats"]
+[node name="ChestBack" type="HBoxContainer" parent="PlayerInventory/MarginContainer/PlayerStats"]
 layout_mode = 2
 
-[node name="Chest" parent="PlayerInventory/MarginContainer/PlayerStats/HBox2" instance=ExtResource("5_wdn12")]
+[node name="Chest" parent="PlayerInventory/MarginContainer/PlayerStats/ChestBack" instance=ExtResource("5_wdn12")]
 layout_mode = 2
 type = 8
 
-[node name="Back" parent="PlayerInventory/MarginContainer/PlayerStats/HBox2" instance=ExtResource("5_wdn12")]
+[node name="Back" parent="PlayerInventory/MarginContainer/PlayerStats/ChestBack" instance=ExtResource("5_wdn12")]
 layout_mode = 2
 type = 7
 
-[node name="HBox3" type="HBoxContainer" parent="PlayerInventory/MarginContainer/PlayerStats"]
+[node name="LegsHands" type="HBoxContainer" parent="PlayerInventory/MarginContainer/PlayerStats"]
 layout_mode = 2
 
-[node name="Legs" parent="PlayerInventory/MarginContainer/PlayerStats/HBox3" instance=ExtResource("5_wdn12")]
+[node name="Legs" parent="PlayerInventory/MarginContainer/PlayerStats/LegsHands" instance=ExtResource("5_wdn12")]
 layout_mode = 2
 type = 11
 
-[node name="Hands" parent="PlayerInventory/MarginContainer/PlayerStats/HBox3" instance=ExtResource("5_wdn12")]
+[node name="Hands" parent="PlayerInventory/MarginContainer/PlayerStats/LegsHands" instance=ExtResource("5_wdn12")]
 layout_mode = 2
 type = 9
 
-[node name="HBox4" type="HBoxContainer" parent="PlayerInventory/MarginContainer/PlayerStats"]
+[node name="NeckRing" type="HBoxContainer" parent="PlayerInventory/MarginContainer/PlayerStats"]
 layout_mode = 2
 
-[node name="Neck" parent="PlayerInventory/MarginContainer/PlayerStats/HBox4" instance=ExtResource("5_wdn12")]
+[node name="Neck" parent="PlayerInventory/MarginContainer/PlayerStats/NeckRing" instance=ExtResource("5_wdn12")]
 layout_mode = 2
 type = 6
 
-[node name="Ring" parent="PlayerInventory/MarginContainer/PlayerStats/HBox4" instance=ExtResource("5_wdn12")]
+[node name="Ring" parent="PlayerInventory/MarginContainer/PlayerStats/NeckRing" instance=ExtResource("5_wdn12")]
 layout_mode = 2
 type = 10
 
@@ -137,7 +163,7 @@ visible = false
 [node name="ShopUI" parent="." instance=ExtResource("8_gpay8")]
 visible = false
 
-[node name="PopUp" parent="." instance=ExtResource("11_llequ")]
+[node name="GUIMessages" parent="." instance=ExtResource("11_llequ")]
 
 [node name="PauseMenu" parent="." instance=ExtResource("12_732ny")]
 
@@ -149,10 +175,10 @@ text = "fps"
 [connection signal="handle_buff" from="BuffList" to="." method="_on_buff_list_handle_buff"]
 [connection signal="handle_stat" from="PlayerInventory/MarginContainer/PlayerStats" to="." method="_on_player_stats_handle_stat"]
 [connection signal="handle_weapon" from="PlayerInventory/MarginContainer/PlayerStats" to="." method="_on_player_stats_handle_weapon"]
-[connection signal="handle_gear_equip" from="PlayerInventory/MarginContainer/PlayerStats/HBox/Head" to="PlayerInventory/MarginContainer/PlayerStats" method="_on_head_handle_gear_equip"]
-[connection signal="handle_gear_equip" from="PlayerInventory/MarginContainer/PlayerStats/HBox2/Chest" to="PlayerInventory/MarginContainer/PlayerStats" method="_on_chest_handle_gear_equip"]
-[connection signal="handle_gear_equip" from="PlayerInventory/MarginContainer/PlayerStats/HBox2/Back" to="PlayerInventory/MarginContainer/PlayerStats" method="_on_back_handle_gear_equip"]
-[connection signal="handle_gear_equip" from="PlayerInventory/MarginContainer/PlayerStats/HBox3/Legs" to="PlayerInventory/MarginContainer/PlayerStats" method="_on_legs_handle_gear_equip"]
-[connection signal="handle_gear_equip" from="PlayerInventory/MarginContainer/PlayerStats/HBox3/Hands" to="PlayerInventory/MarginContainer/PlayerStats" method="_on_hands_handle_gear_equip"]
-[connection signal="handle_gear_equip" from="PlayerInventory/MarginContainer/PlayerStats/HBox4/Neck" to="PlayerInventory/MarginContainer/PlayerStats" method="_on_neck_handle_gear_equip"]
-[connection signal="handle_gear_equip" from="PlayerInventory/MarginContainer/PlayerStats/HBox4/Ring" to="PlayerInventory/MarginContainer/PlayerStats" method="_on_ring_handle_gear_equip"]
+[connection signal="handle_gear_equip" from="PlayerInventory/MarginContainer/PlayerStats/Head/Head" to="PlayerInventory/MarginContainer/PlayerStats" method="_on_head_handle_gear_equip"]
+[connection signal="handle_gear_equip" from="PlayerInventory/MarginContainer/PlayerStats/ChestBack/Chest" to="PlayerInventory/MarginContainer/PlayerStats" method="_on_chest_handle_gear_equip"]
+[connection signal="handle_gear_equip" from="PlayerInventory/MarginContainer/PlayerStats/ChestBack/Back" to="PlayerInventory/MarginContainer/PlayerStats" method="_on_back_handle_gear_equip"]
+[connection signal="handle_gear_equip" from="PlayerInventory/MarginContainer/PlayerStats/LegsHands/Legs" to="PlayerInventory/MarginContainer/PlayerStats" method="_on_legs_handle_gear_equip"]
+[connection signal="handle_gear_equip" from="PlayerInventory/MarginContainer/PlayerStats/LegsHands/Hands" to="PlayerInventory/MarginContainer/PlayerStats" method="_on_hands_handle_gear_equip"]
+[connection signal="handle_gear_equip" from="PlayerInventory/MarginContainer/PlayerStats/NeckRing/Neck" to="PlayerInventory/MarginContainer/PlayerStats" method="_on_neck_handle_gear_equip"]
+[connection signal="handle_gear_equip" from="PlayerInventory/MarginContainer/PlayerStats/NeckRing/Ring" to="PlayerInventory/MarginContainer/PlayerStats" method="_on_ring_handle_gear_equip"]

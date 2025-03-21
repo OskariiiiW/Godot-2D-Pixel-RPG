@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=8 format=3 uid="uid://c75y0a7cb3tkr"]
+
+[ext_resource type="Script" uid="uid://b5n22gac4gbi1" path="res://Classes/ConsumableEffect.gd" id="1_bskff"]
+[ext_resource type="Script" uid="uid://b4uuj4eu7lqrl" path="res://Inventory/Scripts/ItemData.gd" id="1_fmeid"]
+[ext_resource type="Script" uid="uid://cr5yt258iapqc" path="res://Classes/equippable_item.gd" id="1_lj0u4"]
+[ext_resource type="Texture2D" uid="uid://dwq24ncoq7u6w" path="res://Textures/Weapons/Arrow.png" id="2_q8sid"]
+[ext_resource type="Script" uid="uid://bng0786sarjuc" path="res://Classes/Element.gd" id="4_grx3g"]
+[ext_resource type="Resource" uid="uid://mnqfwngggpy4" path="res://Resources/Items&Projectiles/ParticleProjectiles/projectile_test.tres" id="5_0cucv"]
+
+[sub_resource type="Resource" id="Resource_2uy1v"]
+script = ExtResource("1_lj0u4")
+is_ranged = true
+weapon_type = 1
+projectile = ExtResource("5_0cucv")
+projectile_type = 0
+projectile_count = 1
+damage = Array[ExtResource("4_grx3g")]([])
+knockback = 0.0
+
+[resource]
+script = ExtResource("1_fmeid")
+tier = 7
+type = 13
+name = "Projectile test item"
+value = 9999
+weight = 1.0
+description = ":3"
+is_stackable = false
+weapon = SubResource("Resource_2uy1v")
+icon = ExtResource("2_q8sid")
+effects = Array[ExtResource("1_bskff")]([])

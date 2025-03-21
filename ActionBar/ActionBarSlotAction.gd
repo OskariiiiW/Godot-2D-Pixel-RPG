@@ -12,45 +12,21 @@ var stack_size
 func activate(player : Player): # when pressed on action bar
 	if data is ItemData:
 		if data.type == data.Type.CONSUMABLE or data.type == data.Type.FOOD:
-			for i in data.consumable.effects:
+			for i in data.effects:
 				if i.duration != 0.0:
-					if i.effect_type == i.EffectType.RESTORE:
-						print("restore (ABSA)")
-						#if i.duration == 0.0:
-						#	if i.stat_type == i.StatType.HP or i.stat_type == i.StatType.SP \
-						#	or i.stat_type == i.StatType.MP:
-						#		if i.amount_type == i.AmountType.FLATVALUE:
-						#			player.stats_component.handle_stat_change(i.amount, true, i.stat_type)
-						#		else:
-						#			player.stats_component.handle_stat_change(i.amount, false, i.stat_type)
-						#else:
-						if player.buff_list:
-							player.buff_list.add_buff(i)
-						else:
-							print("no buff list (ABSA)")
-					elif i.effect_type == i.EffectType.ENHANCE:
-						print("enhance (ABSA)")
-						if player.buff_list:
-							player.buff_list.add_buff(i)
-						else:
-							print("no buff list (ABSA)")
-					elif i.effect_type == i.EffectType.REGEN:
-						print("regen (ABSA)")
-						if player.buff_list:
-							player.buff_list.add_buff(i)
-						else:
-							print("no buff list (ABSA)")
+					if player.buff_list:
+						player.buff_list.add_buff(i)
 					else:
-						print("effect type index out of bounds (ABSA)")
+						print("no buff list (ABSA)")
 				else: # zero duration buffs (permanent)
 					if i.effect_type == i.EffectType.RESTORE:
 						print("0 duration restore (ABSA)")
 						if i.stat_type == i.StatType.HP or i.stat_type == i.StatType.SP \
 						or i.stat_type == i.StatType.MP:
 							if i.amount_type == i.AmountType.FLATVALUE:
-								player.stats_component.handle_stat_change(i.amount, true, i.stat_type)
+								player.stats_component.handle_stat_change(i.amount, true, i.stat_type, false)
 							else:
-								player.stats_component.handle_stat_change(i.amount, false, i.stat_type)
+								player.stats_component.handle_stat_change(i.amount, false, i.stat_type, false)
 					else:
 						player.stats_component.handle_buff(i.element, i.stat_type, i.effect_type\
 						, i.amount_type, i.amount, true)
@@ -69,8 +45,8 @@ func activate(player : Player): # when pressed on action bar
 			print("gear (ABSA)")
 			# needs ref to playerstats
 	elif data is ActionSkill:
-		print("actionskill spotted (ABSA)")
-		player.stats_component.handle_stat_change(-data.cost, true, data.cost_type)
+		player.use_skill(data)
+		#skill buff adding not handled here, bc only self buffs would work
 
 func init(_data, stack: int):
 	stack_label = Label.new()
@@ -93,7 +69,7 @@ func init(_data, stack: int):
 		elif data.cost_type == data.CostType.MP:
 			stack_label.set("theme_override_colors/font_color","Blue")
 	self.add_child(stack_label)
-	texture = data.texture
+	texture = data.icon
 	expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 	stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 

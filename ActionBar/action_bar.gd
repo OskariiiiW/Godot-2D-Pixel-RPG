@@ -18,4 +18,5 @@ func _drop_data(_at_position, data):
 		data.queue_free()
 
 func activate_slot(i : int, player : Player):
+	print("activate slot " + str(i) + " action bar")
 	slots[i].activate(player)

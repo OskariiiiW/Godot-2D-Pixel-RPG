@@ -1,27 +1,20 @@
-[gd_scene load_steps=33 format=3 uid="uid://boqsm34s04dxu"]
+[gd_scene load_steps=32 format=3 uid="uid://boqsm34s04dxu"]
 
-[ext_resource type="Script" path="res://Scripts/NonPlayerCharacter.gd" id="1_kmlf8"]
+[ext_resource type="Script" uid="uid://bw8tsv1dmurqd" path="res://Scripts/NonPlayerCharacter.gd" id="1_kmlf8"]
 [ext_resource type="PackedScene" uid="uid://bq4d7xg3rdumh" path="res://Nodes/Components/stats_component.tscn" id="2_bwi4l"]
 [ext_resource type="Resource" uid="uid://64o8hagkgyea" path="res://Inventory/InventoryDatas/ChestTest2.tres" id="3_n508n"]
-[ext_resource type="Script" path="res://Classes/ItemElementType.gd" id="3_tbft2"]
 [ext_resource type="PackedScene" uid="uid://cksh0fxuu056c" path="res://Nodes/Components/relationship_component.tscn" id="4_wlbsw"]
+[ext_resource type="Script" uid="uid://bng0786sarjuc" path="res://Classes/Element.gd" id="5_0vd00"]
 [ext_resource type="PackedScene" uid="uid://demlxi468b16l" path="res://Nodes/Components/loot_component.tscn" id="5_d2gmr"]
 [ext_resource type="PackedScene" uid="uid://c6611mwm1gryk" path="res://Nodes/Props/dropped_item.tscn" id="6_pop3v"]
 [ext_resource type="PackedScene" uid="uid://ih6ig6byvcfk" path="res://Dialogue/dialogue_component.tscn" id="6_pwqen"]
-[ext_resource type="Resource" uid="uid://dpcq75unyhpnv" path="res://Resources/Items/megumin_staff.tres" id="7_qd336"]
+[ext_resource type="Resource" uid="uid://dpcq75unyhpnv" path="res://Resources/Items&Projectiles/megumin_staff.tres" id="7_qd336"]
 [ext_resource type="Texture2D" uid="uid://cpa3cmft3vsly" path="res://icon.svg" id="8_3ccw7"]
 [ext_resource type="Resource" uid="uid://ccckvg7lg2xaj" path="res://Dialogue/Lines/test_dummy_dialogue.tres" id="8_hql0j"]
-[ext_resource type="Script" path="res://Dialogue/DialogueLine.gd" id="8_mnwfj"]
-[ext_resource type="Script" path="res://Dialogue/Dialogue.gd" id="9_fvivm"]
+[ext_resource type="Script" uid="uid://e6evy3as2uh4" path="res://Dialogue/DialogueLine.gd" id="8_mnwfj"]
+[ext_resource type="Script" uid="uid://fw5pnh6c4g0f" path="res://Dialogue/Dialogue.gd" id="9_fvivm"]
 [ext_resource type="PackedScene" uid="uid://co3lke74w50ik" path="res://Nodes/Components/hitbox_component.tscn" id="9_k460n"]
 [ext_resource type="PackedScene" uid="uid://cya2hwtun4d8h" path="res://Inventory/Nodes/equipped_item.tscn" id="10_kbmhw"]
-
-[sub_resource type="Resource" id="Resource_uhlag"]
-script = ExtResource("3_tbft2")
-physical = 20.0
-magical = 20.0
-poison = 0.0
-curse = 0.0
 
 [sub_resource type="Resource" id="Resource_suo25"]
 script = ExtResource("8_mnwfj")
@@ -172,8 +165,7 @@ shop_inventory = ExtResource("3_n508n")
 character_name = "test_dummy"
 faction_name = "DummyThiccFaction"
 is_unique = true
-MAX_HEALTH = 500
-resistances = SubResource("Resource_uhlag")
+resistances = Array[ExtResource("5_0vd00")]([])
 loot_component = NodePath("../LootComponent")
 
 [node name="RelationshipComponent" parent="." instance=ExtResource("4_wlbsw")]
@@ -208,12 +200,14 @@ shape = SubResource("CircleShape2D_cllf2")
 [node name="NPCVisual" type="Area2D" parent="Rotatable"]
 collision_layer = 128
 collision_mask = 3
+monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Rotatable/NPCVisual"]
 position = Vector2(39, 0)
 shape = SubResource("CircleShape2D_biuki")
 
 [node name="MeleeRange" type="Area2D" parent="Rotatable"]
+monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Rotatable/MeleeRange"]
 position = Vector2(38, 0)
@@ -231,6 +225,9 @@ position = Vector2(37, 0)
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 debug_enabled = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
 
 [connection signal="body_entered" from="Rotatable/NPCVisual" to="." method="_on_NPC_visual_body_entered"]
 [connection signal="body_exited" from="Rotatable/NPCVisual" to="." method="_on_NPC_visual_body_exited"]

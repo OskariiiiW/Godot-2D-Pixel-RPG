@@ -45,7 +45,7 @@ func fill_slots():
 	elif shop_mode == "Selling":
 		handle_slot_datas(player.inventory_data.player_inventory)
 
-func handle_slot_datas(inv_data : InventoryData): # made to reduce lines of code
+func handle_slot_datas(inv_data : InventoryData):
 	var has_items : bool
 	for i in inv_data.slot_datas: # checks if has any items in inv
 		if i:

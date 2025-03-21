@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="RangedProjectile" load_steps=9 format=3 uid="uid://mnqfwngggpy4"]
+
+[ext_resource type="Script" uid="uid://bng0786sarjuc" path="res://Classes/Element.gd" id="1_8pvvf"]
+[ext_resource type="Material" uid="uid://bgd7o78n4dead" path="res://Resources/Items&Projectiles/ParticleProjectiles/Firebolt/firebolt_impact.tres" id="2_q2r86"]
+[ext_resource type="Script" uid="uid://csvjnunq7m3o4" path="res://Classes/ranged_projectile.gd" id="3_q77nx"]
+[ext_resource type="Texture2D" uid="uid://bmdjwufl0emgd" path="res://Textures/Icons/Misc/Chest.png" id="4_1nsby"]
+
+[sub_resource type="Resource" id="Resource_it2as"]
+script = ExtResource("1_8pvvf")
+element = 0
+value = 420.0
+
+[sub_resource type="Resource" id="Resource_5i5br"]
+script = ExtResource("1_8pvvf")
+element = 1
+value = 1.0
+
+[sub_resource type="Resource" id="Resource_oi861"]
+script = ExtResource("1_8pvvf")
+element = 2
+value = 123.0
+
+[sub_resource type="Resource" id="Resource_0e4v8"]
+script = ExtResource("1_8pvvf")
+element = 3
+value = 666.0
+
+[resource]
+script = ExtResource("3_q77nx")
+name = "Projectile Test"
+texture = ExtResource("4_1nsby")
+impact = ExtResource("2_q2r86")
+speed = 1.0
+duration = 0.0
+is_piercing = true
+knockback = 0.0
+damage = Array[ExtResource("1_8pvvf")]([SubResource("Resource_it2as"), SubResource("Resource_5i5br"), SubResource("Resource_oi861"), SubResource("Resource_0e4v8")])

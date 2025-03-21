@@ -1,0 +1,221 @@
+[gd_scene load_steps=37 format=3 uid="uid://ciisrf3k4gcrc"]
+
+[ext_resource type="Script" uid="uid://bw8tsv1dmurqd" path="res://Scripts/NonPlayerCharacter.gd" id="1_88d16"]
+[ext_resource type="Texture2D" uid="uid://5lm3ctxrl8ry" path="res://Textures/NPC/shop_ui_npc.png" id="2_oj3gq"]
+[ext_resource type="Script" uid="uid://dyu3g6levh1po" path="res://Inventory/Scripts/InventoryData.gd" id="3_1vh1s"]
+[ext_resource type="Script" uid="uid://s8nuariqhdlw" path="res://Inventory/Scripts/SlotData.gd" id="4_vrr1o"]
+[ext_resource type="Resource" uid="uid://c00bbx3t0oni0" path="res://Resources/Items&Projectiles/Food/Apple.tres" id="5_8dcp6"]
+[ext_resource type="Resource" uid="uid://c8q2qn043wtpr" path="res://Resources/Items&Projectiles/Food/Bread.tres" id="6_n5eyx"]
+[ext_resource type="Resource" uid="uid://cy1ye84rtcylu" path="res://Resources/Items&Projectiles/Potions_Poisons/weak_hp_potion.tres" id="7_i3nab"]
+[ext_resource type="PackedScene" uid="uid://bq4d7xg3rdumh" path="res://Nodes/Components/stats_component.tscn" id="7_v8vsf"]
+[ext_resource type="Script" uid="uid://bng0786sarjuc" path="res://Classes/Element.gd" id="8_lx6ge"]
+[ext_resource type="Resource" uid="uid://iam6mfmnbkbl" path="res://Resources/Items&Projectiles/wood_sword.tres" id="9_ujpc1"]
+[ext_resource type="PackedScene" uid="uid://cksh0fxuu056c" path="res://Nodes/Components/relationship_component.tscn" id="9_vatx3"]
+[ext_resource type="PackedScene" uid="uid://ih6ig6byvcfk" path="res://Dialogue/dialogue_component.tscn" id="10_6qbm0"]
+[ext_resource type="Script" uid="uid://e6evy3as2uh4" path="res://Dialogue/DialogueLine.gd" id="11_dt0lh"]
+[ext_resource type="PackedScene" uid="uid://demlxi468b16l" path="res://Nodes/Components/loot_component.tscn" id="12_hh7sd"]
+[ext_resource type="Script" uid="uid://fw5pnh6c4g0f" path="res://Dialogue/Dialogue.gd" id="12_lqecs"]
+[ext_resource type="PackedScene" uid="uid://c6611mwm1gryk" path="res://Nodes/Props/dropped_item.tscn" id="13_vwdj3"]
+[ext_resource type="Resource" uid="uid://dpcq75unyhpnv" path="res://Resources/Items&Projectiles/megumin_staff.tres" id="14_hf1v8"]
+[ext_resource type="Texture2D" uid="uid://cpa3cmft3vsly" path="res://icon.svg" id="15_ebw17"]
+[ext_resource type="PackedScene" uid="uid://co3lke74w50ik" path="res://Nodes/Components/hitbox_component.tscn" id="16_w80fj"]
+[ext_resource type="PackedScene" uid="uid://cya2hwtun4d8h" path="res://Inventory/Nodes/equipped_item.tscn" id="17_na3ri"]
+
+[sub_resource type="Resource" id="Resource_wctfw"]
+script = ExtResource("4_vrr1o")
+item_data = ExtResource("5_8dcp6")
+quantity = 15
+
+[sub_resource type="Resource" id="Resource_80mat"]
+script = ExtResource("4_vrr1o")
+item_data = ExtResource("6_n5eyx")
+quantity = 10
+
+[sub_resource type="Resource" id="Resource_ric2o"]
+script = ExtResource("4_vrr1o")
+item_data = ExtResource("7_i3nab")
+quantity = 2
+
+[sub_resource type="Resource" id="Resource_ktv8u"]
+script = ExtResource("4_vrr1o")
+item_data = ExtResource("14_hf1v8")
+quantity = 1
+
+[sub_resource type="Resource" id="Resource_uulmr"]
+script = ExtResource("4_vrr1o")
+item_data = ExtResource("9_ujpc1")
+quantity = 1
+
+[sub_resource type="Resource" id="Resource_4t7kh"]
+script = ExtResource("3_1vh1s")
+slot_datas = Array[ExtResource("4_vrr1o")]([SubResource("Resource_wctfw"), SubResource("Resource_80mat"), SubResource("Resource_ric2o"), SubResource("Resource_ktv8u"), SubResource("Resource_uulmr")])
+
+[sub_resource type="Resource" id="Resource_2hhhn"]
+script = ExtResource("11_dt0lh")
+id = ""
+text = "Welcome back! Was there something else you needed?"
+already_said = false
+is_locked = false
+can_exit = true
+opens_shop = false
+starts_combat = false
+relation_change = 0
+relation_requirement = 0
+
+[sub_resource type="Resource" id="Resource_lkx4p"]
+script = ExtResource("11_dt0lh")
+id = ""
+text = "I want to buy something"
+already_said = false
+is_locked = false
+can_exit = true
+opens_shop = true
+starts_combat = false
+relation_change = 0
+relation_requirement = 0
+
+[sub_resource type="Resource" id="Resource_lnpbh"]
+script = ExtResource("11_dt0lh")
+id = ""
+text = "Do you need help with anything?"
+already_said = true
+is_locked = false
+can_exit = true
+opens_shop = false
+starts_combat = false
+relation_change = 0
+relation_requirement = 0
+
+[sub_resource type="Resource" id="Resource_pna4r"]
+script = ExtResource("11_dt0lh")
+id = ""
+text = "I'm robbing you, give me all your stuff!"
+already_said = false
+is_locked = false
+can_exit = true
+opens_shop = false
+starts_combat = true
+relation_change = 0
+relation_requirement = 0
+
+[sub_resource type="Resource" id="Resource_ff2i7"]
+script = ExtResource("12_lqecs")
+npc_lines = Array[ExtResource("11_dt0lh")]([SubResource("Resource_2hhhn")])
+player_lines = Array[ExtResource("11_dt0lh")]([SubResource("Resource_lkx4p"), SubResource("Resource_lnpbh"), SubResource("Resource_pna4r")])
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_t1xlp"]
+radius = 33.5002
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jk4xl"]
+radius = 12.5006
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_biuki"]
+radius = 300.167
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jh8gn"]
+size = Vector2(44, 100)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8bqpd"]
+radius = 385.105
+
+[node name="NonPlayerCharacter" type="CharacterBody2D" node_paths=PackedStringArray("stats_component", "relationship_component", "dialogue_component")]
+process_mode = 1
+z_index = 1
+y_sort_enabled = true
+collision_layer = 2
+collision_mask = 6
+motion_mode = 1
+script = ExtResource("1_88d16")
+character_image = ExtResource("2_oj3gq")
+stats_component = NodePath("StatsComponent")
+relationship_component = NodePath("RelationshipComponent")
+dialogue_component = NodePath("DialogueComponent")
+shop_inventory = SubResource("Resource_4t7kh")
+gold = 9001
+
+[node name="StatsComponent" parent="." node_paths=PackedStringArray("loot_component") instance=ExtResource("7_v8vsf")]
+character_name = "test_character"
+faction_name = "npc_faction"
+is_unique = true
+resistances = Array[ExtResource("8_lx6ge")]([])
+resistances_buff = Array[ExtResource("8_lx6ge")]([])
+resistances_percent_buff = Array[ExtResource("8_lx6ge")]([])
+dmg = Array[ExtResource("8_lx6ge")]([])
+dmg_buff = Array[ExtResource("8_lx6ge")]([])
+dmg_percent_buff = Array[ExtResource("8_lx6ge")]([])
+loot_component = NodePath("../LootComponent")
+
+[node name="RelationshipComponent" parent="." instance=ExtResource("9_vatx3")]
+
+[node name="DialogueComponent" parent="." instance=ExtResource("10_6qbm0")]
+dialogue = SubResource("Resource_ff2i7")
+
+[node name="LootComponent" parent="." instance=ExtResource("12_hh7sd")]
+loot_base_node = ExtResource("13_vwdj3")
+loot = ExtResource("14_hf1v8")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("15_ebw17")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 0.125)
+shape = SubResource("CircleShape2D_t1xlp")
+
+[node name="HitboxComponent" parent="." node_paths=PackedStringArray("stats_component") groups=["HostileCreature"] instance=ExtResource("16_w80fj")]
+collision_layer = 2
+collision_mask = 120
+stats_component = NodePath("../StatsComponent")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="HitboxComponent"]
+position = Vector2(0.5, 0.125)
+shape = SubResource("CircleShape2D_jk4xl")
+
+[node name="Rotatable" type="Node2D" parent="."]
+
+[node name="NPCVisual" type="Area2D" parent="Rotatable"]
+collision_layer = 128
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rotatable/NPCVisual"]
+position = Vector2(275, 0)
+shape = SubResource("CircleShape2D_biuki")
+
+[node name="MeleeRange" type="Area2D" parent="Rotatable"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rotatable/MeleeRange"]
+position = Vector2(38, 0)
+shape = SubResource("RectangleShape2D_jh8gn")
+
+[node name="WeaponContainer" type="Node2D" parent="Rotatable"]
+visible = false
+
+[node name="EquippedItem" parent="Rotatable/WeaponContainer" instance=ExtResource("17_na3ri")]
+position = Vector2(18, 2)
+equipped_item = ExtResource("14_hf1v8")
+
+[node name="ProjectileSpawnMark" type="Marker2D" parent="Rotatable/WeaponContainer"]
+position = Vector2(37, 0)
+
+[node name="TaskScanner" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TaskScanner"]
+shape = SubResource("CircleShape2D_8bqpd")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+avoidance_enabled = true
+debug_enabled = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
+
+[connection signal="body_entered" from="Rotatable/NPCVisual" to="." method="_on_NPC_visual_body_entered"]
+[connection signal="body_exited" from="Rotatable/NPCVisual" to="." method="_on_NPC_visual_body_exited"]
+[connection signal="body_entered" from="Rotatable/MeleeRange" to="." method="_on_melee_range_body_entered"]
+[connection signal="body_exited" from="Rotatable/MeleeRange" to="." method="_on_melee_range_body_exited"]
+[connection signal="body_entered" from="TaskScanner" to="." method="_on_task_scanner_body_entered"]
+[connection signal="body_exited" from="TaskScanner" to="." method="_on_task_scanner_body_exited"]
+[connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

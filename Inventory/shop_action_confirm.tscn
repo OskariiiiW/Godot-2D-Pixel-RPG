@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://danwc4v6f216j"]
 
-[ext_resource type="Script" path="res://Inventory/shop_action_confirm.gd" id="1_6gjur"]
+[ext_resource type="Script" uid="uid://c1l18jv25d28x" path="res://Inventory/shop_action_confirm.gd" id="1_6gjur"]
 
 [node name="ShopActionConfirm" type="Control"]
 top_level = true

@@ -1,11 +1,11 @@
 [gd_scene load_steps=10 format=3 uid="uid://btn5l1p8uaixr"]
 
 [ext_resource type="PackedScene" uid="uid://fblxslfe483l" path="res://Nodes/Components/simple_stats_component.tscn" id="1_0odv3"]
-[ext_resource type="Resource" uid="uid://8no3jeuo0ykp" path="res://Resources/Items/Wood_log.tres" id="2_ndd10"]
+[ext_resource type="Resource" uid="uid://8no3jeuo0ykp" path="res://Resources/Items&Projectiles/Misc/wood_log.tres" id="2_ndd10"]
 [ext_resource type="Texture2D" uid="uid://x11l0mbnmmot" path="res://Props/TxTree2.png" id="2_vj22t"]
 [ext_resource type="PackedScene" uid="uid://demlxi468b16l" path="res://Nodes/Components/loot_component.tscn" id="3_12igf"]
 [ext_resource type="PackedScene" uid="uid://co3lke74w50ik" path="res://Nodes/Components/hitbox_component.tscn" id="3_nfse0"]
-[ext_resource type="Script" path="res://Classes/ItemElementType.gd" id="4_4p62f"]
+[ext_resource type="Script" uid="uid://bt2pu1y3yux8e" path="res://Classes/ItemElementType.gd" id="4_4p62f"]
 [ext_resource type="PackedScene" uid="uid://c6611mwm1gryk" path="res://Nodes/Props/dropped_item.tscn" id="4_ibd63"]
 
 [sub_resource type="Resource" id="Resource_8rbab"]
@@ -14,6 +14,7 @@ physical = 0.0
 magical = 0.0
 poison = 20.0
 curse = 100.0
+elements = null
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_x2y14"]
 radius = 5.0

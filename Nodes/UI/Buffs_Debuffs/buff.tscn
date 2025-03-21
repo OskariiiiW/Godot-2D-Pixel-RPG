@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://6107es7k18ag"]
 
-[ext_resource type="Script" path="res://Nodes/UI/Buffs_Debuffs/buff.gd" id="1_1g0hj"]
+[ext_resource type="Script" uid="uid://dsvlpjk2u2eeh" path="res://Nodes/UI/Buffs_Debuffs/buff.gd" id="1_1g0hj"]
 [ext_resource type="Texture2D" uid="uid://cpa3cmft3vsly" path="res://icon.svg" id="1_t2tw5"]
 
 [node name="Buff" type="TextureRect"]

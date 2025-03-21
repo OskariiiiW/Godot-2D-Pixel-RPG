@@ -1,36 +1,27 @@
-[gd_resource type="Resource" script_class="Race" load_steps=9 format=3 uid="uid://idm0oq0lqbaq"]
+[gd_resource type="Resource" script_class="Race" load_steps=7 format=3 uid="uid://idm0oq0lqbaq"]
 
-[ext_resource type="Script" path="res://Classes/Race.gd" id="1_ajugg"]
-[ext_resource type="Script" path="res://Classes/Element.gd" id="1_twek1"]
-[ext_resource type="Script" path="res://Classes/ItemElementType.gd" id="2_ccfjv"]
+[ext_resource type="Script" uid="uid://dffta1psad3cu" path="res://Classes/Race.gd" id="1_ajugg"]
+[ext_resource type="Script" uid="uid://bng0786sarjuc" path="res://Classes/Element.gd" id="1_twek1"]
 
-[sub_resource type="Resource" id="Resource_brrf4"]
+[sub_resource type="Resource" id="Resource_trogx"]
 script = ExtResource("1_twek1")
 element = 0
 value = 0.0
 
-[sub_resource type="Resource" id="Resource_0wmrl"]
+[sub_resource type="Resource" id="Resource_he2sg"]
 script = ExtResource("1_twek1")
 element = 1
 value = 0.0
 
-[sub_resource type="Resource" id="Resource_6yxxd"]
+[sub_resource type="Resource" id="Resource_h2g2x"]
 script = ExtResource("1_twek1")
 element = 2
 value = 0.0
 
-[sub_resource type="Resource" id="Resource_uflxf"]
+[sub_resource type="Resource" id="Resource_eqgky"]
 script = ExtResource("1_twek1")
 element = 3
 value = 0.0
-
-[sub_resource type="Resource" id="Resource_seb23"]
-script = ExtResource("2_ccfjv")
-physical = 0.0
-magical = 0.0
-poison = 0.0
-curse = 0.0
-elements = Array[Object]([SubResource("Resource_brrf4"), SubResource("Resource_0wmrl"), SubResource("Resource_6yxxd"), SubResource("Resource_uflxf")])
 
 [resource]
 script = ExtResource("1_ajugg")
@@ -41,4 +32,4 @@ BASE_MAX_STAMINA = 60.0
 BASE_STAMINA_REGEN = 0.3
 BASE_MAX_MAGICKA = 30.0
 BASE_MAGICKA_REGEN = 0.1
-resistances = SubResource("Resource_seb23")
+resistances = Array[ExtResource("1_twek1")]([SubResource("Resource_trogx"), SubResource("Resource_he2sg"), SubResource("Resource_h2g2x"), SubResource("Resource_eqgky")])
